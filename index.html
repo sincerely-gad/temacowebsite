@@ -1,0 +1,2755 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<!-- Mirrored from winsfolio.net/html/natex/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 21 Jun 2025 19:20:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temaco</title>
+  <link rel="icon" href="img/logoo.png">
+  <!-- CSS only -->
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <!-- fancybox -->
+  <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="assets/font/flaticon_xyz.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <!-- style -->
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=1.2">
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/preloader.js"></script>
+  <script src="assets/js/phone-formatter.js"></script>
+  <script src="assets/js/modal-fix.js"></script>
+  <script src="assets/js/contact-form.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+      /* Responsive Contact Form Styles */
+      @media (max-width: 600px) {
+        .contact-form {
+          width: 100% !important;
+          padding: 10px !important;
+          box-sizing: border-box;
+        }
+        .contact-form .form-group {
+          margin-bottom: 15px;
+        }
+        .contact-form label {
+          font-size: 1rem;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+          width: 100% !important;
+          font-size: 1rem;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+        .contact-form .btn-primary {
+          font-size: 1rem;
+          padding: 12px;
+          width: 100%;
+        }
+      }
+      
+      /* iPad Responsive Styles */
+      @media (min-width: 601px) and (max-width: 1024px) {
+        /* Make contact section full width */
+        .contact {
+          padding: 0 !important;
+          margin: 0 !important;
+          width: 100vw !important;
+          max-width: 100vw !important;
+        }
+        
+        .contact .heading {
+          padding: 40px 20px 20px 20px !important;
+          margin: 0 !important;
+        }
+        
+        .contact-container {
+          padding: 0 !important;
+          max-width: 100vw !important;
+          width: 100vw !important;
+          margin: 0 !important;
+        }
+        
+        .contact-info {
+          display: grid !important;
+          grid-template-columns: 1fr 1fr !important;
+          gap: 0 !important;
+          margin: 0 !important;
+          padding: 20px !important;
+          background: #f8f9fa !important;
+        }
+        
+        .contact-info div {
+          text-align: center !important;
+          padding: 25px 15px !important;
+          background: transparent !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          border-right: 1px solid #e0e0e0 !important;
+        }
+        
+        .contact-info div:nth-child(even) {
+          border-right: none !important;
+        }
+        
+        .contact-info div:nth-child(1),
+        .contact-info div:nth-child(2) {
+          border-bottom: 1px solid #e0e0e0 !important;
+        }
+        
+        .contact-info h5 {
+          font-size: 1.1rem !important;
+          margin-bottom: 15px !important;
+          color: #f56421 !important;
+        }
+        
+        .contact-info p {
+          font-size: 0.95rem !important;
+          margin: 5px 0 !important;
+          line-height: 1.5 !important;
+        }
+        
+        .contact-form {
+          max-width: 100vw !important;
+          width: 100vw !important;
+          padding: 40px 20px !important;
+          background: #fff !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+        }
+        
+        .contact-form .form-group {
+          margin-bottom: 25px !important;
+          width: 100% !important;
+        }
+        
+        .contact-form .row .col-md-6 {
+          margin-bottom: 20px !important;
+          width: 100% !important;
+        }
+        
+        .contact-form label {
+          font-weight: 600 !important;
+          color: #333 !important;
+          margin-bottom: 8px !important;
+          display: block !important;
+          font-size: 1rem !important;
+          width: 100% !important;
+        }
+        
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+          padding: 18px 20px !important;
+          font-size: 1.1rem !important;
+          border: 2px solid #e0e0e0 !important;
+          border-radius: 0 !important;
+          transition: all 0.3s ease !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          background-color: #fff !important;
+          margin: 0 !important;
+        }
+        
+        .contact-form textarea {
+          min-height: 140px !important;
+          resize: vertical !important;
+          font-family: inherit !important;
+          border-radius: 0 !important;
+        }
+        
+        .contact-form select {
+          appearance: none !important;
+          background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") !important;
+          background-repeat: no-repeat !important;
+          background-position: right 20px center !important;
+          background-size: 12px !important;
+          padding-right: 50px !important;
+          border-radius: 0 !important;
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+          color: #999 !important;
+          opacity: 1 !important;
+        }
+        
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+          border-color: #f56421 !important;
+          box-shadow: 0 0 0 3px rgba(245, 100, 33, 0.1) !important;
+        }
+        
+        .contact-form .btn-primary {
+          padding: 20px 40px !important;
+          font-size: 1.2rem !important;
+          border-radius: 0 !important;
+          background: linear-gradient(135deg, #f56421, #e55a1e) !important;
+          border: none !important;
+          transition: all 0.3s ease !important;
+          width: 100% !important;
+          margin: 30px 0 0 0 !important;
+          display: block !important;
+          cursor: pointer !important;
+          font-weight: 600 !important;
+          color: #fff !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          box-shadow: 0 4px 15px rgba(245, 100, 33, 0.2) !important;
+        }
+        
+        .contact-form .btn-primary:hover {
+          background: linear-gradient(135deg, #e55a1e, #d4501a) !important;
+          transform: translateY(-3px) !important;
+          box-shadow: 0 8px 25px rgba(245, 100, 33, 0.4) !important;
+        }
+        
+        .contact-form .btn-primary:active {
+          transform: translateY(-1px) !important;
+          box-shadow: 0 5px 15px rgba(245, 100, 33, 0.3) !important;
+        }
+        
+        .contact-form .btn-primary span {
+          margin-left: 8px !important;
+          font-size: 1.2rem !important;
+          transition: transform 0.3s ease !important;
+        }
+        
+        .contact-form .btn-primary:hover span {
+          transform: translateX(3px) !important;
+        }
+        
+        /* Website links styling for iPad */
+        .contact-info a {
+          color: #f56421 !important;
+          text-decoration: none !important;
+          font-weight: 500 !important;
+          transition: color 0.3s ease !important;
+        }
+        
+        .contact-info a:hover {
+          color: #e55a1e !important;
+          text-decoration: underline !important;
+        }
+        
+        /* Form Message Area for iPad */
+        #formMessage {
+          margin-top: 25px !important;
+          padding: 20px !important;
+          border-radius: 10px !important;
+          font-size: 1rem !important;
+          line-height: 1.6 !important;
+        }
+        
+        #formMessage .alert {
+          border: none !important;
+          border-radius: 8px !important;
+          padding: 20px !important;
+          margin: 0 !important;
+        }
+        
+        #formMessage .alert-success {
+          background: linear-gradient(135deg, #d4edda, #c3e6cb) !important;
+          color: #155724 !important;
+          border-left: 4px solid #28a745 !important;
+        }
+        
+        #formMessage .alert-danger {
+          background: linear-gradient(135deg, #f8d7da, #f1aeb5) !important;
+          color: #721c24 !important;
+          border-left: 4px solid #dc3545 !important;
+        }
+        
+        /* Loading state for iPad */
+        .contact-form .btn-loading {
+          background: #ccc !important;
+          cursor: not-allowed !important;
+          transform: none !important;
+          box-shadow: none !important;
+        }
+        
+        .contact-form .btn-loading:hover {
+          background: #ccc !important;
+          transform: none !important;
+          box-shadow: none !important;
+        }
+      }
+    </style>
+  <style>
+    body {
+      font-family: 'Inter', 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    }
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 0;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+      color: #f56421;
+      font-size: 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      background: #f56421;
+      color: #fff;
+    }
+    .footer-social i {
+      pointer-events: none;
+    }
+    .f-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .f-bottom p {
+      margin: 0;
+      font-size: 15px;
+      color: #333;
+    }
+    .product-modal-overlay {
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 20px;
+    }
+    .product-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .product-modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 540px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.92);
+      transition: transform 0.3s ease;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-modal-overlay.active .product-modal-content {
+      transform: scale(1);
+    }
+    .product-modal-header {
+      position: relative;
+      padding: 0;
+      width: 100%;
+    }
+    .product-modal-swiper {
+      width: 100%;
+      height: 350px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-modal-swiper .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    .product-modal-swiper .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
+      margin: 0 auto;
+      animation: fadeIn 0.5s ease;
+      background: #eee;
+    }
+    .product-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+    .product-modal-close:hover {
+      background: #fff;
+      transform: scale(1.1);
+    }
+    .product-modal-swiper .swiper-button-next,
+    .product-modal-swiper .swiper-button-prev {
+      color: #fff;
+      background: #f56421;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      opacity: 0.95;
+      z-index: 20;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .product-modal-swiper .swiper-button-next::after,
+    .product-modal-swiper .swiper-button-prev::after {
+      color: #fff !important;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+    .product-modal-swiper .swiper-button-next::after {
+      content: '\203A'; /* Unicode for › */
+    }
+    .product-modal-swiper .swiper-button-prev::after {
+      content: '\2039'; /* Unicode for ‹ */
+    }
+    .product-modal-swiper .swiper-button-next:hover,
+    .product-modal-swiper .swiper-button-prev:hover {
+      background: #c85000;
+      color: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .product-modal-swiper .swiper-button-next {
+      right: 15px;
+    }
+    .product-modal-swiper .swiper-button-prev {
+      left: 15px;
+    }
+    .product-modal-content .modal-content {
+      padding: 30px;
+    }
+    .product-modal-title {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .product-modal-description {
+      margin: -10px 0 0 0;
+      padding: 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #555;
+      word-wrap: break-word;
+      overflow: visible;
+      max-height: none;
+    }
+    @media (min-width: 768px) {
+      .product-modal-description {
+        margin: -10px 0 0 0;
+        font-size: 15px;
+        max-height: none;
+      }
+    }
+    @media (max-width: 900px) {
+      .product-modal-content {
+        max-width: 98vw;
+      }
+      .product-modal-swiper {
+        height: 180px;
+      }
+      .product-modal-content .modal-content {
+        padding: 20px;
+      }
+      .product-modal-title {
+        font-size: 1.5rem;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Enhanced Contact Form Messages */
+    .alert {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+      animation: fadeIn 0.5s ease-in;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .alert-success {
+      background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      position: relative;
+    }
+    
+    .alert-success::before {
+      content: "✅";
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    
+    .alert-danger {
+      background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      position: relative;
+    }
+    
+    .alert-danger::before {
+      content: "❌";
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    
+    .alert-info {
+      background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+      border: 1px solid #bee5eb;
+      color: #0c5460;
+      position: relative;
+    }
+    
+    .alert-info::before {
+      content: "ℹ️";
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    
+    /* Loading spinner for submit button */
+    .btn-loading {
+      position: relative;
+      color: transparent !important;
+    }
+    
+    .btn-loading::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Dropdown styles for subsidiaries */
+    .navbar-dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      min-width: unset;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 8px 12px;
+      z-index: 1000;
+      list-style: none;
+      flex-direction: column;
+      gap: 0;
+    }
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 18px;
+      white-space: nowrap;
+      color: #222;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+   
+    .navbar-dropdown:hover > .dropdown-menu,
+    .navbar-dropdown:focus-within > .dropdown-menu {
+      display: flex;
+    }
+    /* Mobile nav dropdown */
+    @media (max-width: 900px) {
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        min-width: 0;
+        padding-left: 18px;
+      }
+    }
+    .header-bottom-bar, header, .container {
+      overflow: visible !important;
+      z-index: 2000 !important;
+      position: relative;
+    }
+    .dropdown-menu {
+      z-index: 3000 !important;
+    }
+    body > header > .header-bottom-bar {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      top: 0;
+    }
+    body > header {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      top: 0;
+    }
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #111;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    section, .gap {
+      padding: 20px 0;
+      margin-bottom: 0 !important;
+    }
+    section + section,
+    section.gap + section,
+    section + .gap {
+      margin-top: 5px !important;
+    }
+    #our-team > .container > .heading,
+    #our-team > .container > .heading * {
+      color: #f56421 !important;
+    }
+    .header-bottom-bar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      z-index: 99999 !important;
+      background: #f56421 !important;
+      min-height: 80px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    }
+    .hero-two-section {
+      position: relative;
+      z-index: 1;
+      margin-top: 0 !important;
+      background: #FFF1E6 !important;
+      background-image: none !important;
+    }
+    body {
+      padding-top: 80px;
+    }
+    .products-card-grid, .construction-card, .main, main, section, .container {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    body > section.hero-two-section {
+      margin-top: 0 !important;
+      padding-top: 100px !important; /* Increased from 100px */
+      padding-bottom: 60px !important; /* Add more space below for balance */
+    }
+    .navbar-social-btn {
+      gap: 20px !important;
+    }
+    .navbar-social-btn a {
+      color: #fff !important;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .navbar-social-btn a:hover {
+      color: #222 !important;
+    }
+    .navbar-social-btn a i {
+      font-size: 22px !important;
+    }
+    .navbar-links > li > a {
+      color: #fff !important;
+    }
+
+  
+    /* For dropdown menu links */
+    .dropdown-menu li a {
+      color: #fff !important;
+    }
+
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      color: #ffd6b3 !important; /* lighter orange or white for contrast */
+      background: #f56421 !important;
+    }
+    .dropdown-menu {
+      background: #f56421 !important;
+    }
+    /* Move project cards up by 10px */
+    .projects-slider .swiper-wrapper {
+      position: relative;
+      top: -10px;
+    }
+    .dropdown-menu li a {
+      color: #fff !important;
+    }
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      color: #f56421 !important;
+      background: #fff !important;
+    }
+    .logo img {
+      max-width: 140px !important;
+      height: auto !important;
+    }
+    .logo {
+      margin-left: -40px !important;
+    }
+    .navbar-links li:hover > a {
+      border-bottom: 5px solid #fff !important;
+    }
+    .navbar-social-btn a {
+      transition: color 0.2s !important;
+    }
+
+    .navbar-social-btn a:hover,
+    .navbar-social-btn a:focus {
+      transform: none !important;
+      scale: 1 !important;
+    }
+    .navbar-social-btn {
+      transition: none !important;
+    }
+
+    .navbar-social-btn:hover,
+    .navbar-social-btn:focus {
+      transform: none !important;
+      scale: 1 !important;
+    }
+    #our-team .team-grid > div:nth-child(1) > h3 {
+      background: #f56421 !important;
+      color: #fff !important;
+      padding: 8px 0 !important;
+      border-radius: 6px !important;
+      margin-bottom: 10px !important;
+    }
+    .navbar-social-btn {
+      margin-left: 4px !important;
+    }
+    #project-modal .product-modal-content {
+      max-width: 900px;
+    }
+    .product-modal-images-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .product-modal-images-grid img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid #eee;
+      transition: border 0.2s;
+    }
+    .product-modal-images-grid img:hover {
+      border: 2px solid #f56421;
+    }
+    @media (max-width: 900px) {
+      #project-modal .product-modal-content {
+        max-width: 98vw;
+      }
+      .product-modal-images-grid img {
+        width: 48px;
+        height: 36px;
+      }
+    }
+    .hero-two-section .swiper-slide img {
+      max-width: 100%;
+      max-height: 480px;   /* Increased from 340px to 480px */
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      background: #fff;
+    }
+    @media (max-width: 900px) {
+      .hero-two-section .swiper-slide img {
+        max-height: 300px; /* Increased from 180px to 260px */
+      }
+    }
+    
+    /* Professional Phone Styling */
+    .phone-numbers {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .phone-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(245, 100, 33, 0.1);
+    }
+    .phone-item:last-child {
+      border-bottom: none;
+    }
+    .phone-label {
+      font-weight: 600;
+      color: #f56421;
+      min-width: 60px;
+      font-size: 0.9rem;
+    }
+    .phone-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.5px;
+    }
+    .phone-link:hover {
+      color: #f56421;
+      text-decoration: none;
+    }
+    .footer-phone {
+      color: #fff !important;
+      text-decoration: none;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    .footer-phone:hover {
+      color: #ffd6b3 !important;
+    }
+    
+    /* Enhanced Form Styling */
+    .form-control {
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+    .form-control:focus {
+      border-color: #f56421;
+      box-shadow: 0 0 0 3px rgba(245, 100, 33, 0.1);
+      outline: none;
+    }
+    .form-control::placeholder {
+      color: #999;
+      font-style: italic;
+    }
+    .form-group label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    /* Professional Contact Section */
+    .contact-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid #f56421;
+    }
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .contact-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+    .contact-item h4 {
+      color: #f56421;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    /* Enhanced Responsive Design */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 0 20px;
+      }
+      .products-card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .logo {
+        margin-left: 0 !important;
+        padding-left: 8px;
+      }
+      .logo img {
+        max-width: 110px !important;
+        height: auto !important;
+      }
+      .header-bottom-bar {
+        min-height: 60px !important;
+        padding: 0 !important;
+      }
+      .phone-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      .phone-label {
+        min-width: auto;
+      }
+      .contact-item {
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .phone-numbers {
+        gap: 12px;
+      }
+      .phone-item {
+        padding: 12px;
+        background: rgba(245, 100, 33, 0.05);
+        border-radius: 8px;
+        border-bottom: none;
+      }
+      .contact-item {
+        padding: 15px;
+      }
+      .hero-two-section {
+        padding-top: 80px !important;
+      }
+      body {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- preloader -->
+  <div class="preloader">
+    <div class="preloader-box">
+      <div class="natex-content">
+        <div class="natex-circle"></div>
+        <div class="natex-line-mask">
+          <div class="loader-line"></div>
+        </div>
+        <img src="img/logoo.png" alt="img" style="max-width:40px; height:auto;">
+      </div>
+    </div>
+  </div>
+  <!-- preloader end -->
+  <!-- header -->
+  <header>
+    <div class="header-bottom-bar">
+      <div class="container">
+        <div class="bottom-bar">
+          <div class="two-bar">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="logo">
+                <a href="index.html">
+                  <img alt="logo" src="img/Logo.jpg">
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="javascript:void(0)" id="mobile-menu" class="menu-start">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <nav class="navbar">
+            <ul class="navbar-links">
+              <li class="navbar-dropdown">
+                <a href="index.html">Home</a>
+              </li>
+
+              <li class="navbar-dropdown">
+                <a href="#Products">Products</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="#services">Services</a>
+              </li>
+
+              <li class="navbar-dropdown">
+                <a href="#projects">Projects</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="#about">About</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="#subsidiaries">Subsidiaries</a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+                  <li><a href="behubltd.html">Be Hub Ltd</a></li>
+                  <li><a href="temacopro.html">Temaco Pro</a></li>
+                </ul>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="blog.html">Blog</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header-search">
+            <div class="header-search-button search-box-outer">
+              <!-- Removed search icon as requested -->
+            </div>
+            <div class="navbar-social-btn" style="display: flex; align-items: center; gap: 10px;">
+              <a href="https://facebook.com/temacobuilders" target="_blank" aria-label="Facebook" style="color: #fff;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/temacobuilders" target="_blank" aria-label="Twitter" style="color: #fff;"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/temacobuilders" target="_blank" aria-label="Instagram" style="color: #fff;"><i class="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com/company/temacobuilders" target="_blank" aria-label="LinkedIn" style="color: #fff;"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok" style="color: #fff;"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" style="background-image: url(img/background.png); ">
+      <div class="res-log">
+        <a href="index.html">
+        </a>
+      </div>
+      <ul>
+        <li class="menu-item-has-children">
+          <a href="index.html">Home</a>
+        </li>
+
+        <li class="navbar-dropdown">
+          <a href="#Products">Products</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="#services">Services</a>
+        </li>
+
+        <li class="navbar-dropdown">
+          <a href="#projects">Projects</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="#about">About</a>
+        </li>
+        <li class="menu-item-has-children">
+          <a href="#subsidiaries">Subsidiaries</a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+            <li><a href="behubltd.html">Be Hub Ltd</a></li>
+            <li><a href="temacopro.html">Temaco Pro</a></li>
+          </ul>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="blog.html">Blog</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+      <a href="JavaScript:void(0)" id="res-cross"></a>
+    </div>
+  </header>
+  <section class="hero-two-section" style="background-image: url(img/background.png); ">
+    <div class="container">
+      <div class="hero-two-slider swiper">
+        <div class="swiper-wrapper">
+          <div class="hero-two-text swiper-slide">
+            <h5 style="color: #f56421 !important;">STADIUM</h5>
+            <h2 style="color: #f56421 !important;">Amahoro Stadium </h2>
+            <p style="color:black !important;">Supply and installation of concrete paving slabs and kerbs fro external works.</p>
+            <div class="client">
+              <div>
+                <h4 style="color:Black !important;">Client: </h4>
+                <span style="color:Black !important;">Summa and <br>Real contractors ltd</span>
+              </div>
+              <div>
+                <h4 style="color:Black !important;"> completed: </h4>
+                <span style="color:Black !important;">2024</span>
+              </div>
+          
+              <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <img src="img/stade_amahoro094.jpg" alt="img">
+          </div>
+          <div class="hero-two-text swiper-slide">
+            <h5 style="color: #f56421 !important;">University</h5>
+            <h2 style="color: #f56421 !important;">African<br> Leadership University</h2>
+            <p style="color: black !important;">Ensure that our efforts result in positive outcomes for our
+              partners, people, projects</p>
+            <div class="client">
+              <div>
+                <h4 style="color: black !important;">Client: </h4>
+                <span style="color: black !important;">Summa And <br> Real contractors ltd</span>
+              </div>
+              <div>
+                <h4 style="color: black !important;">completed</h4> : </h4>
+                <span style="color: black !important;">2020</span>
+              </div>
+     
+              <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <img src="img/alu_ext_1_95637.jpg" alt="img">
+          </div>
+          <div class="hero-two-text swiper-slide">
+            <h5 style="color: #f56421 !important;">Arena</h5>
+            <h2 style="color: #f56421 !important;">BK Arena</h2>
+            <p style="color: black !important;">Ensure that our efforts result in positive outcomes for our
+              partners, people, projects</p>
+            <div class="client">
+              <div>
+                <h4 style="color: black !important;">Client: </h4>
+                <span style="color: black !important;">Summa</span>
+              </div>
+              <div>
+                <h4 style="color: black !important;">Completed: </h4>
+                <span style="color: black !important;">Dec 24, 2024</span>
+              </div>
+
+              <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <img src="img/emredorter_summa_kigali_arena_draft_rino9812_36139.jpg" alt="img">
+          </div>
+          <div class="hero-two-text swiper-slide">
+            <h5 style="color: #f56421 !important;">Stadium</h5>
+            <h2 style="color: #f56421 !important;">Hoima Stadium</h2>
+            <p style="color: black !important;">Ensure that our efforts result in positive outcomes for our
+              partners, people, projects</p>
+            <div class="client">
+              <div>
+                <h4 style="color: black !important;">Client: </h4>
+                <span style="color: black !important;">Summa And <br> Real contractors ltd</span>
+              </div>
+              <div>
+                <h4 style="color: black !important;">Completed : </h4>
+                <span style="color: black !important;">2025</span>
+              </div>
+     
+              <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <img src="img/Screenshot_20250714_180826.jpg" alt="img">
+          </div>
+         
+          <div class="hero-two-text swiper-slide">
+            <h5 style="color: #f56421 !important;">Eco-park</h5>
+            <h2 style="color: #f56421 !important;">Nyandungu <br>Eco-Park</h2>
+            <p style="color:black !important;">Supply and installation of concrete paving slabs and kerbs fro external works and Walkway.</p>
+            <div class="client">
+              <div>
+                <h4 style="color:Black !important;">Client: </h4>
+                <span style="color:Black !important;">Afrilandscapes</span>
+              </div>
+              <div>
+                <h4 style="color:Black !important;"> completed: </h4>
+                <span style="color:Black !important;">2019</span>
+              </div>
+          
+              <a href="#"> <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <img src="img/Nyandungu-11.jpg" alt="img">
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="stats">
+  <div class="stats-container">
+    <div class="stat-item">
+      <div class="stat-number">38</div>
+      <div class="stat-label">Product Types</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Factory Locations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Youth Trained</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">9</div>
+      <div class="stat-label">Awards Won</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     WHAT WE DO — 3 PILLARS SECTION
+════════════════════════════════════════════════════ -->
+<section id="what-we-do" class="pillars-section">
+
+  <div class="container">
+    <div class="heading" style="text-align:center; margin-bottom: 60px;">
+      <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+      <h2>What We Do</h2>
+      <p>TEMACO is Rwanda's fully integrated landscape solutions company — from manufactured materials to living systems to complete project delivery.</p>
+    </div>
+  </div>
+
+  <div class="pillars-grid">
+
+    <!-- CARD 1: Hardscape -->
+    <div class="pillar-card">
+      <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80');"></div>
+      <div class="card-overlay card--hardscape"></div>
+      <div class="card-content">
+        <p class="card-eyebrow">Pillar 01</p>
+        <h2 class="card-title">Hard&shy;scape</h2>
+        <p class="card-desc">Manufactured landscape materials — precast concrete, FRCM composites, natural stone, terrazzo, and installation products built for durability and beauty.</p>
+        <ul class="card-list">
+          <li><span class="list-diamond"></span>Precast Concrete Systems</li>
+          <li><span class="list-diamond"></span>FRCM &amp; Composite Products</li>
+          <li><span class="list-diamond"></span>Natural Stone Processing</li>
+          <li><span class="list-diamond"></span>Terrazzo &amp; Decorative Surfaces</li>
+          <li><span class="list-diamond"></span>Adhesives &amp; Installation Systems</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="hardscape.html" class="card-btn">
+          Explore Products
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 2: Softscape -->
+    <div class="pillar-card">
+      <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80');"></div>
+      <div class="card-overlay card--softscape"></div>
+      <div class="card-content">
+        <p class="card-eyebrow">Pillar 02</p>
+        <h2 class="card-title">Soft&shy;scape</h2>
+        <p class="card-desc">Living landscape systems — nursery production, ecological planting, erosion control, and complete irrigation design and installation.</p>
+        <ul class="card-list">
+          <li><span class="list-diamond"></span>Nursery &amp; Plant Production</li>
+          <li><span class="list-diamond"></span>Indigenous Species Conservation</li>
+          <li><span class="list-diamond"></span>Hydroseeding &amp; Erosion Control</li>
+          <li><span class="list-diamond"></span>Soil Mixing &amp; Compost</li>
+          <li><span class="list-diamond"></span>Irrigation System Design &amp; Install</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="softscape.html" class="card-btn">
+          Explore Softscape
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 3: Services -->
+    <div class="pillar-card">
+      <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1590725140246-20acddc1ec6d?w=900&q=80');"></div>
+      <div class="card-overlay card--services"></div>
+      <div class="card-content card--services">
+        <p class="card-eyebrow">Pillar 03</p>
+        <h2 class="card-title">Services</h2>
+        <p class="card-desc">Full project delivery — from landscape master planning and 3D design, through construction and installation, to long-term maintenance and care.</p>
+        <ul class="card-list">
+          <li><span class="list-diamond"></span>Landscape Design &amp; 3D Visualization</li>
+          <li><span class="list-diamond"></span>Build &amp; Project Execution</li>
+          <li><span class="list-diamond"></span>Landscape Maintenance</li>
+          <li><span class="list-diamond"></span>Metal &amp; Carpentry Workshops</li>
+          <li><span class="list-diamond"></span>In-House Fabrication Support</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="services.html" class="card-btn card--services">
+          Explore Services
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    /* ── Pillars Section ─────────────────────────────── */
+    .pillars-section {
+      background: #fff;
+      padding: 80px 0 0;
+    }
+
+    /* ── Grid ────────────────────────────────────────── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      min-height: 600px;
+    }
+
+    /* ── Card ────────────────────────────────────────── */
+    .pillar-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .pillar-card:hover .card-bg {
+      transform: scale(1.06);
+    }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.5s ease;
+    }
+    .card-overlay.card--hardscape {
+      background: linear-gradient(160deg, rgba(20,14,6,0.82) 0%, rgba(180,55,10,0.60) 100%);
+    }
+    .card-overlay.card--softscape {
+      background: linear-gradient(160deg, rgba(14,28,16,0.82) 0%, rgba(180,55,10,0.58) 100%);
+    }
+    .card-overlay.card--services {
+      background: linear-gradient(160deg, rgba(212,64,26,0.92) 0%, rgba(150,36,6,0.88) 100%);
+    }
+
+    /* ── Content ─────────────────────────────────────── */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 44px 40px 40px;
+    }
+    .card-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d4401a;
+      margin-bottom: 18px;
+    }
+    .card--services .card-eyebrow {
+      color: rgba(255,255,255,0.75);
+    }
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.03em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    h3.card-title {
+      font-size: clamp(17px, 1.8vw, 22px);
+      color: #1a1714;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.72;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      max-width: 340px;
+      margin-bottom: 28px;
+    }
+
+    /* ── Hover-reveal list ───────────────────────────── */
+    .card-list {
+      list-style: none;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: none;
+      overflow: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.4;
+    }
+    .list-diamond {
+      width: 7px;
+      height: 7px;
+      background: #d4401a;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .card--services .list-diamond {
+      background: rgba(255,255,255,0.8);
+    }
+
+    /* ── Spacer + Button ─────────────────────────────── */
+    .card-spacer { flex: 1; }
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid #d4401a;
+      color: #fff;
+      background: #d4401a;
+      width: fit-content;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .card-btn.card--services {
+      background: transparent;
+      border-color: #fff;
+    }
+    .card-btn:hover {
+      background: transparent;
+      border-color: #fff;
+      transform: translateX(4px);
+    }
+    .card-btn.card--services:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    .btn-arrow {
+      transition: transform 0.25s;
+    }
+    .card-btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ── Mobile ──────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .pillar-card { min-height: 520px; }
+      .card-list { max-height: none; opacity: 1; transform: none; }
+    }
+  </style>
+</section>
+
+
+<section id="Products" style="background: #f7f7f7; padding: 60px 0;">
+  <div class="container">
+    <div class="heading" style="text-align:center; margin-bottom: 40px;">
+      <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+      <h2>Our Products</h2>
+      <p>High-quality concrete construction materials manufactured with precision and care to meet all your building needs.</p>
+    </div>
+    <div class="products-card-grid">
+      <!-- Card 1 -->
+      <a class="construction-card" href="Catalogue1.html?product=1" data-images="img/tiles/1.jpg,img/tiles/2.jpg,img/tiles/3.jpg,img/tiles/4.jpg,img/tiles/5.jpg">
+        <div class="card-badge">Floor Tiles</div>
+        <div class="card-image">
+          <img src="img/floor.webp" alt="Floor Tiles" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Floor Tiles</h3>
+          <p class="card-description">
+           Durable indoor and outdoor floor tiles made from concrete and natural aggregates, available in various sizes, patterns, and colors for aesthetic appeal.
+          </p>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a class="construction-card" href="Catalogue1.html?product=21" data-images="img/paves/1.jpg,img/paves/2.jpg,img/paves/3.jpg,img/paves/4.jpg,img/paves/5.jpg">
+        <div class="card-badge">Pavers</div>
+        <div class="card-image">
+          <img src="img/pavers.jpeg" alt="Pavers" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Pavers</h3>
+          <p class="card-description">
+        Wide range of concrete pavers with attractive textures and colors to enhance outdoor spaces while providing terrain protection and value addition.
+          </p>
+        </div>
+      </a>
+            <!-- Card 3 -->
+      <a class="construction-card" href="Catalogue1.html?product=31" data-images="img/blockcement/Bloco-de-Concreto-14x19x39-vaz-20210123020133.jpg,img/blockcement/concrete-pictures-tivavl75ddhql2wm.jpg,img/blockcement/concrete-pictures-ocr3ftb97tkf14nr.jpg,img/blockcement/OIP.webp,img/blockcement/OIP (1).webp">
+        <div class="card-badge">Cement Blocks</div>
+        <div class="card-image">
+          <img src="img/concrete-block.jpg" alt="Cement Blocks" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Cement Blocks</h3>
+          <p class="card-description">
+           Concrete masonry units (CMU) for building material in wall construction, manufactured in different types for building beauty and safety.
+          </p>
+        </div>
+      </a>
+            <!-- Card 4 -->
+      <a class="construction-card" href="Catalogue1.html?product=41" data-images="img/caststones/6.webp,img/caststones/5.webp,img/caststones/4267410a49cfcaf51edd303396e00ac4.jpg,img/caststones/4.webp">
+        <div class="card-badge">Cast Stones</div>
+        <div class="card-image">
+          <img src="img/cast.jpg" alt="Cast Stones" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Cast stones</h3>
+          <p class="card-description">
+Highly refined architectural precast concrete stones as alternatives to natural stones that are hard to find, manage, or expensive.
+          </p>
+        </div>
+      </a>
+            <!-- Card 5 -->
+      <a class="construction-card" href="Catalogue1.html?product=51" data-images="img/cladding/1.jpg,img/cladding/2.jpg,img/cladding/3.jpg,img/cladding/4.jpg,img/cladding/5.jpg,img/cladding/6.jpg,img/cladding/7.jpg,img/cladding/8.jpg,img/cladding/9.jpg,img/cladding/10.jpg,img/cladding/IMG_20190909_135324.jpg">
+        <div class="card-badge">Cladding</div>
+        <div class="card-image">
+          <img src="img/cladding.jpg" alt="Cladding" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Cladding</h3>
+          <p class="card-description">
+Premium cladding for superior weather protection and insulation, enhancing any building's appearance.
+          </p>
+        </div>
+      </a>
+            <!-- Card 6 -->
+      <a class="construction-card" href="Catalogue1.html?product=61" data-images="img/hollowbricks/1.jpg,img/hollowbricks/2.jpg,img/hollowbricks/3.jpg">
+        <div class="card-badge">Hollow Bricks</div>
+        <div class="card-image">
+          <img src="img/hollowbricks/1.jpg" alt="Hollow Bricks" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Hollow Bricks</h3>
+          <p class="card-description">
+            Lightweight and durable hollow concrete blocks designed for efficient construction, providing excellent thermal insulation and structural stability.
+          </p>
+        </div>
+      </a>
+            <!-- Card 7 -->
+      <a class="construction-card" href="Catalogue1.html?product=71" data-images="img/kerbs/1.jpg,img/kerbs/2.jpeg,img/kerbs/3.jpeg,img/kerbs/4.png,img/kerbs/5.png">
+        <div class="card-badge">Kerbs</div>
+        <div class="card-image">
+          <img src="img/kerbs.jpeg" alt="Kerbs" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+
+          <h3 class="card-title">Kerbs</h3>
+          <p class="card-description">
+Garden and landscape edging solutions to redefine spaces, facilitate maintenance, and enhance the appearance of landscaped areas.
+          </p>
+        </div>
+      </a>
+            <!-- Card 7 -->
+      <a class="construction-card" href="Catalogue1.html?product=81" data-images="img/ceb/1.jpg,img/ceb/2.jpg,img/ceb/3.jpg,img/ceb/4.jpeg,img/ceb/5.jpg">
+        <div class="card-badge">CEB Blocks</div>
+        <div class="card-image">
+          <img src="img/ceb.jpeg" alt="CEB Blocks" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">CEB Blocks</h3>
+          <p class="card-description">
+Compressed Earth Blocks made from compressed soil and cement, perfect for foundations, load-bearing walls, arches, and vaults.
+          </p>
+        </div>
+      </a>
+            <!-- Card 8 -->
+      <a class="construction-card" href="Catalogue1.html?product=91" data-images="img/terrazzo/1.jpg,img/terrazzo/2.jpg,img/terrazzo/3.jpg,img/terrazzo/4.jpg,img/terrazzo/5.jpg,img/terrazzo/6.jpg,img/terrazzo/7.jpg,img/terrazzo/8.jpg">
+        <div class="card-badge">Terrazzo</div>
+        <div class="card-image">
+          <img src="img/ter.jpeg" alt="Terrazzo" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Terrazzo</h3>
+          <p class="card-description">
+Composite flooring material for bases, walls, stair treads, and countertops, including monolithic, sand cushion, and rustic terrazzo systems.
+          </p>
+        </div>
+      </a>
+      <!-- Card 9 -->
+      <a class="construction-card" href="Catalogue1.html?product=101" data-images="img/grassblock/4.jpg,img/grassblock/5.jpg,img/grassblock/grassss.jpg,img/grassblock/graass.png,img/grassblock/grassblocker.jpeg">
+        <div class="card-badge">Grass Block Pavers</div>
+        <div class="card-image">
+          <img src="img/graass.png" alt="Grass Block Pavers" />
+          <div class="image-overlay">
+            <i class="fas fa-eye overlay-icon"></i>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Grass Block Pavers</h3>
+          <p class="card-description">
+Permeable pavers that allow grass growth while providing flood protection, preserving lawn aesthetics with eco-friendly appeal.
+          </p>
+        </div>
+      </a>
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+</section>
+<section class="services" id="services">
+    <div class="services-container">
+        <div class="heading" style="text-align:center; margin-bottom: 50px;">
+            <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+            <h2>Our Services</h2>
+            <p>From concept to completion — TEMACO delivers fully integrated landscape project solutions across design, build, and maintenance.</p>
+        </div>
+        <div class="services-grid" style="display:grid; grid-template-columns: repeat(4,1fr); gap:20px; max-width:1200px; margin:0 auto;">
+
+            <!-- Design -->
+            <div class="service-card" style="border-top: 3px solid #f56421;">
+                <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                <h3>Design</h3>
+                <p class="body-text">Landscape master planning, public space design, exterior architectural landscape design, planting and irrigation design, and 3D visualization and rendering.</p>
+            </div>
+
+            <!-- Build -->
+            <div class="service-card" style="border-top: 3px solid #f56421;">
+                <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                <h3>Build &amp; Execution</h3>
+                <p class="body-text">Complete landscape construction — hardscape and softscape installation, ground preparation, drainage construction, and full landscape infrastructure works.</p>
+            </div>
+
+            <!-- Maintenance -->
+            <div class="service-card" style="border-top: 3px solid #f56421;">
+                <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                <h3>Maintenance</h3>
+                <p class="body-text">Ongoing plant maintenance, irrigation system maintenance, landscape rehabilitation, and seasonal planting and care programs for lasting results.</p>
+            </div>
+
+            <!-- Fabrication -->
+            <div class="service-card" style="border-top: 3px solid #f56421;">
+                <div class="service-icon"><i class="fas fa-tools"></i></div>
+                <h3>In-House Fabrication</h3>
+                <p class="body-text">Metal workshop for mold fabrication, machine frames, and custom landscape structures. Carpentry workshop for casting molds, timber structures, and decking.</p>
+            </div>
+
+        </div>
+
+        <!-- Secondary row: logistics & sourcing -->
+        <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:20px; max-width:800px; margin:20px auto 0;">
+            <div class="service-card" style="border-top: 3px solid #ccc;">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h3>Transportation &amp; Delivery</h3>
+                <p class="body-text">Own logistics fleet for professional on-time delivery of TEMACO products across Rwanda and beyond, with vehicle leasing available to external clients.</p>
+            </div>
+            <div class="service-card" style="border-top: 3px solid #ccc;">
+                <div class="service-icon"><i class="fas fa-boxes"></i></div>
+                <h3>Materials Sourcing</h3>
+                <p class="body-text">Supply of complementary construction materials including laterite, aggregates, and sand — a one-stop solution for complete project requirements.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 
+<section id="projects">
+    <div class="container">
+        <div class="section-header">
+          <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+            <h2 class="section-title">Our Projects</h2>
+            <p class="section-subtitle">Showcase of our major construction projects demonstrating our capability and quality standards.</p>
+        </div>
+
+        <!-- Swiper Slider for Projects -->
+        <div class="projects-slider swiper">
+            <div class="swiper-wrapper">
+                <!-- Nyandungu Eco-Park Project -->
+                <div class="project-card swiper-slide"
+                     data-subtitle="Award-winning eco-park project"
+                     data-image="img/Nyandungu.jpg"
+                     data-tech="Eco, Kerbs, Sustainability"
+                     data-images="img/nyandungu/Nyandungu.jpg,img/nyandungu/Nyandungu-11.jpg,img/nyandungu/nya.jpg,img/nyandungu/nyaa.jpg,img/nyandungu/nnya.jpg,img/nyandungu/caption.jpg,img/nyandungu/caption%20(1).jpg,img/nyandungu/OIP.webp">
+                    <div class="project-image">
+                        <img src="img/Nyandungu.jpg" alt="Nyandungu Eco-Park Infrastructure">
+                        <div class="project-category">Infrastructure</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Nyandungu Eco-Park</h3>
+                        <p class="project-description">
+                            Comprehensive road kerb supply and installation for Kigali's premier eco-tourism destination. This project supports sustainable urban development while preserving environmental integrity.
+                        </p>
+                        <div class="project-footer">
+                            <div class="project-meta">
+                                <div class="project-meta-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>20KM Kerbs</span>
+                                </div>
+                                <div class="project-meta-item">
+                                    <i class="fas fa-hard-hat"></i>
+                                    <span>200+ Workers</span>
+                                </div>
+                                <div class="project-meta-item">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>Eco-friendly</span>
+                                </div>
+                            </div>
+                            <a href="#" class="view-details-btn">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- African Leadership University Project -->
+                <div class="project-card swiper-slide"
+                     data-subtitle="University campus paving and landscaping"
+                     data-image="img"
+                     data-tech="Paving, Landscaping, Education"
+                     data-images="img/ALU/alu_ext_7_7375.jpg,img/ALU/alu_ext_1_95637.jpg,img/ALU/alu_ext_3_96313.jpg,img/ALU/alu_ext_5_87713.jpg,img/ALU/alu_ext_6_19704.jpg,img/ALU/alu_ext_4_32959.jpg,img/ALU/alu_ext_2_6739.jpg,img/ALU/alu_ext_8_6338.jpg">
+                    <div class="project-image">
+                        <img src="img/ALU/alu_ext_1_95637.jpg" alt="African Leadership University">
+                        <div class="project-category">Education</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">African Leadership University</h3>
+                        <p class="project-description">
+                          Supply and installation of concrete paving slabs and landscaping for the African Leadership University campus, creating a modern, accessible, and inspiring environment for students and staff.
+                        </p>
+                        <div class="project-footer">
+                            <div class="project-meta">
+                                <div class="project-meta-item">
+                                    <i class="fas fa-university"></i>
+                                    <span>Campus Paving</span>
+                                </div>
+                                <div class="project-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>1,000+ Students</span>
+                                </div>
+                                <div class="project-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2021</span>
+                                </div>
+                            </div>
+                            <a href="#" class="view-details-btn">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Commercial Building Project -->
+                <div class="project-card swiper-slide"
+                     data-subtitle="Award-winning stadium project"
+                     data-image="img/amahoro.jpg"
+                     data-tech="Concrete, Engineering, Design"
+                     data-images="img/amahoro.jpg,img/Amahoro/1.jpg,img/Amahoro/2.jpg,img/Amahoro/3.jpg,img/Amahoro/4.jpg,img/Amahoro/5.jpg,img/Amahoro/6.jpg,img/Amahoro/7.jpg,img/Amahoro/8.jpg">
+                    <div class="project-image">
+                        <img src="img/amahoro.jpg" alt="STADIUM">
+                        <div class="project-category">Major Infrastructure</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Amahoro Stadium</h3>
+                        <p class="project-description">
+                          Supply and installation of concrete slabs and road kerbs for Rwanda's premier sports facility, involving extensive coordination and precision.
+                        </p>
+                        <div class="project-footer">
+                            <div class="project-meta">
+                                <div class="project-meta-item">
+                                    <i class="fas fa-tools"></i>
+                                    <span>54k Sqm Slabs</span>
+                                </div>
+
+                                <div class="project-meta-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>4.6KM Kerbs</span>
+                                </div>
+                                <div class="project-meta-item">
+                                  <i class="fas fa-hard-hat"></i>
+                                  <span>350 Workers</span>
+                              </div>
+                            </div>
+                            <a href="#" class="view-details-btn">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Residential Complex Project -->
+                <!-- Removed BK Arena project card as requested -->
+                <!-- Industrial Facility Project -->
+                <div class="project-card swiper-slide"
+                     data-subtitle="Major stadium project in Uganda"
+                     data-image="img/hoima/1.jpg"
+                     data-tech="Concrete, Engineering, Design"
+                     data-images="img/hoima/1.jpg,img/hoima/2.jpg,img/hoima/3.jpg,img/hoima/5.jpg,img/hoima/8.jpg,img/hoima/9.jpg">
+                    <div class="project-image">
+                        <img src="img/hoima/1.jpg" alt="Hoima Stadium">
+                        <div class="project-category">Stadium</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hoima Stadium</h3>
+                        <p class="project-description">
+                          Complete construction of Hoima City Stadium in Uganda, featuring civil works, structural engineering, and landscaping. Delivered a state-of-the-art sports facility for community and national events.
+                        </p>
+                        <div class="project-footer">
+                            <div class="project-meta">
+                                <div class="project-meta-item">
+                                    <i class="fas fa-tools"></i>
+                                    <span>Extensive Paving</span>
+                                </div>
+                                <div class="project-meta-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>Kerbs & Walkways</span>
+                                </div>
+                                <div class="project-meta-item">
+                                  <i class="fas fa-hard-hat"></i>
+                                  <span>Large Workforce</span>
+                              </div>
+                            </div>
+                            <a href="#" class="view-details-btn">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+       
+        </div>
+    </div>
+</section>
+
+  <div class="marquee gap">
+    <div class="marquee-box-one">
+      <div class="marquee-content-one">
+        <a href="#"><img src="img/logos/1.jpg" alt="Logo 1" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/2.png" alt="Logo 2" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/3.png" alt="Logo 3" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/4.png" alt="Logo 4" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/5.png" alt="Logo 5" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/6.png" alt="Logo 6" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/7.png" alt="Logo 7" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/8.png" alt="Logo 8" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/9.png" alt="Logo 9" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/10.png" alt="Logo 10" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/11.png" alt="Logo 11" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/12.png" alt="Logo 12" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/13.png" alt="Logo 13" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/14.png" alt="Logo 14" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/15.png" alt="Logo 15" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/16.png" alt="Logo 16" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/17.png" alt="Logo 17" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/18.png" alt="Logo 18" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/19.png" alt="Logo 19" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/20.png" alt="Logo 20" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/21.jpg" alt="Logo 21" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/22.png" alt="Logo 22" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/23.png" alt="Logo 23" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/24.png" alt="Logo 24" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/25.png" alt="Logo 25" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/26.png" alt="Logo 26" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/27.png" alt="Logo 27" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/28.png" alt="Logo 28" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/29.png" alt="Logo 29" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/30.png" alt="Logo 30" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/31.png" alt="Logo 31" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/32.png" alt="Logo 32" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/33.png" alt="Logo 33" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/34.png" alt="Logo 34" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/35.png" alt="Logo 35" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/36.png" alt="Logo 36" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/37.png" alt="Logo 37" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/38.jpg" alt="Logo 38" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/horizon.png" alt="Logo Horizon" style="height:120px;"></a>
+      </div>
+      <div class="marquee-content-one">
+        <a href="#"><img src="img/logos/1.jpg" alt="Logo 1" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/2.png" alt="Logo 2" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/3.png" alt="Logo 3" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/4.png" alt="Logo 4" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/5.png" alt="Logo 5" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/6.png" alt="Logo 6" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/7.png" alt="Logo 7" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/8.png" alt="Logo 8" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/9.png" alt="Logo 9" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/10.png" alt="Logo 10" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/11.png" alt="Logo 11" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/12.png" alt="Logo 12" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/13.png" alt="Logo 13" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/14.png" alt="Logo 14" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/15.png" alt="Logo 15" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/16.png" alt="Logo 16" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/17.png" alt="Logo 17" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/18.png" alt="Logo 18" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/19.png" alt="Logo 19" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/20.png" alt="Logo 20" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/21.jpg" alt="Logo 21" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/22.png" alt="Logo 22" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/23.png" alt="Logo 23" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/24.png" alt="Logo 24" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/25.png" alt="Logo 25" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/26.png" alt="Logo 26" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/27.png" alt="Logo 27" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/28.png" alt="Logo 28" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/29.png" alt="Logo 29" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/30.png" alt="Logo 30" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/31.png" alt="Logo 31" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/32.png" alt="Logo 32" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/33.png" alt="Logo 33" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/34.png" alt="Logo 34" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/35.png" alt="Logo 35" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/36.png" alt="Logo 36" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/37.png" alt="Logo 37" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/38.jpg" alt="Logo 38" style="height:120px;"></a>
+        <a href="#"><img src="img/logos/horizon.png" alt="Logo Horizon" style="height:120px;"></a>
+      </div>
+    </div>
+  </div>
+   <div class="about-container" id="about">
+        <div class="heading">
+          <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+            <h2>About TEMACO</h2>
+           
+        </div>
+        <div class="about-content">
+           <p class="body-text">Founded in 2013 by Emmanuel Tuyisenge, a passionate Chemistry graduate, TEMACO Builders Ltd has become Rwanda's leading manufacturer of high-quality concrete construction materials.</p>
+            <p class="body-text">Our mission from inception has been to focus on the paving and cladding subsector, offering durable and aesthetic products manufactured in the most innovative way. We entered this market with almost no competition but maintained our commitment to excellence.</p>
+            <p class="body-text">At the dawn of our ten-year anniversary, we celebrate not just our success but our positive impact on the community through job creation, youth training, and environmental consciousness.</p>
+        </div>
+        <div class="about-highlights">
+            <div class="highlight-item">
+                <h4>Why We Exist</h4>
+                <p class="body-text">To raise the beauty of places to higher levels and protect our environment through quality concrete construction materials.</p>
+            </div>
+            <div class="highlight-item">
+                <h4>What We Believe</h4>
+                <p class="body-text">Our business is a medium for making positive impact, improving lives, and creating wealth for communities.</p>
+            </div>
+            <div class="highlight-item">
+                <h4>Our Vision</h4>
+                <p class="body-text">Expanding operations, capacitating more people, and being the regional leader in concrete products innovation.</p>
+            </div>
+            <div class="highlight-item">
+                <h4>Our Awards</h4>
+                <p class="body-text">Best Exhibitor "Made In Rwanda" Expo 2017, Best Young Entrepreneur for Job Creation 2018, and many more.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Meet the Team Section -->
+<style>
+  .tm-section {
+    --tm-concrete: #c8bfb0;
+    --tm-dark:     #1a1714;
+    --tm-mid:      #2e2925;
+    --tm-accent:   #d4401a;
+    --tm-light:    #f5f1ec;
+    --tm-muted:    #7a716a;
+    --tm-card-bg:  #ffffff;
+    position: relative;
+    padding: 120px 0 100px;
+    background: var(--tm-dark);
+    overflow: hidden;
+  }
+  .tm-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .tm-header {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .tm-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .tm-eyebrow-line { width: 40px; height: 2px; background: var(--tm-accent); }
+  .tm-eyebrow span {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tm-accent);
+  }
+  .tm-title {
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.92;
+    color: var(--tm-light);
+    letter-spacing: 0.02em;
+  }
+  .tm-title em {
+    font-style: normal;
+    -webkit-text-stroke: 1px var(--tm-concrete);
+    color: transparent;
+  }
+  .tm-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--tm-muted);
+    font-weight: 300;
+    max-width: 400px;
+    padding-bottom: 8px;
+  }
+  .tm-desc strong { color: var(--tm-light); font-weight: 500; }
+  .tm-divider {
+    max-width: 1200px;
+    margin: 0 auto 70px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .tm-div-line { flex: 1; height: 1px; background: var(--tm-mid); }
+  .tm-div-diamond { width: 6px; height: 6px; background: var(--tm-accent); transform: rotate(45deg); flex-shrink: 0; }
+  .tm-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .tm-card {
+    position: relative;
+    background: var(--tm-card-bg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+  }
+  .tm-card:hover { transform: translateY(-6px); }
+  .tm-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--tm-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+    z-index: 2;
+  }
+  .tm-card:hover::before { transform: scaleX(1); }
+  .tm-card.tm-featured { background: #ffffff; }
+  .tm-photo {
+    position: relative;
+    width: 100%;
+    padding-top: 155%;
+    overflow: hidden;
+    background: var(--tm-mid);
+  }
+  .tm-photo-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .tm-photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .tm-avatar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tm-avatar-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--tm-mid) 0%, #16130f 100%);
+  }
+  .tm-avatar-circle {
+    position: relative;
+    z-index: 1;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #3a342d, #22201c);
+    border: 2px solid rgba(200,191,176,0.15);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tm-avatar-initials {
+    position: absolute;
+    bottom: 20px; left: 0; right: 0;
+    text-align: center;
+    z-index: 1;
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    font-size: 60px;
+    letter-spacing: 0.05em;
+    color: rgba(200,191,176,0.12);
+    user-select: none;
+    line-height: 1;
+  }
+  .tm-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(212,64,26,0.85) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  .tm-card:hover .tm-overlay { opacity: 1; }
+  .tm-overlay-quote {
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.9);
+  }
+  .tm-content {
+    padding: 20px 22px 24px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .tm-num {
+    display: block;
+    font-size: 11px;
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    letter-spacing: 0.2em;
+    color: var(--tm-accent);
+    margin-bottom: 8px;
+  }
+  .tm-name {
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    color: #1a1714;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .tm-featured .tm-name { font-size: 30px; }
+  .tm-role {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--tm-muted);
+    margin-bottom: 14px;
+  }
+  .tm-bio {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: rgba(26,23,20,0.6);
+    font-weight: 300;
+  }
+  .tm-featured .tm-bio { color: rgba(26,23,20,0.7); }
+  .tm-socials { display: flex; gap: 8px; margin-top: 14px; }
+  .tm-social {
+    width: 28px; height: 28px;
+    border: 1px solid rgba(0,0,0,0.2);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    font-size: 11px;
+    color: #7a716a;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .tm-social:hover { border-color: var(--tm-accent); background: var(--tm-accent); color: #fff; }
+  .tm-stats {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .tm-stat {
+    background: var(--tm-mid);
+    padding: 32px 28px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .tm-stat:hover { border-color: var(--tm-accent); }
+  .tm-stat-num {
+    font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+    font-size: 52px;
+    color: var(--tm-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .tm-stat-num sup { font-size: 28px; color: var(--tm-accent); }
+  .tm-stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tm-muted);
+  }
+  .tm-cta {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .tm-cta-text { font-size: 14px; color: var(--tm-muted); font-weight: 300; }
+  .tm-cta-text strong { color: var(--tm-light); font-weight: 500; }
+  .tm-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--tm-accent);
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.25s, transform 0.25s;
+    white-space: nowrap;
+  }
+  .tm-cta-btn:hover { background: #b83515; transform: translateX(4px); color: #fff; }
+  .tm-cta-btn svg { width: 14px; height: 14px; }
+  .tm-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .tm-reveal.tm-visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 900px) {
+    .tm-header { grid-template-columns: 1fr; }
+    .tm-grid { grid-template-columns: repeat(2, 1fr); }
+    .tm-stats { grid-template-columns: repeat(2, 1fr); }
+    .tm-cta { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 540px) {
+    .tm-section { padding: 60px 0 80px; }
+    .tm-grid { grid-template-columns: 1fr; padding: 0 20px; }
+    .tm-stats { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+    .tm-header { padding: 0 20px; }
+    .tm-divider { padding: 0 20px; }
+    .tm-cta { padding: 0 20px; }
+  }
+</style>
+
+<section class="tm-section" id="our-team">
+
+  <!-- Header -->
+  <div class="heading" style="text-align:center; margin-bottom: 50px;">
+    <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+    <h2>Meet Our Team</h2>
+    <p>The passionate people behind TEMACO Builders Ltd — dedicated to delivering excellence in every product and project.</p>
+  </div>
+
+  <!-- Team Grid -->
+  <div class="tm-grid">
+
+    <!-- Card 1 – CEO -->
+    <div class="tm-card tm-featured tm-reveal" style="transition-delay:0.05s">
+      <div class="tm-photo">
+        <div class="tm-photo-inner">
+          <img src="img/team/tutu.jpg" alt="Emmanuel Tuyisenge" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="tm-overlay"><p class="tm-overlay-quote">"We don't just build materials — we build the foundations communities rest on."</p></div>
+      </div>
+      <div class="tm-content">
+        <span class="tm-num">01 / Founder</span>
+        <h3 class="tm-name">Emmanuel Tuyisenge</h3>
+        <p class="tm-role">Founder &amp; CEO</p>
+        <p class="tm-bio">A Chemistry graduate with a vision, Emmanuel founded TEMACO in 2013 and has led the company to become Rwanda's foremost manufacturer of concrete construction materials, winning multiple national awards along the way.</p>
+        <div class="tm-socials">
+          <a href="#" class="tm-social" title="LinkedIn">in</a>
+          <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="tm-card tm-reveal" style="transition-delay:0.1s">
+      <div class="tm-photo">
+        <div class="tm-photo-inner">
+          <img src="img/team/faustin.jpg" alt="Production Manager" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="tm-overlay"><p class="tm-overlay-quote">"Precision in production is what separates good from great."</p></div>
+      </div>
+      <div class="tm-content">
+        <span class="tm-num">02 / Operations</span>
+        <h3 class="tm-name">Production Manager</h3>
+        <p class="tm-role">Head of Production</p>
+        <p class="tm-bio">Overseeing our factory locations, ensuring every block, tile, and paver meets TEMACO's exacting quality standards before it leaves our facilities.</p>
+        <div class="tm-socials">
+          <a href="#" class="tm-social" title="LinkedIn">in</a>
+          <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="tm-card tm-reveal" style="transition-delay:0.15s">
+      <div class="tm-photo">
+        <div class="tm-photo-inner">
+          <img src="img/team/Tina.jpg" alt="Site Engineer" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="tm-overlay"><p class="tm-overlay-quote">"Every project is a chance to redefine what Rwandan craftsmanship can achieve."</p></div>
+      </div>
+      <div class="tm-content">
+        <span class="tm-num">03 / Engineering</span>
+        <h3 class="tm-name">Site Engineer</h3>
+        <p class="tm-role">Lead Site Engineer</p>
+        <p class="tm-bio">Coordinating large-scale installations from Amahoro Stadium to Nyandungu Eco-Park, bringing technical depth and on-the-ground leadership to every major project.</p>
+        <div class="tm-socials">
+          <a href="#" class="tm-social" title="LinkedIn">in</a>
+          <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="tm-card tm-reveal" style="transition-delay:0.2s">
+      <div class="tm-photo">
+        <div class="tm-photo-inner">
+          <img src="img/team/eve.jpg" alt="Business Development" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="tm-overlay"><p class="tm-overlay-quote">"Building lasting relationships is as important as building lasting structures."</p></div>
+      </div>
+      <div class="tm-content">
+        <span class="tm-num">04 / Commercial</span>
+        <h3 class="tm-name">Business Dev</h3>
+        <p class="tm-role">Business Development</p>
+        <p class="tm-bio">Growing TEMACO's partnerships across Rwanda and the region, connecting the right clients with the right solutions for residential, commercial, and infrastructure projects.</p>
+        <div class="tm-socials">
+          <a href="#" class="tm-social" title="LinkedIn">in</a>
+          <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Stats Row -->
+
+  <!-- CTA -->
+  <div class="tm-cta tm-reveal">
+    <p class="tm-cta-text">
+      Interested in joining the TEMACO family?<br>
+      <strong>We're always looking for passionate builders and innovators.</strong>
+    </p>
+    <a href="mailto:info@temacobuilders.com" class="tm-cta-btn">
+      Get In Touch
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+  </div>
+
+</section>
+
+<script>
+(function() {
+  var reveals = document.querySelectorAll('.tm-reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('tm-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { io.observe(el); });
+  setTimeout(function() {
+    reveals.forEach(function(el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('tm-visible');
+    });
+  }, 50);
+})();
+</script>
+
+<section class="contact" id="contact">
+   <div class="heading">
+    <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
+            <h2>Get In Touch</h2>
+        </div>
+    <div class="contact-container">
+       
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                    <h4>Location</h4>
+                    <p class="body-text">Kimironko, Kigali, Rwanda</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                    <h4>Phone</h4>
+                    <div class="phone-numbers">
+                        <p class="body-text phone-item">
+                            <a href="tel:+250788316484" class="phone-link">+250 788 316 484</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <h4>Email</h4>
+                    <p class="body-text">info@temacobuilders.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🌐</div>
+                <div>
+                    <h4>Websites</h4>
+                    <p class="body-text">
+                        <a href="https://www.temacobuilders.rw" target="_blank" rel="noopener noreferrer" style="color: #f56421; text-decoration: none;">www.temacobuilders.rw</a><br>
+                        <a href="https://www.temaco.rw" target="_blank" rel="noopener noreferrer" style="color: #f56421; text-decoration: none;">www.temaco.rw</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+250 7XX XXX XXX" pattern="[+][0-9]{3}[\s][0-9]{3}[\s][0-9]{3}[\s][0-9]{3}">
+    </div>
+    <div class="form-group">
+        <label for="project">Project Type</label>
+        <select id="project" name="project" class="form-control">
+            <option value="">Select Project Type</option>
+            <option value="residential">Residential Construction</option>
+            <option value="commercial">Commercial Building</option>
+            <option value="landscaping">Landscaping & Paving</option>
+            <option value="infrastructure">Infrastructure Project</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message" class="form-control" placeholder="Tell us about your project requirements, timeline, and budget..."></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="width: 100%;">
+        Send Message
+        <span>→</span>
+    </button>
+    <div id="formMessage" class="mt-3" style="display: none; position: relative; z-index: 1000; min-height: 50px;"></div>
+</form>
+    </div>
+</section>
+  <footer class="gap two no-bottom" style="background-image: url(img/background.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3 class="mt-0">Temaco </h3>
+            <p>Building on Excellence since 2013. Leading manufacturer of high-quality concrete construction materials in Rwanda with international aspirations. </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Contact Information</h3>
+            <div class="get-in-touch">
+              <div><i class="flaticon-map-location"></i></div>
+              <div>
+                <h6>Kimironko, Kigali, Rwanda</h6>
+              </div>
+            </div>
+            <div class="get-in-touch">
+              <div><i class="flaticon-iphone"></i></div>
+              <div>
+                <a href="tel:+250788306074" class="footer-phone">+250 788 306 074</a>
+              </div>
+            </div>
+            <div class="get-in-touch mb-0">
+              <div><i class="flaticon-mail-inbox-app"></i></div>
+              <div>
+                <a href="mailto:info@temacobuilders.com">info@temacobuilders.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Subscribe Newsletter</h3>
+            <p class="w-100">Signup for our weekly newsletter to get news.</p>
+            <form class="footer-form">
+              <a href="mailto:info@temacobuilders.com"><input type="text" name="email" placeholder="enter your email"></a>
+              <button class="theme-btn w-color">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-bottom">
+      <div class="container">
+        <div class="f-bottom">
+          <p>© 2025 TEMACO Builders Ltd. All rights reserved. | Building on Excellence | #WeAreTEMACO</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/temacobuilders/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/TemacoBuilders" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/temacobuilders" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A71531661&keywords=temaco%20builders&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=d4263051-35a9-4cd7-a180-7c6450625ee3&sid=ipa&spellCorrectionEnabled=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="search-popup">
+    <button class="close-search"><i class="fa-solid fa-xmark"></i></button>
+    <form method="post" action="#">
+      <div class="form-group">
+        <input type="search" name="search-field" value="" placeholder="Search Here" required="">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+  </div>
+  <div id="lightbox" class="lightbox clearfix">
+    <div class="white_content">
+      <a href="javascript:;" class="textright" id="close"><i class="fa-regular fa-circle-xmark"></i></a>
+      <div class="cart-popup">
+        <ul>
+
+          <li class="d-flex align-items-center position-relative">
+
+            <div class="p-img  ">
+
+              <img src="img/floor.webp" alt="Product Image">
+
+            </div>
+
+            <div class="p-data">
+
+              <h3>Airmaks Krait Lite</h3>
+
+              <p class="theme-clr  ">1 x $20.50</p>
+
+            </div>
+
+            <a href="JavaScript:void(0)" id="crosss"></a>
+
+          </li>
+
+          <li class="d-flex align-items-center position-relative">
+
+            <div class="p-img light-bg">
+
+              <img src="img/pavers.jpeg" alt="Product Image">
+
+            </div>
+
+            <div class="p-data">
+
+              <h3>Airmaks Krait Lite</h3>
+
+              <p class="theme-clr">1 x $20.60</p>
+
+            </div>
+
+            <a href="JavaScript:void(0)" id="cross"></a>
+
+          </li>
+
+        </ul>
+        <div class="pr-total">
+          <div class="cart-total d-flex align-items-center justify-content-between">
+
+            <span class="font-semi-bold">Total:</span>
+
+            <span class="font-semi-bold">$41.20</span>
+
+          </div>
+
+          <div class="cart-btns d-flex align-items-center justify-content-between">
+
+            <a href="JavaScript:void">View Cart</a>
+
+            <a class="theme-bg-clr text-white checkout" href="JavaScript:void">Checkout</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- search-popup end -->
+  <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+  <!-- Bootstrap Js -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/swiper.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <!-- fancybox -->
+  <script src="assets/js/jquery.fancybox.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.7/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Swiper
+        const projectsSwiper = new Swiper('.projects-slider', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+            effect: 'slide',
+            speed: 800,
+            grabCursor: true,
+        });
+
+        // Add smooth scroll behavior for view details buttons
+        document.querySelectorAll('.view-details-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Add your navigation logic here
+                console.log('View details clicked for:', this.closest('.project-card').querySelector('.project-title').textContent);
+            });
+        });
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// ...existing code...
+</script>
+
+<script>
+window.addEventListener('load', function() {
+  var preloader = document.querySelector('.preloader');
+  if (preloader) {
+    preloader.style.opacity = '0';
+    setTimeout(function() {
+      preloader.style.display = 'none';
+    }, 400);
+  }
+});
+</script>
+
+
+<!-- Product modal removed -->
+
+<!-- External JavaScript files -->
+<script src="assets/js/modals.js"></script>
+
+</body></html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE HUB - Built Environment Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #F96302 0%, #FF7A26 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(249, 99, 2, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #F96302 0%, #FF7A26 50%, #F96302 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.03)" points="0,0 1000,300 1000,1000 0,700"/><polygon fill="rgba(255,255,255,0.02)" points="0,200 1000,0 1000,400 0,600"/></svg>');
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #F96302;
+            border-color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            background: #F96302;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #F96302;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: #333333;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF7A26;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Vision & Mission */
+        .vision-mission {
+            padding: 100px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .vm-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            border-top: 5px solid #F96302;
+        }
+        
+        .vm-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .vm-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: #F96302;
+            margin-bottom: 1.5rem;
+        }
+        
+        .vm-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Values */
+        .values {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: #333333;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: linear-gradient(135deg, #F96302 0%, #FF7A26 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(249, 99, 2, 0.3);
+        }
+        
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Disciplines */
+        .disciplines {
+            padding: 100px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .disciplines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .discipline-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #F96302;
+        }
+        
+        .discipline-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .discipline-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #F96302;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .discipline-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #F96302, #FF7A26);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .discipline-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Roadmap */
+        .roadmap {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #F96302, #FF7A26);
+            transform: translateX(-50%);
+        }
+        
+        .phase {
+            position: relative;
+            margin: 3rem 0;
+        }
+        
+        .phase:nth-child(odd) .phase-content {
+            margin-right: 60%;
+            text-align: right;
+        }
+        
+        .phase:nth-child(even) .phase-content {
+            margin-left: 60%;
+            text-align: left;
+        }
+        
+        .phase-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .phase-number {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #F96302, #FF7A26);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-left: -30px;
+        }
+        
+        .phase h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #F96302;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #333333 0%, #444444 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .join-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .join-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .join-card:hover {
+            background: rgba(249, 99, 2, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #333333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            border-top: 1px solid #555;
+            padding-top: 30px;
+        }
+        
+        .footer-tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #FF7A26;
+            margin-bottom: 1rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .vm-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .phase:nth-child(odd) .phase-content,
+            .phase:nth-child(even) .phase-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+            
+            .phase-number {
+                left: 20px;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">BE HUB</div>
+            <ul class="nav-links">
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#values">Values</a></li>
+                <li><a href="#disciplines">Disciplines</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#join">Join Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Built Environment Hub</h1>
+                <div class="tagline">"It's You and Me, Building Smarter, Greener, Stronger."</div>
+                <p>Empowering professionals and institutions to connect, share knowledge, and co-create resilient, smart, and affordable environments for all across Rwanda and Africa.</p>
+                <div class="cta-buttons">
+                    <a href="#join" class="btn btn-primary">Join the Movement</a>
+                    <a href="#vision" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Key Disciplines</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>Development Phases</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1</h3>
+                    <p>Collaborative Vision</p>
+                </div>
+                <div class="stat-item">
+                    <h3>∞</h3>
+                    <p>Possibilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-mission" id="vision">
+        <div class="container">
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <h2>Our Vision</h2>
+                    <p>To be the leading collaborative ecosystem advancing excellence, inclusivity, and sustainability in the built environment.</p>
+                </div>
+                <div class="vm-card">
+                    <h2>Our Mission</h2>
+                    <p>To empower professionals and institutions to connect, share knowledge, and co-create resilient, smart, and affordable environments for all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values" id="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Collaboration over Competition</h3>
+                </div>
+                <div class="value-card">
+                    <h3>Excellence in Delivery</h3>
+                </div>
+                <div class="value-card">
+                    <h3>Integrity in Practice</h3>
+                </div>
+                <div class="value-card">
+                    <h3>Inclusivity of All</h3>
+                </div>
+                <div class="value-card">
+                    <h3>Innovation for Resilience</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="disciplines" id="disciplines">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Disciplines</h2>
+                <p>Bringing together diverse expertise for comprehensive solutions</p>
+            </div>
+            <div class="disciplines-grid">
+                <div class="discipline-card">
+                    <h3><div class="discipline-icon">🏗️</div>Planning, Design & Construction</h3>
+                    <p>Architects, Urban Planners, Civil/Structural Engineers, Quantity Surveyors, Landscape Architects, Interior Designers</p>
+                </div>
+                <div class="discipline-card">
+                    <h3><div class="discipline-icon">⚡</div>Building Services & Smart Systems</h3>
+                    <p>Electrical, Mechanical, HVAC, Plumbing, IT/Security, Energy Modellers</p>
+                </div>
+                <div class="discipline-card">
+                    <h3><div class="discipline-icon">🌱</div>Environment & Resilience</h3>
+                    <p>Environmental Consultants, Ecologists, Hydrologists, LEED/EDGE Experts, Geotechnical Engineers</p>
+                </div>
+                <div class="discipline-card">
+                    <h3><div class="discipline-icon">⚖️</div>Legal, Risk & Governance</h3>
+                    <p>Arbitrators, Contract Administrators, Construction Lawyers, Compliance Officers</p>
+                </div>
+                <div class="discipline-card">
+                    <h3><div class="discipline-icon">💡</div>Research & Digital Innovation</h3>
+                    <p>BIM Specialists, GIS Experts, Smart City Planners, AI & Data Scientists</p>
+                </div>
+                <div class="discipline-card">
+                    <h3><div class="discipline-icon">🏢</div>Real Estate & Facilities</h3>
+                    <p>Asset Managers, Developers, Housing Experts, Facility Managers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Way Forward</h2>
+                <p>Our strategic development phases</p>
+            </div>
+            <div class="timeline">
+                <div class="phase">
+                    <div class="phase-number">1</div>
+                    <div class="phase-content">
+                        <h3>Concept & Community</h3>
+                        <p>Register the organization, publish concept note, soft-launch website, and engage founding professionals & advisors.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-number">2</div>
+                    <div class="phase-content">
+                        <h3>Virtual Engagement</h3>
+                        <p>Launch monthly webinars & CPDs, establish sector-specific working groups, and publish insights & best practices.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-number">3</div>
+                    <div class="phase-content">
+                        <h3>Pilot Space</h3>
+                        <p>Collaborate with university/incubator, create BIM Corner, Collaboration Pods, and Innovation Clinics.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-number">4</div>
+                    <div class="phase-content">
+                        <h3>Full Hub Campus</h3>
+                        <p>Fundraise for custom space (green, smart, accessible), operate CPD, research, arbitration, and innovation zones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="join">
+        <div class="container">
+            <h2>Let's Build It Together</h2>
+            <p>"BE HUB is not just an idea. It is a home for all of us who shape the places people live, work, and thrive. It's you and me — together — building the future."</p>
+            <a href="#" class="btn btn-primary">Get Involved Today</a>
+            
+            <div class="join-options">
+                <div class="join-card">
+                    <h3>Founding Member</h3>
+                </div>
+                <div class="join-card">
+                    <h3>Advisor</h3>
+                </div>
+                <div class="join-card">
+                    <h3>Partner</h3>
+                </div>
+                <div class="join-card">
+                    <h3>Supporter</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-tagline">Where Disciplines Converge. Where Cities Thrive.</div>
+                <p>&copy; 2025 BE HUB - Built Environment Hub. Building on Excellence.</p>
+                <p>Website: Coming Soon | Contact: [Insert contact or email]</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

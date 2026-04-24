@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Pillars – TEMACO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f5ede3;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    /* ── SECTION ── */
+    .pillars-section {
+      width: 100%;
+      max-width: 1300px;
+    }
+
+    /* ── GRID ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      min-height: 600px;
+    }
+
+    /* ── CARD ── */
+    .pillar-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* BG image layer */
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .pillar-card:hover .card-bg {
+      transform: scale(1.06);
+    }
+
+    /* Color overlay — differs per card */
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .card-overlay.card--hardscape {
+      background: linear-gradient(160deg, rgba(20,14,6,0.82) 0%, rgba(180,55,10,0.60) 100%);
+    }
+
+    .card-overlay.card--softscape {
+      background: linear-gradient(160deg, rgba(14,28,16,0.82) 0%, rgba(180,55,10,0.58) 100%);
+    }
+
+    .card-overlay.card--services {
+      background: linear-gradient(160deg, rgba(212,64,26,0.92) 0%, rgba(150,36,6,0.88) 100%);
+    }
+
+
+
+    /* ── CONTENT ── */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 44px 40px 40px;
+    }
+
+    /* Eyebrow */
+    .card-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d4401a;
+      margin-bottom: 18px;
+    }
+
+    .card--services .card-eyebrow {
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* Title */
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 5vw, 68px);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* Description — always visible */
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.72;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      max-width: 340px;
+      margin-bottom: 28px;
+    }
+
+    /* List — HIDDEN by default, revealed on hover */
+    .card-list {
+      list-style: none;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        max-height 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+        opacity 0.45s ease 0.06s,
+        transform 0.45s ease 0.06s;
+    }
+
+    .pillar-card:hover .card-list {
+      max-height: 300px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.4;
+    }
+
+    .list-diamond {
+      width: 7px;
+      height: 7px;
+      background: #d4401a;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .card--services .list-diamond {
+      background: rgba(255,255,255,0.8);
+    }
+
+    /* Spacer pushes button to bottom */
+    .card-spacer { flex: 1; }
+
+    /* CTA button */
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid #d4401a;
+      color: #fff;
+      background: #d4401a;
+      width: fit-content;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .card--services .card-btn {
+      background: transparent;
+      border-color: #fff;
+    }
+
+    .card-btn:hover {
+      background: transparent;
+      border-color: #fff;
+      transform: translateX(4px);
+    }
+
+    .card--services .card-btn:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .btn-arrow {
+      transition: transform 0.25s;
+    }
+
+    .card-btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .pillar-card { min-height: 520px; }
+      .card-list { max-height: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="pillars-section">
+  <div class="pillars-grid">
+
+    <!-- CARD 1: Hardscape -->
+    <div class="pillar-card">
+      <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80');"></div>
+      <div class="card-overlay card--hardscape"></div>
+      <div class="card-content">
+        <p class="card-eyebrow">Pillar 01</p>
+        <h2 class="card-title">Hard&shy;scape</h2>
+        <p class="card-desc">
+          Manufactured landscape materials — precast concrete, FRCM composites, natural stone, terrazzo, and installation products built for durability and beauty.
+        </p>
+        <ul class="card-list">
+          <li><span class="list-diamond"></span>Precast Concrete Systems</li>
+          <li><span class="list-diamond"></span>FRCM &amp; Composite Products</li>
+          <li><span class="list-diamond"></span>Natural Stone Processing</li>
+          <li><span class="list-diamond"></span>Terrazzo &amp; Decorative Surfaces</li>
+          <li><span class="list-diamond"></span>Adhesives &amp; Installation Systems</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="#" class="card-btn">
+          Explore Products
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 2: Softscape -->
+    <div class="pillar-card">
+      <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&q=80');"></div>
+      <div class="card-overlay card--softscape"></div>
+      <div class="card-content">
+        <p class="card-eyebrow">Pillar 02</p>
+        <h2 class="card-title">Soft&shy;scape</h2>
+        <p class="card-desc">
+          Living landscape systems — nursery production, ecological planting, erosion control, and complete irrigation design and installation.
+        </p>
+        <ul class="card-list">
+          <li><span class="list-diamond"></span>Nursery &amp; Plant Production</li>
+          <li><span class="list-diamond"></span>Indigenous Species Conservation</li>
+          <li><span class="list-diamond"></span>Hydroseeding &amp; Erosion Control</li>
+          <li><span class="list-diamond"></span>Soil Mixing &amp; Compost</li>
+          <li><span class="list-diamond"></span>Irrigation System Design &amp; Install</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="#" class="card-btn">
+          Explore Softscape
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 3: Services -->
+    <div class="pillar-card">
+      <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1590725140246-20acddc1ec6d?w=900&q=80');"></div>
+      <div class="card-overlay card--services"></div>
+      <div class="card-content">
+        <p class="card-eyebrow">Pillar 03</p>
+        <h2 class="card-title">Services</h2>
+        <p class="card-desc">
+          Full project delivery — from landscape master planning and 3D design, through construction and installation, to long-term maintenance and care.
+        </p>
+        <ul class="card-list">
+          <li><span class="list-diamond"></span>Landscape Design &amp; 3D Visualization</li>
+          <li><span class="list-diamond"></span>Build &amp; Project Execution</li>
+          <li><span class="list-diamond"></span>Landscape Maintenance</li>
+          <li><span class="list-diamond"></span>Metal &amp; Carpentry Workshops</li>
+          <li><span class="list-diamond"></span>In-House Fabrication Support</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="#" class="card-btn">
+          Explore Services
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardscape Products – TEMACO Builders</title>
+  <link rel="icon" href="img/logoo.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css"> -->
+  <link rel="stylesheet" href="assets/font/flaticon_xyz.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=1.2">
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/preloader.js"></script>
+  <script src="assets/js/modal-fix.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css" /> -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+
+
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hs-hero {
+      background: linear-gradient(135deg, #1a1714 0%, #2e2925 60%, #3a2a1a 100%);
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('img/background.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+    }
+    .hs-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .hs-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 20px;
+    }
+    .hs-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .hs-breadcrumb a:hover { color: #f56421; }
+    .hs-breadcrumb span { color: #f56421; }
+    .hs-hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #f56421;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .hs-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin: 0 0 18px;
+    }
+    .hs-hero-title span { color: #f56421; }
+    .hs-hero-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.62);
+      max-width: 560px;
+      margin: 0;
+    }
+
+    /* ── CATEGORY TABS ──────────────────────────────── */
+    .hs-tabs-wrap {
+      background: #fff;
+      border-bottom: 1px solid #e8e4e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .hs-tabs {
+      display: flex;
+      overflow-x: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      gap: 0;
+      scrollbar-width: none;
+    }
+    .hs-tabs::-webkit-scrollbar { display: none; }
+    .hs-tab {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+      text-decoration: none;
+      padding: 18px 22px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hs-tab:hover, .hs-tab.active {
+      color: #f56421;
+      border-bottom-color: #f56421;
+    }
+
+    /* ── CATEGORY SECTION ───────────────────────────── */
+    .hs-category {
+      padding: 72px 0;
+      border-bottom: 1px solid #ece8e4;
+    }
+    .hs-category:nth-child(even) { background: #f7f4f1; }
+    .hs-category:nth-child(odd) { background: #fff; }
+    .hs-category-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hs-category-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #f56421;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .hs-category-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: #1a1714;
+      line-height: 1;
+      margin: 0 0 10px;
+    }
+    .hs-category-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #777;
+      max-width: 520px;
+      margin: 0;
+    }
+    .hs-product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── PLACEHOLDER CARD (no image) ────────────────── */
+    .hs-placeholder-card {
+      background: #1a1714;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hs-placeholder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .hs-placeholder-img {
+      height: 200px;
+      background: linear-gradient(135deg, #2e2925 0%, #1a1714 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hs-placeholder-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(245,100,33,0.04) 20px,
+        rgba(245,100,33,0.04) 21px
+      );
+    }
+    .hs-placeholder-icon {
+      font-size: 2.5rem;
+      color: rgba(245,100,33,0.3);
+      z-index: 1;
+    }
+    .hs-placeholder-body {
+      padding: 22px 24px 26px;
+    }
+    .hs-placeholder-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin: 0 0 8px;
+      letter-spacing: 0.03em;
+    }
+    .hs-placeholder-body p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+    .hs-coming-soon {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f56421;
+      border: 1px solid rgba(245,100,33,0.35);
+      padding: 5px 12px;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hs-hero { padding: 100px 0 40px; }
+      .hs-category-header { flex-direction: column; align-items: flex-start; }
+      .hs-product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; padding: 0 16px; }
+      .hs-tabs { padding: 0 12px; }
+      .hs-tab { padding: 14px 14px; font-size: 11px; }
+    }
+    @media (max-width: 500px) {
+      .hs-product-grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 12px; }
+    }
+
+    /* ── NAVBAR (matching index.html) ────────────────── */
+    .header-bottom-bar, header, .container {
+      overflow: visible !important;
+      z-index: 2000 !important;
+      position: relative;
+    }
+    body > header > .header-bottom-bar {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      top: 0;
+    }
+    body > header {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      top: 0;
+    }
+    .header-bottom-bar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      z-index: 99999 !important;
+      background: #f56421 !important;
+      min-height: 80px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    }
+    body { padding-top: 80px; }
+    .navbar-links > li > a { color: #fff !important; }
+    .navbar-links li:hover > a { border-bottom: 5px solid #fff !important; }
+    .dropdown-menu {
+      background: #f56421 !important;
+      z-index: 3000 !important;
+    }
+    .dropdown-menu li a { color: #fff !important; }
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      color: #f56421 !important;
+      background: #fff !important;
+    }
+    @media (max-width: 900px) {
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        min-width: 0;
+        padding-left: 18px;
+      }
+      .logo { margin-left: 0 !important; padding-left: 8px; }
+      .logo img { max-width: 110px !important; height: auto !important; }
+      .header-bottom-bar { min-height: 60px !important; padding: 0 !important; }
+      body { padding-top: 60px; }
+    }
+    .logo img { max-width: 140px !important; height: auto !important; }
+    .logo { margin-left: -40px !important; }
+    .navbar-social-btn { gap: 20px !important; margin-left: 4px !important; }
+    .navbar-social-btn a {
+      color: #fff !important;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .navbar-social-btn a:hover { color: #222 !important; }
+    .navbar-social-btn a i { font-size: 22px !important; }
+
+    /* footer social */
+    .footer-social {
+      display: flex; align-items: center; gap: 12px; margin-top: 0;
+    }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; background: #f5f5f5; border-radius: 50%;
+      transition: background 0.2s, color 0.2s; color: #f56421; font-size: 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04); text-decoration: none;
+    }
+    .footer-social a:hover { background: #f56421; color: #fff; }
+    .f-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .f-bottom p { margin: 0; font-size: 15px; color: #333; }
+    .footer-phone { color: #fff !important; text-decoration: none; font-family: 'Courier New', monospace; letter-spacing: 0.5px; }
+    .footer-phone:hover { color: #ffd6b3 !important; }
+  </style>
+</head>
+
+<body>
+  <!-- preloader -->
+  <div class="preloader">
+    <div class="preloader-box">
+      <div class="natex-content">
+        <div class="natex-circle"></div>
+        <div class="natex-line-mask">
+          <div class="loader-line"></div>
+        </div>
+        <img src="img/logoo.png" alt="img" style="max-width:40px; height:auto;">
+      </div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="header-bottom-bar">
+      <div class="container">
+        <div class="bottom-bar">
+          <div class="two-bar">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="logo">
+                <a href="index.html">
+                  <img alt="logo" src="img/Logo.jpg">
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="javascript:void(0)" id="mobile-menu" class="menu-start">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <nav class="navbar">
+            <ul class="navbar-links">
+              <li class="navbar-dropdown"><a href="index.html">Home</a></li>
+              <li class="navbar-dropdown"><a href="index.html#Products">Products</a></li>
+              <li class="navbar-dropdown"><a href="index.html#services">Services</a></li>
+              <li class="navbar-dropdown"><a href="index.html#projects">Projects</a></li>
+              <li class="navbar-dropdown"><a href="index.html#about">About</a></li>
+              <li class="navbar-dropdown">
+                <a href="index.html#subsidiaries">Subsidiaries</a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+                  <li><a href="behubltd.html">Be Hub Ltd</a></li>
+                  <li><a href="temacopro.html">Temaco Pro</a></li>
+                </ul>
+              </li>
+              <li class="navbar-dropdown"><a href="blog.html">Blog</a></li>
+              <li class="navbar-dropdown"><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="header-search">
+            <div class="header-search-button search-box-outer"></div>
+            <div class="navbar-social-btn" style="display:flex; align-items:center; gap:10px;">
+              <a href="https://facebook.com/temacobuilders" target="_blank" aria-label="Facebook" style="color:#fff;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/temacobuilders" target="_blank" aria-label="Twitter" style="color:#fff;"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/temacobuilders" target="_blank" aria-label="Instagram" style="color:#fff;"><i class="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com/company/temacobuilders" target="_blank" aria-label="LinkedIn" style="color:#fff;"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok" style="color:#fff;"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" style="background-image: url(img/background.png);">
+      <div class="res-log"><a href="index.html"></a></div>
+      <ul>
+        <li class="menu-item-has-children"><a href="index.html">Home</a></li>
+        <li class="navbar-dropdown"><a href="index.html#Products">Products</a></li>
+        <li class="navbar-dropdown"><a href="index.html#services">Services</a></li>
+        <li class="navbar-dropdown"><a href="index.html#projects">Projects</a></li>
+        <li class="navbar-dropdown"><a href="index.html#about">About</a></li>
+        <li class="menu-item-has-children">
+          <a href="index.html#subsidiaries">Subsidiaries</a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+            <li><a href="behubltd.html">Be Hub Ltd</a></li>
+            <li><a href="temacopro.html">Temaco Pro</a></li>
+          </ul>
+        </li>
+        <li class="navbar-dropdown"><a href="blog.html">Blog</a></li>
+        <li class="navbar-dropdown"><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="JavaScript:void(0)" id="res-cross"></a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hs-hero">
+    <div class="hs-hero-inner">
+      <div class="hs-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Hardscape</span>
+      </div>
+      <span class="hs-hero-eyebrow">Pillar 01 — Hardscape</span>
+      <h1 class="hs-hero-title">Hardscape <span>Products</span></h1>
+      <p class="hs-hero-desc">Premium manufactured landscape materials — precast concrete, FRCM composites, natural stone, terrazzo, and complete installation systems built for durability and beauty.</p>
+    </div>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <div class="hs-tabs-wrap">
+    <div class="hs-tabs">
+      <a href="#precast"      class="hs-tab">Precast Concrete</a>
+      <a href="#frcm"         class="hs-tab">FRCM &amp; Composites</a>
+      <a href="#natural-stone" class="hs-tab">Natural Stone</a>
+      <a href="#terrazzo"     class="hs-tab">Terrazzo</a>
+      <a href="#adhesives"    class="hs-tab">Adhesives &amp; Installation</a>
+    </div>
+  </div>
+
+  <!-- ═══ 1. PRECAST CONCRETE SYSTEMS ═══ -->
+  <section id="precast" class="hs-category">
+    <div class="hs-category-header">
+      <div>
+        <span class="hs-category-label">Category 01</span>
+        <h2 class="hs-category-title">Precast Concrete Systems</h2>
+        <p class="hs-category-desc">Factory-produced concrete products engineered for strength, precision, and lasting performance across all landscape applications.</p>
+      </div>
+    </div>
+    <div class="hs-product-grid">
+
+      <!-- Floor Tiles -->
+      <a class="construction-card" href="Catalogue1.html?product=1" data-images="img/tiles/1.jpg,img/tiles/2.jpg,img/tiles/3.jpg,img/tiles/4.jpg,img/tiles/5.jpg">
+        <div class="card-badge">Floor Tiles</div>
+        <div class="card-image">
+          <img src="img/floor.webp" alt="Floor Tiles" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Floor Tiles</h3>
+          <p class="card-description">Precast concrete floor tiles available in various finishes, sizes, and textures for interior and exterior applications.</p>
+        </div>
+      </a>
+
+      <!-- Pavers -->
+      <a class="construction-card" href="Catalogue1.html?product=21" data-images="img/paves/tp1/1.jpg,img/paves/tp2/1.jpg,img/paves/tp3/1.jpg,img/paves/tp4/IMG_20190909_152612.jpg,img/paves/tp9/1.jpg,img/paves/tp11/1.webp,img/paves/tp12/1.jpg">
+        <div class="card-badge">Pavers</div>
+        <div class="card-image">
+          <img src="img/pavers.jpeg" alt="Pavers" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Pavers</h3>
+          <p class="card-description">Durable concrete pavers for driveways, pathways, terraces, and public outdoor spaces with excellent load-bearing capacity.</p>
+        </div>
+      </a>
+
+      <!-- Kerb Stones -->
+      <a class="construction-card" href="Catalogue1.html?product=71" data-images="img/kerbs/1.jpg,img/kerbs/2.jpeg,img/kerbs/3.jpeg,img/kerbs/4.png,img/kerbs/5.png">
+        <div class="card-badge">Kerb Stones</div>
+        <div class="card-image">
+          <img src="img/kerbs.jpeg" alt="Kerb Stones" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Kerb Stones</h3>
+          <p class="card-description">Landscape and road edging solutions that define boundaries, facilitate drainage, and enhance the appearance of paved areas.</p>
+        </div>
+      </a>
+
+      <!-- Hollow Bricks -->
+      <a class="construction-card" href="Catalogue1.html?product=61" data-images="img/hollowbricks/1.jpg,img/hollowbricks/2.jpg,img/hollowbricks/3.jpg">
+        <div class="card-badge">Hollow Bricks</div>
+        <div class="card-image">
+          <img src="img/hollowbricks/1.jpg" alt="Hollow Bricks" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Hollow Bricks</h3>
+          <p class="card-description">Lightweight hollow concrete blocks designed for efficient construction with excellent thermal insulation and structural stability.</p>
+        </div>
+      </a>
+
+      <!-- Ventilation Blocks -->
+      <a class="construction-card" href="Catalogue1.html?product=111" data-images="img/ventilation/TV-B1/1.jpg,img/ventilation/TV-B1/1.png,img/ventilation/TV-B1/2.jpg,img/ventilation/TV-B1/3.jpg,img/ventilation/TV-B1/4.jpg,img/ventilation/TV-B2/1.png,img/ventilation/TV-B2/2.jpg,img/ventilation/TV-B2/3.jpg,img/ventilation/TV-B2/ChatGPT Image Jan 7, 2026, 08_56_17 AM.png,img/ventilation/TV-B2/ChatGPT Image Jan 7, 2026, 09_01_53 AM.png">
+        <div class="card-badge">Ventilation Blocks</div>
+        <div class="card-image">
+          <img src="img/ventilation/TV-B1/1.jpg" alt="Ventilation Blocks" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Ventilation Blocks</h3>
+          <p class="card-description">Decorative concrete ventilation blocks for airflow, daylight, and patterned wall openings.</p>
+        </div>
+      </a>
+
+      <!-- Cast Stones -->
+      <a class="construction-card" href="Catalogue1.html?product=41" data-images="img/caststones/6.webp,img/caststones/5.webp,img/caststones/4267410a49cfcaf51edd303396e00ac4.jpg,img/caststones/4.webp">
+        <div class="card-badge">Cast Stones</div>
+        <div class="card-image">
+          <img src="img/cast.jpg" alt="Cast Stones" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Cast Stones</h3>
+          <p class="card-description">Decorative and structural cast concrete stones replicating natural stone aesthetics at a fraction of the cost, with consistent quality.</p>
+        </div>
+      </a>
+
+      <!-- CEB Blocks -->
+      <a class="construction-card" href="Catalogue1.html?product=81" data-images="img/ceb/1.jpg,img/ceb/2.jpg,img/ceb/3.jpg,img/ceb/4.jpeg,img/ceb/5.jpg">
+        <div class="card-badge">CEB Blocks</div>
+        <div class="card-image">
+          <img src="img/ceb.jpeg" alt="CEB Blocks" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">CEB Blocks</h3>
+          <p class="card-description">Compressed Earth Blocks made from compressed soil and cement — ideal for load-bearing walls, foundations, arches, and vaults.</p>
+        </div>
+      </a>
+
+      <!-- Grass Block Pavers -->
+      <a class="construction-card" href="Catalogue1.html?product=101" data-images="img/grassblock/4.jpg,img/grassblock/5.jpg,img/grassblock/grassss.jpg,img/grassblock/graass.png,img/grassblock/grassblocker.jpeg">
+        <div class="card-badge">Grass Block Pavers</div>
+        <div class="card-image">
+          <img src="img/graass.png" alt="Grass Block Pavers" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Grass Block Pavers</h3>
+          <p class="card-description">Permeable pavers that allow grass growth while providing load bearing surfaces — flood protection with eco-friendly appeal.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ 2. FRCM & COMPOSITE PRODUCTS ═══ -->
+  <section id="frcm" class="hs-category">
+    <div class="hs-category-header">
+      <div>
+        <span class="hs-category-label">Category 02</span>
+        <h2 class="hs-category-title">FRCM &amp; Composite Products</h2>
+        <p class="hs-category-desc">Fibre Reinforced Composite Matrix panels and composite elements combining high performance with lightweight construction.</p>
+      </div>
+    </div>
+    <div class="hs-product-grid">
+
+      <!-- Cladding Panels -->
+      <div class="construction-card" data-images="img/cladding/1.jpg,img/cladding/2.jpg,img/cladding/3.jpg,img/cladding/4.jpg,img/cladding/5.jpg,img/cladding/6.jpg,img/cladding/7.jpg,img/cladding/8.jpg,img/cladding/9.jpg,img/cladding/10.jpg">
+        <div class="card-badge">Cladding Panels</div>
+        <div class="card-image">
+          <img src="img/cladd.jpg" alt="Cladding Panels" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Cladding Panels</h3>
+          <p class="card-description">Lightweight FRCM cladding panels for exterior and interior wall finishing, offering a premium aesthetic with excellent durability.</p>
+        </div>
+      </div>
+
+      <!-- Composite Facades -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-layer-group hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Composite Facades</h3>
+          <p>Custom composite facade systems combining FRCM technology with design flexibility for architectural applications.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Decorative Composite Panels -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-border-all hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Decorative Composite Panels</h3>
+          <p>Ornamental composite panels for feature walls, partitions, and decorative landscape installations with custom textures.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Lightweight Structural Elements -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-cubes hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Structural FRCM Elements</h3>
+          <p>High-strength, lightweight structural components for pergolas, canopies, and architectural landscape features.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 3. NATURAL STONE PROCESSING ═══ -->
+  <section id="natural-stone" class="hs-category">
+    <div class="hs-category-header">
+      <div>
+        <span class="hs-category-label">Category 03</span>
+        <h2 class="hs-category-title">Natural Stone Processing</h2>
+        <p class="hs-category-desc">Locally quarried and precision-cut natural stone products — timeless materials for walls, floors, and landscape features.</p>
+      </div>
+    </div>
+    <div class="hs-product-grid">
+
+      <!-- Cut Stone Tiles -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-th hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Cut Stone Tiles</h3>
+          <p>Precisely cut natural stone tiles for flooring, wall cladding, and feature installations with authentic texture and character.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Stone Slabs -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-square hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Stone Slabs</h3>
+          <p>Large format natural stone slabs for paving, countertops, and bespoke landscape elements with natural grain patterns.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Cobblestones -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-circle hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Cobblestones</h3>
+          <p>Traditional cobblestone sets for driveways, pathways, and public plazas — resilient, time-honoured, and visually striking.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Stone Wall Blocks -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-monument hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Stone Wall Blocks</h3>
+          <p>Dressed and rough-cut natural stone blocks for retaining walls, garden boundaries, and architectural landscape structures.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 4. TERRAZZO & DECORATIVE SURFACES ═══ -->
+  <section id="terrazzo" class="hs-category">
+    <div class="hs-category-header">
+      <div>
+        <span class="hs-category-label">Category 04</span>
+        <h2 class="hs-category-title">Terrazzo &amp; Decorative Surfaces</h2>
+        <p class="hs-category-desc">Composite decorative surfaces blending marble, granite, glass, and cement for stunning architectural finishes.</p>
+      </div>
+    </div>
+    <div class="hs-product-grid">
+
+      <!-- Terrazzo Tiles -->
+      <div class="construction-card" data-images="img/terrazzo/1.jpg,img/terrazzo/2.jpg,img/terrazzo/3.jpg,img/terrazzo/4.jpg,img/terrazzo/5.jpg,img/terrazzo/6.jpg,img/terrazzo/7.jpg,img/terrazzo/8.jpg">
+        <div class="card-badge">Terrazzo Tiles</div>
+        <div class="card-image">
+          <img src="img/ter.jpeg" alt="Terrazzo Tiles" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Terrazzo Tiles</h3>
+          <p class="card-description">Classic terrazzo composite tiles for floors, walls, stair treads, and countertops — available in monolithic, sand-cushion, and rustic systems.</p>
+        </div>
+      </div>
+
+      <!-- Textured Terrazzo -->
+      <div class="construction-card" data-images="img/Terrazzo-Textured-Natural.jpg,img/terra.jpeg">
+        <div class="card-badge">Textured Terrazzo</div>
+        <div class="card-image">
+          <img src="img/Terrazzo-Textured-Natural.jpg" alt="Textured Terrazzo" />
+          <div class="image-overlay"><i class="fas fa-eye overlay-icon"></i></div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Textured Terrazzo</h3>
+          <p class="card-description">Naturally textured terrazzo surfaces with tactile grain profiles for anti-slip outdoor applications and distinctive interior floors.</p>
+        </div>
+      </div>
+
+      <!-- Custom Decorative Finishes -->
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-paint-brush hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Custom Decorative Finishes</h3>
+          <p>Bespoke terrazzo designs with custom aggregate mixes, colours, and inlay patterns tailored to your project specifications.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 5. ADHESIVES & INSTALLATION SYSTEMS ═══ -->
+  <section id="adhesives" class="hs-category">
+    <div class="hs-category-header">
+      <div>
+        <span class="hs-category-label">Category 05</span>
+        <h2 class="hs-category-title">Adhesives &amp; Installation Systems</h2>
+        <p class="hs-category-desc">Professional-grade bonding, grouting, sealing, and waterproofing products engineered for long-lasting landscape installations.</p>
+      </div>
+    </div>
+    <div class="hs-product-grid">
+
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-fill-drip hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Tile Adhesives</h3>
+          <p>High-performance cementitious and polymer-modified adhesives for bonding tiles, stone, and precast elements to any substrate.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-border-style hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Grouts &amp; Sealants</h3>
+          <p>Colour-matched, stain-resistant grout systems and sealants for joint filling in tiles, pavers, and natural stone installations.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-shield-alt hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Waterproofing Systems</h3>
+          <p>Membrane and slurry waterproofing systems for wet areas, terraces, basements, and below-grade landscape structures.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+      <div class="hs-placeholder-card">
+        <div class="hs-placeholder-img">
+          <i class="fas fa-tools hs-placeholder-icon"></i>
+        </div>
+        <div class="hs-placeholder-body">
+          <h3>Surface Treatments</h3>
+          <p>Impregnating sealers, anti-graffiti coatings, and protective surface treatments extending the lifespan of all hardscape installations.</p>
+          <span class="hs-coming-soon">Images Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section style="background:#1a1714; padding:60px 24px; text-align:center;">
+    <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:#f56421; margin-bottom:14px;">Get In Touch</p>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,3.5rem); color:#fff; margin:0 0 18px;">Have a project in mind?</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:rgba(255,255,255,0.6); max-width:500px; margin:0 auto 32px; line-height:1.7;">Talk to our team about your hardscape material requirements. We supply and install across Rwanda and the region.</p>
+    <a href="index.html#contact" style="display:inline-flex; align-items:center; gap:10px; background:#f56421; color:#fff; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:16px 36px; text-decoration:none; transition:background 0.25s;">
+      Contact Us <i class="fas fa-arrow-right"></i>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="gap two no-bottom" style="background-image: url(img/background.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3 class="mt-0">Temaco</h3>
+            <p>Building on Excellence since 2013. Leading manufacturer of high-quality concrete construction materials in Rwanda with international aspirations.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Contact Information</h3>
+            <div class="get-in-touch">
+              <div><i class="flaticon-map-location"></i></div>
+              <div><h6>Kimironko, Kigali, Rwanda</h6></div>
+            </div>
+            <div class="get-in-touch">
+              <div><i class="flaticon-iphone"></i></div>
+              <div><a href="tel:+250788306074" class="footer-phone">+250 788 306 074</a></div>
+            </div>
+            <div class="get-in-touch mb-0">
+              <div><i class="flaticon-mail-inbox-app"></i></div>
+              <div><a href="mailto:info@temacobuilders.com">info@temacobuilders.com</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Subscribe Newsletter</h3>
+            <p class="w-100">Signup for our weekly newsletter to get news.</p>
+            <form class="footer-form">
+              <a href="mailto:info@temacobuilders.com"><input type="text" name="email" placeholder="enter your email"></a>
+              <button class="theme-btn w-color">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-bottom">
+      <div class="container">
+        <div class="f-bottom">
+          <p>© 2025 TEMACO Builders Ltd. All rights reserved. | Building on Excellence | #WeAreTEMACO</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/temacobuilders/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/TemacoBuilders" target="_blank" aria-label="X"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/temacobuilders" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com/company/temacobuilders" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- JS -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <!-- <script src="assets/js/jquery.fancybox.min.js"></script> -->
+  <script src="assets/js/custom.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.7/swiper-bundle.min.js"></script> -->
+
+  <!-- Tab active state on scroll -->
+  <script>
+    const tabs = document.querySelectorAll('.hs-tab');
+    const sections = ['precast','frcm','natural-stone','terrazzo','adhesives'].map(id => document.getElementById(id));
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (sec && window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Smooth scroll for tabs
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(tab.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+
+
+</body>
+</html>

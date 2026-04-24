@@ -1,0 +1,343 @@
+/*
+ * TEMACO Website - Responsive Fixes
+ * Created: September 18, 2025
+ * Updated: Contact alignment edge fix with !important overrides
+ * Cache-bust: v1.2
+ */
+
+/* =============== Global Background Color Update =============== */
+
+/* Update background color to warm cream across all sections */
+body,
+.about,
+.contact,
+.services,
+.projects,
+section {
+    background-color: #fff1e6 !important;
+}
+
+/* Ensure projects section uses exact warm background and container spacing */
+#projects {
+    background-color: #fff1e6 !important;
+    background-image: none !important; /* remove gradient/background-image from main.css */
+    padding: 3.5rem 0 !important; /* match other section spacing */
+}
+
+#projects .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important; /* consistent horizontal padding */
+}
+
+/* Hide the decorative overlay added by main.css */
+#projects::before {
+    display: none !important;
+    opacity: 0 !important;
+    background: none !important;
+}
+
+/* =============== Contact Section Mobile Alignment Fixes =============== */
+
+/* Make contact-container align to screen edge like about section - Override main.css */
+.contact .contact-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 0.5rem !important; /* Minimal padding for edge alignment */
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 3rem !important;
+    align-items: flex-start !important;
+}
+
+/* Ensure contact section mobile alignment extends closer to screen edge - Override main.css */
+@media screen and (max-width: 767px) {
+    .contact {
+        padding: 3rem 0 2rem 0 !important;
+    }
+    
+    .contact .contact-container {
+        padding: 0 0.5rem !important; /* Minimal padding to align to screen edge */
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+    
+    .contact .contact-info, 
+    .contact .contact-form {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        padding: 1.5rem 0.5rem !important; /* Reduced left padding to align to edge */
+    }
+    
+    /* Specifically target the contact-info div to start at screen corner */
+    .contact .contact-info {
+        padding-left: 0.25rem !important; /* Minimal padding to touch screen edge */
+        margin-left: 0 !important;
+    }
+    
+    .contact-item {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .contact-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+}
+
+/* Galaxy Z Fold and very small screens - align to screen edge - Override main.css */
+@media screen and (max-width: 350px) {
+    .contact .contact-container {
+        padding: 0 0.25rem !important; /* Minimal padding for screen edge alignment */
+    }
+    
+    .contact .contact-info, 
+    .contact .contact-form {
+        padding: 1rem 0.25rem !important; /* Align content to screen edge */
+    }
+    
+    /* Contact-info specifically touches screen edge */
+    .contact .contact-info {
+        padding-left: 0.125rem !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* Override main.css @media (max-width: 900px) contact styles */
+@media screen and (max-width: 900px) {
+    .contact .contact-container {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 0.5rem !important; /* Edge alignment */
+    }
+    
+    .contact .contact-info, 
+    .contact .contact-form {
+        min-width: 0 !important;
+        padding: 1.5rem 0.5rem !important; /* Edge-aligned padding */
+    }
+    
+    .contact .contact-info {
+        padding-left: 0.25rem !important; /* Extra edge alignment for contact-info */
+    }
+}
+
+/* Services Grid Fixes */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+    gap: 2rem;
+    margin-top: 4rem;
+    justify-content: center; /* Center the grid items */
+}
+
+.service-card {
+    width: 100%; /* Ensure full width */
+    max-width: 350px; /* Limit maximum width */
+    margin: 0 auto; /* Center each card */
+}
+
+/* Galaxy Z Fold specific adjustments (when folded and unfolded) */
+@media screen and (min-width: 280px) and (max-width: 350px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width: 585px), 
+       screen and (min-width: 700px) and (max-width: 800px) {
+    .services-grid {
+        grid-template-columns: minmax(250px, 350px);
+        justify-content: center;
+    }
+    
+    .service-card {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
+
+/* Responsive Service Icons */
+.service-icon {
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.25);
+}
+
+/* Galaxy Z Fold and small screen adjustments for service icons */
+@media screen and (max-width: 585px) {
+    .service-icon {
+        height: 70px;
+        width: 70px;
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+    }
+}
+
+/* =============== Contact Form Responsive Fixes =============== */
+
+/* General contact form improvements */
+.contact-container {
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Responsive styling for all screens */
+@media screen and (max-width: 767px) {
+    .contact {
+        padding: 3rem 1rem;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .contact-info, 
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .contact-item {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form .btn-primary {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* iPad Pro Specific Fixes (both orientations) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .contact-container {
+        flex-direction: column;
+        max-width: 700px;
+        margin: 0 auto;
+        gap: 2rem;
+    }
+    
+    .contact-info, 
+    .contact-form {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    /* Improve spacing and alignment */
+    .contact-item {
+        gap: 1.25rem;
+    }
+    
+    .contact-icon {
+        font-size: 2.25rem;
+    }
+    
+    /* Make form buttons more prominent */
+    .btn-primary {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* iPad Pro in portrait mode (834px) */
+@media screen and (width: 834px) {
+    .contact {
+        padding: 4rem 2rem;
+    }
+    
+    .contact-container {
+        padding: 0;
+    }
+}
+
+/* iPad Pro in landscape mode (1024px) */
+@media screen and (width: 1024px) {
+    .contact-container {
+        flex-direction: row;
+        max-width: 960px;
+        gap: 2.5rem;
+    }
+    
+    .contact-info {
+        flex: 1 1 300px;
+        min-width: 300px;
+    }
+    
+    .contact-form {
+        flex: 2 1 580px;
+    }
+}
+
+/* Large screens (desktops and beyond) */
+@media screen and (min-width: 1025px) {
+    .contact-container {
+        max-width: 1140px;
+        gap: 3rem;
+    }
+    
+    .contact-info {
+        flex: 1 1 380px;
+    }
+    
+    .contact-form {
+        flex: 2 1 680px;
+    }
+}
+
+/* =============== Footer "Get In Touch" Responsive Fixes =============== */
+
+/* General fixes for footer contact */
+.get-in-touch {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.get-in-touch > div:first-child {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.get-in-touch > div:last-child {
+    flex: 1;
+}
+
+/* Mobile screens */
+@media screen and (max-width: 767px) {
+    .widget-title .get-in-touch h6,
+    .widget-title .get-in-touch a {
+        width: auto;
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix for footer contact info on iPad Pro */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .widget-title .get-in-touch h6 {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        font-size: 0.95rem;
+    }
+    
+    .widget-title .get-in-touch a {
+        font-size: 0.95rem;
+    }
+}
+
+/* Fix heading alignment in all sections */
+.heading {
+    text-align: center;
+}
+
+.heading h2 {
+    margin-top: 0.5rem;
+}

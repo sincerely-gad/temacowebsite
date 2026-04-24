@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services – TEMACO Builders</title>
+  <link rel="icon" href="img/logoo.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="assets/font/flaticon_xyz.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=1.2">
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/preloader.js"></script>
+  <script src="assets/js/modal-fix.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hs-hero {
+      background: linear-gradient(135deg, #1a0e07 0%, #2e1a0a 60%, #3a2010 100%);
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('img/Amahoro/1.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+    .hs-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .hs-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 20px;
+    }
+    .hs-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .hs-breadcrumb a:hover { color: #f56421; }
+    .hs-breadcrumb span { color: #f56421; }
+    .hs-hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #f56421;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .hs-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin: 0 0 18px;
+    }
+    .hs-hero-title span { color: #f56421; }
+    .hs-hero-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.62);
+      max-width: 560px;
+      margin: 0;
+    }
+
+    /* ── CATEGORY TABS ──────────────────────────────── */
+    .hs-tabs-wrap {
+      background: #fff;
+      border-bottom: 1px solid #e8e4e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .hs-tabs {
+      display: flex;
+      overflow-x: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      gap: 0;
+      scrollbar-width: none;
+    }
+    .hs-tabs::-webkit-scrollbar { display: none; }
+    .hs-tab {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+      text-decoration: none;
+      padding: 18px 22px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hs-tab:hover, .hs-tab.active {
+      color: #f56421;
+      border-bottom-color: #f56421;
+    }
+
+    /* ── SERVICE SECTION ────────────────────────────── */
+    .hs-category {
+      padding: 80px 0;
+      border-bottom: 1px solid #ece8e4;
+    }
+    .hs-category:nth-child(even) { background: #f7f4f1; }
+    .hs-category:nth-child(odd) { background: #fff; }
+
+    .hs-category-header {
+      max-width: 1200px;
+      margin: 0 auto 56px;
+      padding: 0 24px;
+    }
+    .hs-category-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #f56421;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .hs-category-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: #1a1714;
+      line-height: 1;
+      margin: 0 0 12px;
+    }
+    .hs-category-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #777;
+      max-width: 620px;
+      margin: 0;
+    }
+
+    /* ── SERVICE FEATURE LAYOUT ─────────────────────── */
+    .svc-feature {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .svc-feature.reverse { direction: rtl; }
+    .svc-feature.reverse > * { direction: ltr; }
+    .svc-feature-img {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #1a1714;
+    }
+    .svc-feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .svc-feature-img:hover img { transform: scale(1.04); }
+    .svc-feature-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #2e2925 0%, #1a1714 100%);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-feature-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 20px,
+        rgba(245,100,33,0.04) 20px, rgba(245,100,33,0.04) 21px
+      );
+    }
+    .svc-feature-placeholder i {
+      font-size: 3rem;
+      color: rgba(245,100,33,0.3);
+      z-index: 1;
+    }
+    .svc-feature-placeholder span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f56421;
+      border: 1px solid rgba(245,100,33,0.35);
+      padding: 5px 12px;
+      z-index: 1;
+    }
+    .svc-feature-body { display: flex; flex-direction: column; gap: 0; }
+    .svc-feature-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: #1a1714;
+      line-height: 1.05;
+      margin: 0 0 14px;
+    }
+    .svc-feature-body p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #555;
+      margin: 0 0 22px;
+    }
+    .svc-detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .svc-detail-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      color: #444;
+      line-height: 1.5;
+    }
+    .svc-detail-list li i {
+      color: #f56421;
+      font-size: 14px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── SUB-SERVICES CARD ROW ──────────────────────── */
+    .svc-card-row {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .svc-mini-card {
+      background: #fff;
+      border: 1px solid #e8e4e0;
+      border-top: 3px solid #f56421;
+      padding: 24px 22px 26px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .svc-mini-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+    }
+    .svc-mini-card i {
+      font-size: 1.6rem;
+      color: #f56421;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .svc-mini-card h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: #1a1714;
+      margin: 0 0 8px;
+      letter-spacing: 0.03em;
+    }
+    .svc-mini-card p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #666;
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .svc-feature { grid-template-columns: 1fr; gap: 30px; }
+      .svc-feature.reverse { direction: ltr; }
+    }
+    @media (max-width: 768px) {
+      .hs-hero { padding: 100px 0 40px; }
+      .hs-tabs { padding: 0 12px; }
+      .hs-tab { padding: 14px 14px; font-size: 11px; }
+      .svc-card-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .svc-card-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── NAVBAR (matching index.html) ────────────────── */
+    .header-bottom-bar, header, .container {
+      overflow: visible !important;
+      z-index: 2000 !important;
+      position: relative;
+    }
+    body > header > .header-bottom-bar {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      top: 0;
+    }
+    body > header {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      top: 0;
+    }
+    .header-bottom-bar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      z-index: 99999 !important;
+      background: #f56421 !important;
+      min-height: 80px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    }
+    body { padding-top: 80px; }
+    .navbar-links > li > a { color: #fff !important; }
+    .navbar-links li:hover > a { border-bottom: 5px solid #fff !important; }
+    .dropdown-menu {
+      background: #f56421 !important;
+      z-index: 3000 !important;
+    }
+    .dropdown-menu li a { color: #fff !important; }
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      color: #f56421 !important;
+      background: #fff !important;
+    }
+    @media (max-width: 900px) {
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        min-width: 0;
+        padding-left: 18px;
+      }
+      .logo { margin-left: 0 !important; padding-left: 8px; }
+      .logo img { max-width: 110px !important; height: auto !important; }
+      .header-bottom-bar { min-height: 60px !important; padding: 0 !important; }
+      body { padding-top: 60px; }
+    }
+    .logo img { max-width: 140px !important; height: auto !important; }
+    .logo { margin-left: -40px !important; }
+    .navbar-social-btn { gap: 20px !important; margin-left: 4px !important; }
+    .navbar-social-btn a {
+      color: #fff !important;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .navbar-social-btn a:hover { color: #222 !important; }
+    .navbar-social-btn a i { font-size: 22px !important; }
+
+    /* footer social */
+    .footer-social {
+      display: flex; align-items: center; gap: 12px; margin-top: 0;
+    }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; background: #f5f5f5; border-radius: 50%;
+      transition: background 0.2s, color 0.2s; color: #f56421; font-size: 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04); text-decoration: none;
+    }
+    .footer-social a:hover { background: #f56421; color: #fff; }
+    .f-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .f-bottom p { margin: 0; font-size: 15px; color: #333; }
+    .footer-phone { color: #fff !important; text-decoration: none; font-family: 'Courier New', monospace; letter-spacing: 0.5px; }
+    .footer-phone:hover { color: #ffd6b3 !important; }
+  </style>
+</head>
+
+<body>
+  <!-- preloader -->
+  <div class="preloader">
+    <div class="preloader-box">
+      <div class="natex-content">
+        <div class="natex-circle"></div>
+        <div class="natex-line-mask">
+          <div class="loader-line"></div>
+        </div>
+        <img src="img/logoo.png" alt="img" style="max-width:40px; height:auto;">
+      </div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="header-bottom-bar">
+      <div class="container">
+        <div class="bottom-bar">
+          <div class="two-bar">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="logo">
+                <a href="index.html">
+                  <img alt="logo" src="img/Logo.jpg">
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="javascript:void(0)" id="mobile-menu" class="menu-start">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <nav class="navbar">
+            <ul class="navbar-links">
+              <li class="navbar-dropdown"><a href="index.html">Home</a></li>
+              <li class="navbar-dropdown"><a href="index.html#Products">Products</a></li>
+              <li class="navbar-dropdown"><a href="index.html#services">Services</a></li>
+              <li class="navbar-dropdown"><a href="index.html#projects">Projects</a></li>
+              <li class="navbar-dropdown"><a href="index.html#about">About</a></li>
+              <li class="navbar-dropdown">
+                <a href="index.html#subsidiaries">Subsidiaries</a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+                  <li><a href="behubltd.html">Be Hub Ltd</a></li>
+                  <li><a href="temacopro.html">Temaco Pro</a></li>
+                </ul>
+              </li>
+              <li class="navbar-dropdown"><a href="blog.html">Blog</a></li>
+              <li class="navbar-dropdown"><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="header-search">
+            <div class="header-search-button search-box-outer"></div>
+            <div class="navbar-social-btn" style="display:flex; align-items:center; gap:10px;">
+              <a href="https://facebook.com/temacobuilders" target="_blank" aria-label="Facebook" style="color:#fff;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/temacobuilders" target="_blank" aria-label="Twitter" style="color:#fff;"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/temacobuilders" target="_blank" aria-label="Instagram" style="color:#fff;"><i class="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com/company/temacobuilders" target="_blank" aria-label="LinkedIn" style="color:#fff;"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok" style="color:#fff;"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" style="background-image: url(img/background.png);">
+      <div class="res-log"><a href="index.html"></a></div>
+      <ul>
+        <li class="menu-item-has-children"><a href="index.html">Home</a></li>
+        <li class="navbar-dropdown"><a href="index.html#Products">Products</a></li>
+        <li class="navbar-dropdown"><a href="index.html#services">Services</a></li>
+        <li class="navbar-dropdown"><a href="index.html#projects">Projects</a></li>
+        <li class="navbar-dropdown"><a href="index.html#about">About</a></li>
+        <li class="menu-item-has-children">
+          <a href="index.html#subsidiaries">Subsidiaries</a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+            <li><a href="behubltd.html">Be Hub Ltd</a></li>
+            <li><a href="temacopro.html">Temaco Pro</a></li>
+          </ul>
+        </li>
+        <li class="navbar-dropdown"><a href="blog.html">Blog</a></li>
+        <li class="navbar-dropdown"><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="JavaScript:void(0)" id="res-cross"></a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hs-hero">
+    <div class="hs-hero-inner">
+      <div class="hs-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Services</span>
+      </div>
+      <span class="hs-hero-eyebrow">Pillar 03 — Services</span>
+      <h1 class="hs-hero-title">What We <span>Do</span></h1>
+      <p class="hs-hero-desc">From concept to completion — TEMACO delivers integrated landscape services across design, build, maintenance, in-house fabrication, and logistics.</p>
+    </div>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <div class="hs-tabs-wrap">
+    <div class="hs-tabs">
+      <a href="#design"       class="hs-tab">Design</a>
+      <a href="#build"        class="hs-tab">Build &amp; Execution</a>
+      <a href="#maintenance"  class="hs-tab">Maintenance</a>
+      <a href="#fabrication"  class="hs-tab">In-House Fabrication</a>
+      <a href="#logistics"    class="hs-tab">Transport &amp; Sourcing</a>
+    </div>
+  </div>
+
+  <!-- ═══ 1. DESIGN ═══ -->
+  <section id="design" class="hs-category">
+    <div class="hs-category-header">
+      <span class="hs-category-label">Service 01</span>
+      <h2 class="hs-category-title">Design</h2>
+      <p class="hs-category-desc">Landscape master planning, exterior architectural design, and full 3D visualisation services — transforming client visions into buildable, beautiful landscapes.</p>
+    </div>
+
+    <div class="svc-feature">
+      <div class="svc-feature-img">
+        <img src="img/nyandungu/Nyandungu.jpg" alt="Landscape Design" />
+      </div>
+      <div class="svc-feature-body">
+        <h3>Landscape Master Planning &amp; Design</h3>
+        <p>TEMACO's in-house design team produces comprehensive landscape plans from initial concept through to construction-ready documentation. We work across residential estates, public parks, institutional campuses, and mixed-use developments.</p>
+        <ul class="svc-detail-list">
+          <li><i class="fas fa-check-circle"></i> Landscape master planning for public and private spaces</li>
+          <li><i class="fas fa-check-circle"></i> Exterior architectural landscape design</li>
+          <li><i class="fas fa-check-circle"></i> Planting plans and plant scheduling</li>
+          <li><i class="fas fa-check-circle"></i> Irrigation system design and hydraulic calculations</li>
+          <li><i class="fas fa-check-circle"></i> 3D visualisation and photorealistic rendering</li>
+          <li><i class="fas fa-check-circle"></i> Construction documentation and bill of quantities</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-card-row">
+      <div class="svc-mini-card">
+        <i class="fas fa-map"></i>
+        <h4>Master Planning</h4>
+        <p>Spatial layout and design strategy for large-scale landscapes integrating function, ecology, and aesthetics.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-cube"></i>
+        <h4>3D Visualisation</h4>
+        <p>Photorealistic renderings and walkthrough animations that allow clients to experience the design before ground breaks.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-tint"></i>
+        <h4>Irrigation Design</h4>
+        <p>Hydraulic calculations, pipe routing, and emitter selection for efficient, zone-controlled water delivery systems.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-file-alt"></i>
+        <h4>Technical Documentation</h4>
+        <p>Full construction drawings, specifications, and bills of quantities ready for contractor tendering and project execution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2. BUILD & PROJECT EXECUTION ═══ -->
+  <section id="build" class="hs-category">
+    <div class="hs-category-header">
+      <span class="hs-category-label">Service 02</span>
+      <h2 class="hs-category-title">Build &amp; Project Execution</h2>
+      <p class="hs-category-desc">Complete landscape construction services — TEMACO manages end-to-end project delivery from site preparation through to final handover across hardscape and softscape scopes.</p>
+    </div>
+
+    <div class="svc-feature reverse">
+      <div class="svc-feature-img">
+        <img src="img/Amahoro/3.jpg" alt="Build and Project Execution" />
+      </div>
+      <div class="svc-feature-body">
+        <h3>End-to-End Landscape Construction</h3>
+        <p>Our site teams deliver the full spectrum of landscape construction works — from subgrade preparation and drainage through to final paving, planting, and irrigation commissioning. We self-perform the majority of works using our own trained workforce and equipment.</p>
+        <ul class="svc-detail-list">
+          <li><i class="fas fa-check-circle"></i> Site clearance and topographic preparation</li>
+          <li><i class="fas fa-check-circle"></i> Drainage and stormwater construction</li>
+          <li><i class="fas fa-check-circle"></i> Hardscape installation — paving, kerbs, walls, and structures</li>
+          <li><i class="fas fa-check-circle"></i> Softscape installation — planting, turfing, and hydroseeding</li>
+          <li><i class="fas fa-check-circle"></i> Irrigation system installation and commissioning</li>
+          <li><i class="fas fa-check-circle"></i> Project management and quality assurance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-card-row">
+      <div class="svc-mini-card">
+        <i class="fas fa-hard-hat"></i>
+        <h4>Site Preparation</h4>
+        <p>Ground clearing, earthworks, subgrade compaction, and drainage installation as the foundation for all landscape works.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-road"></i>
+        <h4>Hardscape Installation</h4>
+        <p>Precision laying of paving, kerbs, cast stone, cladding, and all concrete landscape elements to specification.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-leaf"></i>
+        <h4>Softscape Installation</h4>
+        <p>Planting, turfing, hydroseeding, and mulching works by trained horticulturalists using nursery-grown plant stock.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-tasks"></i>
+        <h4>Project Management</h4>
+        <p>Dedicated project managers coordinating subcontractors, logistics, quality, and client reporting from start to handover.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 3. MAINTENANCE ═══ -->
+  <section id="maintenance" class="hs-category">
+    <div class="hs-category-header">
+      <span class="hs-category-label">Service 03</span>
+      <h2 class="hs-category-title">Landscape Maintenance</h2>
+      <p class="hs-category-desc">Ongoing grounds maintenance programmes to keep landscapes thriving — covering plant care, irrigation servicing, and landscape rehabilitation.</p>
+    </div>
+
+    <div class="svc-feature">
+      <div class="svc-feature-img">
+        <img src="img/nyandungu/nyaa.jpg" alt="Landscape Maintenance" />
+      </div>
+      <div class="svc-feature-body">
+        <h3>Grounds &amp; Landscape Maintenance Programmes</h3>
+        <p>TEMACO offers structured maintenance contracts for residential estates, commercial properties, public parks, and institutional campuses — ensuring planted landscapes remain healthy, safe, and visually outstanding throughout the year.</p>
+        <ul class="svc-detail-list">
+          <li><i class="fas fa-check-circle"></i> Regular mowing, edging, and lawn care</li>
+          <li><i class="fas fa-check-circle"></i> Pruning, shaping, and seasonal plant care</li>
+          <li><i class="fas fa-check-circle"></i> Irrigation system maintenance and seasonal adjustment</li>
+          <li><i class="fas fa-check-circle"></i> Plant replacement, gap filling, and replanting</li>
+          <li><i class="fas fa-check-circle"></i> Fertilisation, pest management, and soil health monitoring</li>
+          <li><i class="fas fa-check-circle"></i> Landscape rehabilitation and remedial works</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-card-row">
+      <div class="svc-mini-card">
+        <i class="fas fa-cut"></i>
+        <h4>Grounds Care</h4>
+        <p>Scheduled lawn mowing, edging, hedge trimming, and general grounds maintenance to agreed service levels.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-tint"></i>
+        <h4>Irrigation Servicing</h4>
+        <p>Routine inspection, cleaning, adjustment, and repair of irrigation systems to ensure efficient and effective water delivery.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-bug"></i>
+        <h4>Plant Health</h4>
+        <p>Integrated pest and disease management, fertilisation programmes, and soil health assessments for healthy plant stock.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-tools"></i>
+        <h4>Rehabilitation Works</h4>
+        <p>Remedial landscape works to restore neglected or storm-damaged landscapes back to full specification and functionality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. IN-HOUSE FABRICATION ═══ -->
+  <section id="fabrication" class="hs-category">
+    <div class="hs-category-header">
+      <span class="hs-category-label">Service 04</span>
+      <h2 class="hs-category-title">In-House Fabrication</h2>
+      <p class="hs-category-desc">Dedicated metal and carpentry workshops producing custom landscape structures, casting moulds, machine frames, and bespoke architectural elements.</p>
+    </div>
+
+    <div class="svc-feature reverse">
+      <div class="svc-feature-placeholder">
+        <i class="fas fa-hammer"></i>
+        <span>Images Coming Soon</span>
+      </div>
+      <div class="svc-feature-body">
+        <h3>Metal Workshop &amp; Carpentry Workshop</h3>
+        <p>TEMACO's on-site workshops give us the capability to fabricate bespoke items in-house — reducing lead times, controlling quality, and enabling unique design solutions that off-the-shelf products cannot deliver.</p>
+        <ul class="svc-detail-list">
+          <li><i class="fas fa-check-circle"></i> Metal mould fabrication for TEMACO precast products</li>
+          <li><i class="fas fa-check-circle"></i> Machine frames and custom brackets for production equipment</li>
+          <li><i class="fas fa-check-circle"></i> Custom landscape structures — pergolas, trellises, and gates</li>
+          <li><i class="fas fa-check-circle"></i> Carpentry moulds and formwork for concrete casting</li>
+          <li><i class="fas fa-check-circle"></i> Timber decking, boardwalks, and outdoor furniture</li>
+          <li><i class="fas fa-check-circle"></i> Bespoke architectural timber and metal features</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-card-row">
+      <div class="svc-mini-card">
+        <i class="fas fa-industry"></i>
+        <h4>Metal Workshop</h4>
+        <p>Fabrication of cast moulds, machine components, gates, pergola structures, and custom metalwork for landscape projects.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-th-large"></i>
+        <h4>Carpentry Workshop</h4>
+        <p>Timber mould making, formwork, decking, boardwalks, and bespoke outdoor furniture produced to client specification.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-drafting-compass"></i>
+        <h4>Custom Design Fabrication</h4>
+        <p>One-off and bespoke fabricated items designed in collaboration with clients and architects for unique landscape features.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-cogs"></i>
+        <h4>Production Support</h4>
+        <p>In-house fabrication support for TEMACO's precast manufacturing operations — keeping production efficient and flexible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 5. TRANSPORT & SOURCING ═══ -->
+  <section id="logistics" class="hs-category">
+    <div class="hs-category-header">
+      <span class="hs-category-label">Service 05</span>
+      <h2 class="hs-category-title">Transport &amp; Materials Sourcing</h2>
+      <p class="hs-category-desc">Own logistics fleet ensuring reliable, on-time delivery of TEMACO products and materials, plus a one-stop sourcing solution for complementary construction materials.</p>
+    </div>
+
+    <div class="svc-feature">
+      <div class="svc-feature-placeholder">
+        <i class="fas fa-truck"></i>
+        <span>Images Coming Soon</span>
+      </div>
+      <div class="svc-feature-body">
+        <h3>Integrated Logistics &amp; Material Supply</h3>
+        <p>TEMACO operates its own fleet of delivery vehicles capable of transporting bulk materials, precast products, and equipment to sites across Rwanda and into neighbouring countries. Combined with our in-house materials sourcing capability, we offer clients a genuinely consolidated supply chain.</p>
+        <ul class="svc-detail-list">
+          <li><i class="fas fa-check-circle"></i> Professional delivery of TEMACO products across Rwanda</li>
+          <li><i class="fas fa-check-circle"></i> Cross-border logistics into Uganda, DRC, and Burundi</li>
+          <li><i class="fas fa-check-circle"></i> Vehicle leasing to external clients and contractors</li>
+          <li><i class="fas fa-check-circle"></i> Supply of laterite, aggregates, and construction sand</li>
+          <li><i class="fas fa-check-circle"></i> Bulk materials sourcing and project procurement support</li>
+          <li><i class="fas fa-check-circle"></i> Scheduled delivery programmes for long-term site supply</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-card-row">
+      <div class="svc-mini-card">
+        <i class="fas fa-truck"></i>
+        <h4>Product Delivery</h4>
+        <p>Scheduled and on-demand delivery of all TEMACO manufactured products to construction sites nationwide.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-globe-africa"></i>
+        <h4>Regional Logistics</h4>
+        <p>Cross-border transportation into Uganda, DRC, Burundi, and Tanzania — extending TEMACO's supply reach across the region.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-boxes"></i>
+        <h4>Materials Sourcing</h4>
+        <p>Supply of laterite, aggregate, sand, and complementary construction materials — a complete one-stop project supply solution.</p>
+      </div>
+      <div class="svc-mini-card">
+        <i class="fas fa-key"></i>
+        <h4>Vehicle Leasing</h4>
+        <p>Leasing of trucks and transport vehicles to external contractors, project managers, and organisations requiring reliable logistics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section style="background:#1a1714; padding:60px 24px; text-align:center;">
+    <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:#f56421; margin-bottom:14px;">Get In Touch</p>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,3.5rem); color:#fff; margin:0 0 18px;">Ready to start your project?</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:rgba(255,255,255,0.6); max-width:500px; margin:0 auto 32px; line-height:1.7;">Talk to our team about your design, build, or maintenance requirements. We deliver complete landscape solutions across Rwanda and the region.</p>
+    <a href="index.html#contact" style="display:inline-flex; align-items:center; gap:10px; background:#f56421; color:#fff; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:16px 36px; text-decoration:none; transition:background 0.25s;">
+      Contact Us <i class="fas fa-arrow-right"></i>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="gap two no-bottom" style="background-image: url(img/background.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3 class="mt-0">Temaco</h3>
+            <p>Building on Excellence since 2013. Leading manufacturer of high-quality concrete construction materials in Rwanda with international aspirations.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Contact Information</h3>
+            <div class="get-in-touch">
+              <div><i class="flaticon-map-location"></i></div>
+              <div><h6>Kimironko, Kigali, Rwanda</h6></div>
+            </div>
+            <div class="get-in-touch">
+              <div><i class="flaticon-iphone"></i></div>
+              <div><a href="tel:+250788306074" class="footer-phone">+250 788 306 074</a></div>
+            </div>
+            <div class="get-in-touch mb-0">
+              <div><i class="flaticon-mail-inbox-app"></i></div>
+              <div><a href="mailto:info@temacobuilders.com">info@temacobuilders.com</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Subscribe Newsletter</h3>
+            <p class="w-100">Signup for our weekly newsletter to get news.</p>
+            <form class="footer-form">
+              <a href="mailto:info@temacobuilders.com"><input type="text" name="email" placeholder="enter your email"></a>
+              <button class="theme-btn w-color">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-bottom">
+      <div class="container">
+        <div class="f-bottom">
+          <p>© 2025 TEMACO Builders Ltd. All rights reserved. | Building on Excellence | #WeAreTEMACO</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/temacobuilders/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/TemacoBuilders" target="_blank" aria-label="X"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/temacobuilders" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com/company/temacobuilders" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/jquery.fancybox.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <!-- Tab active state on scroll -->
+  <script>
+    const tabs = document.querySelectorAll('.hs-tab');
+    const sections = ['design','build','maintenance','fabrication','logistics'].map(id => document.getElementById(id));
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (sec && window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Smooth scroll for tabs
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(tab.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>

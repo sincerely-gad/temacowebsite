@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temaco - Building on Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #F96302 0%, #FF7A26 100%);
+            min-height: 100vh;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white" opacity="0.3"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .logo {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 4rem;
+            color: #FFFFFF;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .geometric-t {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #FFFFFF;
+            margin-right: 20px;
+            position: relative;
+            transform: rotate(45deg);
+            animation: rotate 2s ease-in-out infinite alternate;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .geometric-t::before {
+            content: 'T';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #F96302;
+            font-size: 32px;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(45deg) scale(1); }
+            100% { transform: rotate(45deg) scale(1.1); }
+        }
+
+        .tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: #FFFFFF;
+            opacity: 0.95;
+            margin-bottom: 60px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin: 40px auto;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #F96302, #FF7A26, #F96302);
+            background-size: 200% 100%;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .welcome-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #F96302, #FF7A26);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-description {
+            font-size: 1.2rem;
+            color: #333333;
+            opacity: 0.8;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-section {
+            text-align: center;
+        }
+
+        .social-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .social-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 99, 2, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-card:hover::before {
+            left: 100%;
+        }
+
+        .social-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #F96302;
+            box-shadow: 0 12px 40px rgba(249, 99, 2, 0.2);
+        }
+
+        .social-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #FFFFFF;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .facebook { background: linear-gradient(135deg, #1877f2, #42a5f5); }
+        .instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+        .twitter { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
+        .tiktok { background: linear-gradient(135deg, #000000, #ff0050); }
+        .website { background: linear-gradient(135deg, #F96302, #FF7A26); }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .social-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #333333;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .social-description {
+            font-size: 0.9rem;
+            color: #666666;
+            line-height: 1.4;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #FFFFFF;
+            opacity: 0.8;
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .year {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2.8rem;
+                letter-spacing: -1px;
+            }
+            
+            .geometric-t {
+                width: 40px;
+                height: 40px;
+                margin-right: 15px;
+            }
+            
+            .geometric-t::before {
+                font-size: 20px;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 40px 24px;
+                margin: 20px 16px;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .social-card {
+                padding: 24px 20px;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        /* Add this inside your existing <style> tag */
+.logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    /* Removed the rotation animation */
+}
+
+
+@media (max-width: 768px) {
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+}
+.social-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.social-card {
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div class="geometric-bg"></div>
+    
+    <div class="container">
+        <header class="header">
+        <div class="logo">
+    <img src="img2/1.jpg" alt="TEMACO Logo" style="display: block; margin: 0 auto;">
+    <h1 class="logo-text">TEMACO</h1>
+    <p class="tagline">Building on Excellence</p>
+</div>
+        </header>
+
+        <main class="main-content">
+            <div class="welcome-text">
+                <h2 class="welcome-title">Connect With Excellence</h2>
+                <p class="welcome-description">
+                    Discover more about Temaco across all platforms. Stay connected with our latest updates, insights, and excellence-driven content through our social channels.
+                </p>
+            </div>
+
+            <section class="social-section">
+                <h3 class="social-title">Find Us Online</h3>
+                <!-- Replace the existing social-grid div content with this -->
+<div class="social-grid">
+    <div class="social-card">
+        <a href="https://www.temacobuilders.rw" target="_blank" rel="noopener noreferrer">
+            <img src="img2/websitelogo.webp" alt="Website" class="social-icon website">
+            <h4 class="social-label">Website</h4>
+            <p class="social-description">Complete information and services</p>
+        </a>
+    </div>
+</div>
+  
+
+    <div class="social-card">
+        <a href="https://www.instagram.com/temacobuilders/" target="_blank" rel="noopener noreferrer">
+            <img src="img2/instagramlogo1.jpg" alt="Instagram" class="social-icon instagram">
+            <h4 class="social-label">Instagram</h4>
+            <p class="social-description">Visual stories of excellence in action</p>
+        </a>
+    </div>
+
+    <div class="social-card">
+        <a href="https://x.com/TemacoBuilders" target="_blank" rel="noopener noreferrer">
+            <img src="img2/xlogo.jpg" alt="X (Twitter)" class="social-icon twitter">
+            <h4 class="social-label">X (Twitter)</h4>
+            <p class="social-description">Real-time updates and industry insights</p>
+        </a>
+    </div>
+      <div class="social-card">
+        <a href="https://www.facebook.com/temacobuilders" target="_blank" rel="noopener noreferrer">
+            <img src="img2/Facebook_logo_(square).png" alt="Facebook" class="social-icon facebook">
+            <h4 class="social-label">Facebook</h4>
+            <p class="social-description">Join our community for updates and discussions</p>
+        </a>
+    </div>
+
+    <div class="social-card">
+        <a href="https://www.tiktok.com/@temacobuilders" target="_blank" rel="noopener noreferrer">
+            <img src="img2/tiktoklogo.png" alt="TikTok" class="social-icon tiktok">
+            <h4 class="social-label">TikTok</h4>
+            <p class="social-description">Creative content and behind-the-scenes</p>
+        </a>
+    </div>
+
+    
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">© <span class="year">2025</span> Temaco. Building on Excellence.</p>
+            <p class="footer-text pulse">Excellence is not a destination, it's a journey.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add click interactions and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on scroll
+            const cards = document.querySelectorAll('.social-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                        }, index * 100);
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                observer.observe(card);
+            });
+
+            // Add click feedback
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-8px) scale(1.02)';
+                    }, 150);
+                });
+            });
+
+            // Geometric T rotation on click
+            const geometricT = document.querySelector('.geometric-t');
+            geometricT.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = 'rotate 0.5s ease-in-out';
+                }, 10);
+            });
+        });
+
+        // Add some interactive particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+                animation: particleFloat 4s linear forwards;
+            `;
+            
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 4000);
+        }
+
+        // Add particle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                to {
+                    transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create particles periodically
+        setInterval(createParticle, 3000);
+    </script>
+</body>
+</html>

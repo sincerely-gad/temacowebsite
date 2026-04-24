@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Details | Temaco</title>
+  <link rel="icon" href="img/Logo.jpg">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="assets/font/flaticon_xyz.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/main.css">`n  <link rel="stylesheet" href="assets/css/responsive-fixes.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+      padding-top: 80px;
+    }
+    .blog-details-container {
+      display: flex;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 40px auto 48px auto;
+      padding: 0 16px;
+    }
+    .blog-main-content {
+      flex: 2;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 32px 28px;
+      min-width: 0;
+    }
+    .blog-main-content img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .blog-main-content h1 {
+      color: #f56421;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    .blog-main-content .blog-date {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+    .blog-main-content p {
+      color: #444;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .blog-sidebar {
+      flex: 1;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 28px 20px;
+      min-width: 260px;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      height: fit-content;
+    }
+    .sidebar-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f56421;
+      margin-bottom: 12px;
+    }
+    .sidebar-stories-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .sidebar-stories-list li {
+      border-bottom: 1px solid #f2f2f2;
+      padding-bottom: 10px;
+    }
+    .sidebar-stories-list li:last-child {
+      border-bottom: none;
+    }
+    .sidebar-stories-list a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.2s;
+    }
+    .sidebar-stories-list a:hover {
+      color: #f56421;
+    }
+    @media (max-width: 900px) {
+      .blog-details-container {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .blog-sidebar {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+      }
+    }
+    @media (max-width: 900px) {
+      .sidebar, .blog-sidebar {
+        display: none !important;
+      }
+    }
+    .header-bottom-bar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      z-index: 99999 !important;
+      background: #f56421 !important;
+      min-height: 80px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    }
+    .logo img {
+      max-width: 140px !important;
+      height: auto !important;
+    }
+    .logo {
+      margin-left: -40px !important;
+    }
+    .navbar-links > li > a {
+      color: #fff !important;
+    }
+    .navbar-links li:hover > a {
+      border-bottom: 5px solid #fff !important;
+    }
+    .navbar-social-btn {
+      gap: 20px !important;
+      transition: none !important;
+    }
+    .navbar-social-btn a {
+      color: #fff !important;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: color 0.2s !important;
+    }
+    .navbar-social-btn a:hover,
+    .navbar-social-btn a:focus {
+      transform: none !important;
+      scale: 1 !important;
+    }
+    .navbar-social-btn:hover,
+    .navbar-social-btn:focus {
+      transform: none !important;
+      scale: 1 !important;
+    }
+    .dropdown-menu {
+      background: #f56421 !important;
+      z-index: 3000 !important;
+    }
+    .dropdown-menu li a {
+      color: #fff !important;
+    }
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      color: #ffd6b3 !important;
+      background: #f56421 !important;
+    }
+    /* For dropdown menu links */
+    .dropdown-menu li a {
+      color: #fff !important;
+      display: block;
+      white-space: nowrap;
+    }
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      color: #f56421 !important;
+      background: #fff !important;
+    }
+    .navbar-dropdown:hover > .dropdown-menu,
+    .navbar-dropdown:focus-within > .dropdown-menu {
+      display: flex;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      min-width: unset;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 8px 12px;
+      z-index: 1000;
+      list-style: none;
+      flex-direction: column;
+      gap: 0;
+    }
+    @media (max-width: 900px) {
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        min-width: 0;
+        padding-left: 18px;
+      }
+    }
+    .header-bottom-bar, header, .container {
+      overflow: visible !important;
+      z-index: 2000 !important;
+      position: relative;
+    }
+    .dropdown-menu {
+      z-index: 3000 !important;
+    }
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #111;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    header {
+      position: relative !important;
+      z-index: 99998 !important;
+    }
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 0;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+      color: #f56421;
+      font-size: 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      background: #f56421;
+      color: #fff;
+    }
+    .footer-social i {
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .logo {
+        margin-left: 0 !important;
+        padding-left: 8px;
+      }
+      .logo img {
+        max-width: 110px !important;
+        height: auto !important;
+      }
+      .header-bottom-bar {
+        min-height: 60px !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- preloader -->
+  <div class="preloader">
+    <div class="preloader-box">
+      <div class="natex-content">
+        <div class="natex-circle"></div>
+        <div class="natex-line-mask">
+          <div class="loader-line"></div>
+        </div>
+        <img src="img/logo3.jpg" alt="img" style="max-width:40px; height:auto;">
+      </div>
+    </div>
+  </div>
+  <!-- preloader end -->
+  <!-- header -->
+  <header>
+    <div class="header-bottom-bar">
+      <div class="container">
+        <div class="bottom-bar">
+          <div class="two-bar">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="logo">
+                <a href="index.html">
+                  <img alt="logo" src="img/Logo.jpg">
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="javascript:void(0)" id="mobile-menu" class="menu-start">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <nav class="navbar">
+            <ul class="navbar-links">
+              <li class="navbar-dropdown">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="index.html#Products">Products</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="index.html#services">Services</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="index.html#projects">Projects</a>
+              </li>
+              <li class="navbar-dropdown ">
+                <a href="index.html#about">About</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="#subsidiaries">Subsidiaries</a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+                  <li><a href="behubltd.html">Be Hub Ltd</a></li>
+                  <li><a href="temacopro.html">Temaco Pro</a></li>
+                </ul>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="blog.html">Blog</a>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="index.html#contact">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header-search">
+            <div class="header-search-button search-box-outer"></div>
+            <div class="navbar-social-btn" style="display: flex; align-items: center; gap: 10px;">
+              <a href="https://facebook.com/temacobuilders" target="_blank" aria-label="Facebook" style="color: #fff;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/temacobuilders" target="_blank" aria-label="Twitter" style="color: #fff;"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/temacobuilders" target="_blank" aria-label="Instagram" style="color: #fff;"><i class="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com/company/temacobuilders" target="_blank" aria-label="LinkedIn" style="color: #fff;"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok" style="color: #fff;"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" style="background-image: url(img/background.png); ">
+      <div class="res-log">
+        <a href="index.html"></a>
+      </div>
+      <ul>
+        <li class="menu-item-has-children">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="index.html#Products">Products</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="index.html#services">Services</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="index.html#projects">Projects</a>
+        </li>
+        <li class="navbar-dropdown ">
+          <a href="index.html#about">About</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="#subsidiaries">Subsidiaries</a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
+            <li><a href="behubltd.html">Be Hub Ltd</a></li>
+            <li><a href="temacopro.html">Temaco Pro</a></li>
+          </ul>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="blog.html">Blog</a>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="index.html#contact">Contact</a>
+        </li>
+      </ul>
+      <a href="JavaScript:void(0)" id="res-cross"></a>
+    </div>
+  </header>
+
+  <div class="container" style="max-width:1200px; margin:30px auto 0 auto; padding:20px; display:grid; grid-template-columns:1fr 320px; gap:40px; animation:fadeIn 0.8s ease-out;">
+    <main class="main-content" style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:10px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.2);transition:transform 0.3s,box-shadow 0.3s;">
+      <!-- Blog Card with Image and Title -->
+      <div class="blog-feature-card" style="position:relative;overflow:hidden;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.13);margin-bottom:36px;background:#fff;">
+        <img src="img/blog/blog4/DSC_9640.jpg" alt="It is a business agreement, not charity" style="width:100%;height:400px;object-fit:cover;display:block;">
+      </div>
+      <!-- End Blog Card -->
+      <header class="article-header" style="margin-bottom:30px;text-align:center;">
+        <h1 class="article-title" style="font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,#f56421 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:15px;line-height:1.2;">It is a Business Agreement, Not Charity: TEMACO’s First Big Break</h1>
+      </header>
+      <p class="article-intro" style="font-size:1.2rem;color:#444;margin-bottom:40px;text-align:center;font-style:italic;opacity:0.9;">How a single contract, won on merit—not sympathy—set TEMACO on a path to lasting success and professional respect.</p>
+      <article class="article-content" style="margin-bottom:40px;">
+        <h2 style="font-size:1.5rem;color:#2d3748;margin:30px 0 20px 0;font-weight:600;">A Defining Moment for TEMACO</h2>
+        <p>When TEMACO Builders first entered Rwanda’s construction market, the odds were stacked against them. With limited resources and no track record, the team knew that every opportunity had to be earned—not given. Their breakthrough came not through charity, but through a business agreement that demanded professionalism, quality, and trust.</p>
+        <!-- Inline Image 1 -->
+        <div class="image-item" style="position:relative;overflow:hidden;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.2);margin:32px 0;max-width:500px;margin-left:auto;margin-right:auto;">
+          <img src="img/blog/blog4/DSC_9916.jpg" alt="First Contract" style="width:100%;height:220px;object-fit:cover;">
+          <div class="image-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:white;padding:16px;font-size:0.95rem;font-weight:500;"></div>
+        </div>
+        <h2 style="font-size:1.5rem;color:#2d3748;margin:30px 0 20px 0;font-weight:600;">Winning on Merit, Not Sympathy</h2>
+        <p>The client’s message was clear: “This is not charity. We expect results.” For TEMACO, this was a challenge and an opportunity. The team responded with hard work, attention to detail, and a commitment to exceeding expectations. The project was delivered on time and to a high standard—proving that TEMACO could compete with the best.</p>
+        <!-- Inline Image 2 -->
+        <div class="image-item" style="position:relative;overflow:hidden;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.2);margin:32px 0;max-width:500px;margin-left:auto;margin-right:auto;">
+          <img src="img/blog/blog4/DSC_9818.jpg" alt="Professional Partnership" style="width:100%;height:220px;object-fit:cover;">
+          <div class="image-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:white;padding:16px;font-size:0.95rem;font-weight:500;"></div>
+        </div>
+        <h2 style="font-size:1.5rem;color:#2d3748;margin:30px 0 20px 0;font-weight:600;">Lessons Learned and Lasting Impact</h2>
+        <p>That first contract taught TEMACO the value of business integrity. Every deal since has been approached with the same mindset: deliver value, build relationships, and never expect a handout. Today, TEMACO’s reputation is built on results, not favors—and the company continues to grow through professional partnerships and a relentless pursuit of excellence.</p>
+        <!-- Inline Image 3 -->
+        <div class="image-item" style="position:relative;overflow:hidden;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.2);margin:32px 0;max-width:500px;margin-left:auto;margin-right:auto;">
+          <img src="img/blog/blog4/IMG-20180319-WA0055.jpg" alt="Business Integrity" style="width:100%;height:220px;object-fit:cover;">
+          <div class="image-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:white;padding:16px;font-size:0.95rem;font-weight:500;"></div>
+        </div>
+        <h2 style="font-size:1.5rem;color:#2d3748;margin:30px 0 20px 0;font-weight:600;">Looking Ahead</h2>
+        <p>TEMACO’s journey proves that real success is earned, not given. By treating every contract as a business agreement—not charity—the company has built a legacy of trust, quality, and impact in Rwanda’s construction sector.</p>
+      </article>
+      
+
+    </main>
+    <aside class="sidebar" style="background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);border-radius:20px;padding:30px;height:fit-content;position:sticky;top:20px;box-shadow:0 15px 35px rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.2);">
+      <h3 style="font-size:1.3rem;color:#2d3748;margin-bottom:25px;font-weight:600;text-align:center;background:linear-gradient(135deg,#f56421 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Other Stories</h3>
+      <div class="story-item" style="display:flex;gap:15px;margin-bottom:25px;padding:15px;border-radius:12px;transition:all 0.3s;cursor:pointer;border:1px solid transparent;">
+        <img src="img/blog/blog2/b.jpg" alt="Award-Winning Projects" class="story-thumbnail" style="width:80px;height:80px;border-radius:10px;object-fit:cover;box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+        <div class="story-content">
+          <a href="blog-details2.html">
+            <h4 style="font-size:0.95rem;color:#2d3748;margin-bottom:8px;font-weight:600;line-height:1.3;">Award-Winning Projects</h4>
+            <div class="story-meta" style="font-size:0.8rem;color:#718096;margin-bottom:5px;">June 2024 • 4 min read</div>
+            <p class="story-excerpt" style="font-size:0.85rem;color:#4a5568;line-height:1.4;">TEMACO’s award-winning projects reflect our commitment to quality and innovation...</p>
+          </a>
+        </div>
+      </div>
+      <div class="story-item" style="display:flex;gap:15px;margin-bottom:25px;padding:15px;border-radius:12px;transition:all 0.3s;cursor:pointer;border:1px solid transparent;">
+        <img src="img/blog/blog1/IMG-20181001-WA0007.jpg" alt="Sanitation Center Rwamagana" class="story-thumbnail" style="width:80px;height:80px;border-radius:10px;object-fit:cover;box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+        <div class="story-content">
+          <a href="blog-details.html">
+            <h4 style="font-size:0.95rem;color:#2d3748;margin-bottom:8px;font-weight:600;line-height:1.3;">Over 300,000 people benefit from sanitation center Rwamagana</h4>
+            <div class="story-meta" style="font-size:0.8rem;color:#718096;margin-bottom:5px;">April 2018 • 6 min read</div>
+            <p class="story-excerpt" style="font-size:0.85rem;color:#4a5568;line-height:1.4;">A new sanitation center in Rwamagana is transforming lives, improving hygiene, and providing access to modern toilet technologies for over 300,000 people.</p>
+          </a>
+        </div>
+      </div>
+      <div class="story-item" style="display:flex;gap:15px;margin-bottom:25px;padding:15px;border-radius:12px;transition:all 0.3s;cursor:pointer;border:1px solid transparent;">
+        <img src="img/blog/blog6/IMG_20190909_135630.jpg" alt="Modern Cladding Trends" class="story-thumbnail" style="width:80px;height:80px;border-radius:10px;object-fit:cover;box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+        <div class="story-content">
+          <a href="blog-details4.html">
+            <h4 style="font-size:0.95rem;color:#2d3748;margin-bottom:8px;font-weight:600;line-height:1.3;">Modern Cladding Trends</h4>
+            <div class="story-meta" style="font-size:0.8rem;color:#718096;margin-bottom:5px;">April 2024 • 3 min read</div>
+            <p class="story-excerpt" style="font-size:0.85rem;color:#4a5568;line-height:1.4;">Modern cladding blends protection with style, using new materials and designs...</p>
+          </a>
+        </div>
+      </div>
+      <div class="story-item" style="display:flex;gap:15px;margin-bottom:25px;padding:15px;border-radius:12px;transition:all 0.3s;cursor:pointer;border:1px solid transparent;">
+        <img src="img/blog/blog5/DSC_9804.jpg" alt="Innovation in Paving" class="story-thumbnail" style="width:80px;height:80px;border-radius:10px;object-fit:cover;box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+        <div class="story-content">
+          <a href="blog-details5.html">
+            <h4 style="font-size:0.95rem;color:#2d3748;margin-bottom:8px;font-weight:600;line-height:1.3;">Innovation in Paving</h4>
+            <div class="story-meta" style="font-size:0.8rem;color:#718096;margin-bottom:5px;">March 2024 • 6 min read</div>
+            <p class="story-excerpt" style="font-size:0.85rem;color:#4a5568;line-height:1.4;">At TEMACO, innovation in paving means finding smarter, more efficient ways...</p>
+          </a>
+        </div>
+      </div>
+      <div class="story-item" style="display:flex;gap:15px;margin-bottom:0;padding:15px;border-radius:12px;transition:all 0.3s;cursor:pointer;border:1px solid transparent;">
+        <img src="img/blog/blog3/DSC_9839.jpg" alt="Temaco builders start up story" class="story-thumbnail" style="width:80px;height:80px;border-radius:10px;object-fit:cover;box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+        <div class="story-content">
+          <a href="blog-details3.html">
+            <h4 style="font-size:0.95rem;color:#2d3748;margin-bottom:8px;font-weight:600;line-height:1.3;">Temaco builders start up story</h4>
+            <div class="story-meta" style="font-size:0.8rem;color:#718096;margin-bottom:5px;">May 2024 • 5 min read</div>
+            <p class="story-excerpt" style="font-size:0.85rem;color:#4a5568;line-height:1.4;">Discover how TEMACO Builders began its journey from a small vision to Rwanda's leading manufacturer of concrete construction materials, inspiring a new generation of builders.</p>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="gap two no-bottom" style="background-image: url(img/background.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3 class="mt-0">Temaco </h3>
+            <p>Building on Excellence since 2013. Leading manufacturer of high-quality concrete construction materials in Rwanda with international aspirations. </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Contact Information</h3>
+            <div class="get-in-touch">
+              <div><i class="flaticon-map-location"></i></div>
+              <div>
+                <h6>Kimironko, Kigali, Rwanda</h6>
+              </div>
+            </div>
+            <div class="get-in-touch">
+              <div><i class="flaticon-iphone"></i></div>
+              <div>
+                <a href="callto:+250 788 306 074">+250 788 306 074</a>
+              </div>
+            </div>
+            <div class="get-in-touch mb-0">
+              <div><i class="flaticon-mail-inbox-app"></i></div>
+              <div>
+                <a href="mailto:info@temacobuilders.com">info@temacobuilders.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget-title">
+            <h3>Subscribe Newsletter</h3>
+            <p class="w-100">Signup for our weekly newsletter to get news.</p>
+            <form class="footer-form">
+              <a href="mailto:info@temacobuilders.com"><input type="text" name="email" placeholder="enter your email"></a>
+              <button class="theme-btn w-color">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fb-bottom">
+      <div class="container">
+        <div class="f-bottom">
+          <p>© 2025 TEMACO Builders Ltd. All rights reserved. | Building on Excellence | #WeAreTEMACO</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/temacobuilders/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/TemacoBuilders" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/temacobuilders" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A71531661&keywords=temaco%20builders&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=d4263051-35a9-4cd7-a180-7c6450625ee3&sid=ipa&spellCorrectionEnabled=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="search-popup">
+    <button class="close-search"><i class="fa-solid fa-xmark"></i></button>
+    <form method="post" action="#">
+      <div class="form-group">
+        <input type="search" name="search-field" value="" placeholder="Search Here" required="">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+  </div>
+  <div id="lightbox" class="lightbox clearfix">
+
+  </div>
+  <!-- search-popup end -->
+  <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/swiper.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/jquery.fancybox.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      var preloader = document.querySelector('.preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 400);
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var mobileMenuBtn = document.getElementById('mobile-menu');
+      var mobileNav = document.getElementById('mobile-nav');
+      var resCross = document.getElementById('res-cross');
+
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileNav.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+      if (resCross && mobileNav) {
+        resCross.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+      // Optional: close menu when clicking outside
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

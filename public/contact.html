@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TEMACO Builders</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #f56421;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .form-container {
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #f56421;
+            box-shadow: 0 0 0 3px rgba(245, 100, 33, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #f56421;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: #e55a1f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 100, 33, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .test-links {
+            margin-top: 15px;
+        }
+        
+        .test-links a {
+            color: #f56421;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .test-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Contact TEMACO Builders</h1>
+            <p>Get in touch with us for your construction needs</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your project requirements, timeline, and budget..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Send Message</span>
+                    <span id="btnLoader" class="loading" style="display: none;"></span>
+                </button>
+            </form>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 TEMACO Builders Ltd. All rights reserved.</p>
+            <div class="test-links">
+                <a href="../mail/test_mail.php">🧪 Test SMTP</a>
+                <a href="mailto:info@temacobuilders.com">📧 Direct Email</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const result = document.getElementById('result');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline-block';
+            result.style.display = 'none';
+            
+            try {
+                const response = await fetch('../mail/sendmail.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                // Show result
+                result.style.display = 'block';
+                result.className = 'result ' + (data.ok ? 'success' : 'error');
+                
+                if (data.ok) {
+                    result.innerHTML = `
+                        <strong>✅ Success!</strong><br>
+                        ${data.message || 'Your message has been sent successfully.'}
+                    `;
+                    form.reset();
+                } else {
+                    result.innerHTML = `
+                        <strong>❌ Error:</strong><br>
+                        ${data.error || 'Failed to send message. Please try again.'}
+                    `;
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                result.style.display = 'block';
+                result.className = 'result error';
+                result.innerHTML = `
+                    <strong>❌ Network Error:</strong><br>
+                    Unable to send message. Please check your connection and try again.
+                `;
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+            }
+        });
+        
+        // Auto-hide success messages after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.target.classList.contains('success')) {
+                        setTimeout(() => {
+                            mutation.target.style.display = 'none';
+                        }, 5000);
+                    }
+                });
+            });
+            
+            observer.observe(document.getElementById('result'), {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        });
+    </script>
+</body>
+</html>

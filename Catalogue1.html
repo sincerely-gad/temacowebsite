@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEMACO — Product Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f4f4;
+    --surface: #ffffff;
+    --surface2: #ebebeb;
+    --border: #d6d6d6;
+    --accent: #e8620a;
+    --text: #1a1a1a;
+    --muted: #767676;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.75rem;
+    letter-spacing: .12em;
+    color: var(--text);
+  }
+  .logo span { color: var(--accent); }
+
+  .header-tag {
+    font-size: .67rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── CATALOGUE GRID ─────────────────────────────────── */
+  #catalogue-view {
+    padding: 56px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: .62rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    letter-spacing: .04em;
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+
+  .filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .67rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232,98,10,.06);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  .card {
+    background: var(--surface);
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(232,98,10,.1); }
+
+  .card-img-wrap { overflow: hidden; }
+  .card-img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    filter: grayscale(15%);
+    transition: filter .4s, transform .5s;
+  }
+  .card:hover .card-img { filter: grayscale(0%); transform: scale(1.05); }
+
+  .card-body { padding: 20px 22px 24px; }
+
+  .card-cat {
+    font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5px;
+  }
+
+  .card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.45rem; letter-spacing: .06em; margin-bottom: 7px;
+  }
+
+  .card-desc {
+    font-size: .8rem; color: var(--muted); line-height: 1.55;
+    display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
+  }
+
+  .card-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem; color: var(--accent); letter-spacing: .08em;
+  }
+
+  .card-cta {
+    font-size: .67rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); transition: color .2s;
+  }
+  .card:hover .card-cta { color: var(--accent); }
+  .card-arrow { display: inline-block; transition: transform .2s; }
+  .card:hover .card-arrow { transform: translateX(4px); }
+
+  /* ─── DETAIL — FULL PAGE ─────────────────────────────── */
+  #detail-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    display: none; flex-direction: column; background: var(--bg);
+  }
+  #detail-overlay.open { display: flex; animation: fadeIn .22s ease; }
+
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* top bar */
+  .detail-topbar {
+    flex-shrink: 0; height: 58px;
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 0 40px; display: flex; align-items: center; justify-content: space-between;
+    z-index: 10;
+  }
+
+  .detail-breadcrumb {
+    font-size: .67rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  }
+  .detail-breadcrumb strong { color: var(--text); font-weight: 400; }
+
+  .detail-close-btn {
+    background: none; border: 1px solid var(--border); color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: .7rem; letter-spacing: .15em;
+    text-transform: uppercase; padding: 8px 20px; cursor: pointer; transition: all .2s;
+  }
+  .detail-close-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* two-col body */
+  .detail-body {
+    flex: 1; display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden; min-height: 0;
+  }
+
+  /* ── LEFT: sticky image gallery ── */
+  .detail-gallery {
+    background: var(--surface2); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  .gallery-main {
+    flex: 1; position: relative; overflow: hidden;
+    cursor: zoom-in; min-height: 0;
+    background: #e0e0e0;
+  }
+  .gallery-main > img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .5s ease;
+  }
+  .gallery-main:hover > img { transform: scale(1.04); }
+
+  .gallery-badge {
+    position: absolute; top: 18px; left: 20px;
+    background: var(--accent); color: #fff;
+    font-size: .58rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+    padding: 5px 12px; pointer-events: none;
+  }
+
+  .gallery-nav {
+    position: absolute; bottom: 50%; transform: translateY(50%);
+    width: 100%; display: flex; justify-content: space-between;
+    padding: 0 12px; pointer-events: none;
+  }
+
+  .gallery-nav-btn {
+    background: rgba(255,255,255,.85); border: 1px solid var(--border);
+    color: var(--text); width: 36px; height: 36px; cursor: pointer;
+    font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    transition: all .2s; pointer-events: all;
+  }
+  .gallery-nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .gallery-zoom-hint {
+    position: absolute; bottom: 14px; right: 16px;
+    background: rgba(255,255,255,.88); border: 1px solid var(--border);
+    color: var(--muted); font-size: .58rem; letter-spacing: .14em;
+    text-transform: uppercase; padding: 5px 10px; pointer-events: none;
+  }
+
+  .gallery-counter {
+    position: absolute; bottom: 14px; left: 16px;
+    background: rgba(255,255,255,.88); border: 1px solid var(--border);
+    color: var(--muted); font-size: .58rem; letter-spacing: .12em;
+    text-transform: uppercase; padding: 5px 10px; pointer-events: none;
+  }
+
+  /* thumbnail strip */
+  .gallery-thumbs {
+    flex-shrink: 0; display: flex; gap: 5px;
+    padding: 10px 12px; background: #fff; border-top: 1px solid var(--border);
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .gallery-thumbs::-webkit-scrollbar { display: none; }
+
+  .thumb {
+    width: 76px; height: 60px; flex-shrink: 0;
+    border: 2px solid transparent; overflow: hidden;
+    cursor: pointer; transition: border-color .2s; background: var(--surface2);
+  }
+  .thumb.active { border-color: var(--accent); }
+  .thumb:hover:not(.active) { border-color: #bbb; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .thumb:hover img { transform: scale(1.08); }
+
+  /* ── RIGHT: scrollable info ── */
+  .detail-info { overflow-y: auto; background: var(--surface); scrollbar-width: thin; scrollbar-color: #ddd transparent; }
+
+  .detail-info-inner { padding: 44px 52px 72px; animation: fadeUp .35s ease both; }
+
+  .detail-cat {
+    font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+
+  .detail-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 3vw, 3.2rem); letter-spacing: .04em;
+    line-height: 1; color: var(--text); margin-bottom: 6px;
+  }
+
+  .detail-sku { font-size: .66rem; color: var(--muted); letter-spacing: .14em; margin-bottom: 26px; }
+
+  .detail-price-row {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 28px; padding-bottom: 24px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .detail-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem; color: var(--accent); letter-spacing: .06em;
+  }
+
+  .detail-price-note { font-size: .7rem; color: var(--muted); }
+
+  .detail-section-title {
+    font-size: .58rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px; margin-top: 30px;
+  }
+
+  .detail-description { font-size: .88rem; line-height: 1.8; color: #555; }
+
+  /* specs table */
+  .specs-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+  .specs-table tr { border-bottom: 1px solid var(--border); }
+  .specs-table td { padding: 11px 0; vertical-align: top; }
+  .specs-table td:first-child {
+    color: var(--muted); width: 42%; font-size: .7rem;
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+  .specs-table td:last-child { color: var(--text); font-weight: 400; }
+
+  /* ── SHOWCASE PHOTO GRID ── */
+  .showcase-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px;
+  }
+
+  .showcase-item {
+    overflow: hidden; background: var(--surface2);
+    border: 1px solid var(--border); cursor: zoom-in;
+    position: relative; aspect-ratio: 4/3; transition: border-color .2s;
+  }
+  .showcase-item:hover { border-color: var(--accent); }
+  .showcase-item:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+  .showcase-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+  .showcase-item:hover img { transform: scale(1.05); }
+
+  .showcase-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px 12px 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,.5));
+    color: #fff; font-size: .6rem; letter-spacing: .14em;
+    text-transform: uppercase; pointer-events: none;
+  }
+
+  /* datasheet */
+  .datasheet-wrap {
+    border: 1px solid var(--border); overflow: hidden;
+    position: relative; cursor: zoom-in; transition: border-color .2s; margin-top: 4px;
+  }
+  .datasheet-wrap:hover { border-color: var(--accent); }
+  .datasheet-wrap img { width: 100%; display: block; transition: transform .4s; }
+  .datasheet-wrap:hover img { transform: scale(1.015); }
+  .datasheet-zoom-hint {
+    position: absolute; bottom: 12px; right: 14px;
+    background: rgba(255,255,255,.9); border: 1px solid var(--border);
+    color: var(--muted); font-size: .6rem; letter-spacing: .14em;
+    text-transform: uppercase; padding: 5px 10px; pointer-events: none;
+  }
+
+  /* CTA */
+  .detail-cta-row { display: flex; gap: 10px; margin-top: 32px; }
+
+  .btn-primary {
+    flex: 1; background: var(--accent); color: #fff; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: .76rem; font-weight: 500;
+    letter-spacing: .2em; text-transform: uppercase; padding: 15px 20px;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-primary:hover { background: #c9540a; }
+
+  .btn-secondary {
+    border: 1px solid var(--border); background: none; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: .76rem; letter-spacing: .2em;
+    text-transform: uppercase; padding: 15px 20px; cursor: pointer; transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* dev note */
+  .dev-note {
+    background: #fff8f5; border: 1px dashed #f0c4a8;
+    padding: 16px 18px; color: var(--muted); font-size: .75rem;
+    line-height: 1.6; margin-top: 28px;
+  }
+  .dev-note strong { color: var(--text); display: block; margin-bottom: 3px; }
+
+  /* ─── LIGHTBOX ───────────────────────────────────────── */
+  #lightbox {
+    position: fixed; inset: 0; z-index: 400;
+    background: rgba(0,0,0,.93); display: none;
+    align-items: center; justify-content: center;
+    cursor: zoom-out; animation: fadeIn .2s ease;
+  }
+  #lightbox.open { display: flex; }
+  #lightbox img {
+    max-width: 94vw; max-height: 94vh; object-fit: contain;
+    border: 1px solid #333; box-shadow: 0 0 80px rgba(232,98,10,.2);
+  }
+  #lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    background: none; border: 1px solid #555; color: #aaa;
+    font-family: 'DM Sans', sans-serif; font-size: .72rem;
+    letter-spacing: .15em; text-transform: uppercase;
+    padding: 8px 16px; cursor: pointer; transition: all .2s;
+  }
+  #lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 860px) {
+    header, #catalogue-view { padding-left: 20px; padding-right: 20px; }
+    .detail-body { grid-template-columns: 1fr; grid-template-rows: 50vw 1fr; }
+    .detail-gallery { border-right: none; border-bottom: 1px solid var(--border); }
+    .detail-info-inner { padding: 26px 22px 52px; }
+    .detail-topbar { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">TEMA<span>CO</span></div>
+  <div class="header-tag">Product Catalogue — temaco.rw</div>
+</header>
+
+<!-- CATALOGUE GRID -->
+<section id="catalogue-view">
+  <p class="section-label">Browse Collection</p>
+  <h1 class="section-title" id="main-catalogue-title">Our Products</h1>
+
+  <!-- Filter bar removed as requested -->
+
+  <div class="grid" id="product-grid"></div>
+</section>
+
+<!-- DETAIL FULL-PAGE OVERLAY -->
+<div id="detail-overlay">
+
+  <div class="detail-topbar">
+    <div class="detail-breadcrumb">
+      Catalogue &nbsp;/&nbsp; <strong id="detail-crumb">Product</strong>
+    </div>
+    <button class="detail-close-btn" id="close-btn">✕ &nbsp; Back to Catalogue</button>
+  </div>
+
+  <div class="detail-body">
+
+    <!-- LEFT: gallery panel -->
+    <div class="detail-gallery">
+      <div class="gallery-main" id="gallery-main">
+        <img id="gallery-main-img" src="" alt="">
+        <span class="gallery-badge" id="gallery-badge" style="display:none"></span>
+        <div class="gallery-nav">
+          <button class="gallery-nav-btn" id="prev-btn">&#8592;</button>
+          <button class="gallery-nav-btn" id="next-btn">&#8594;</button>
+        </div>
+        <span class="gallery-counter" id="gallery-counter">1 / 1</span>
+        <span class="gallery-zoom-hint">Click to enlarge</span>
+      </div>
+      <div class="gallery-thumbs" id="gallery-thumbs"></div>
+    </div>
+
+    <!-- RIGHT: info -->
+    <div class="detail-info">
+      <div class="detail-info-inner" id="detail-inner"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close">✕ Close</button>
+  <img id="lightbox-img" src="" alt="Fullscreen">
+</div>
+
+<script>
+// ── PRODUCT DATA ──────────────────────────────────────────────────────────────
+// gallery[] = array of { url, label } — first item is the hero image
+// datasheet = URL to your datasheet image
+const paverImageFiles = {
+  1: ["1.jpg", "2.png", "3eaab9b1-0a5e-4f49-a7dc-8510b31bdb0b.jpg", "dazzle viri 2.JPG", "dazzle viri 4.JPG", "ef2e1820-e824-40f9-9eaa-7e904f51ec5d.jpg", "IMG-20180319-WA0055.jpg"],
+  2: ["05f56352-a570-4dce-bd75-b351a6cde5e7.jpg", "1.jpg", "2.png", "IMG_20210309_074906_434.jpg", "PM 196 2.jpg"],
+  3: ["1.jpg", "3.jpg", "4.jpg", "5.jpg", "6.png"],
+  4: ["IMG_20190909_152612.jpg"],
+  5: [],
+  6: [],
+  7: [],
+  8: [],
+  9: ["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+  10: [],
+  11: ["1.webp", "2.jpg", "3.webp", "4.jpg", "5.jpg"],
+  12: ["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+  13: [],
+  14: [],
+  15: [],
+  16: [],
+  17: [],
+  18: [],
+};
+
+const paverDescriptions = {
+  1: "Concrete paver type 1, durable and attractive for outdoor use.",
+  2: "Concrete paver type 2, ideal for driveways and walkways.",
+  3: "Concrete paver type 3, slip-resistant and stylish.",
+  4: "Concrete paver type 4, for patios and garden paths.",
+  5: "Concrete paver type 5, heavy-duty for commercial use.",
+};
+
+const paverSpecs = {
+  1: [["Thickness", "60mm"], ["Numbers", "1000"], ["PCS IN SQM", "20"], ["KGS/1PIECE", "6"]],
+  2: [["Thickness", "60mm"], ["Numbers", "800"], ["PCS IN SQM", "18"], ["KGS/1PIECE", "5"]],
+  3: [["Thickness", "60mm"], ["Numbers", "900"], ["PCS IN SQM", "19"], ["KGS/1PIECE", "5"]],
+  4: [["Thickness", "60mm"], ["Numbers", "700"], ["PCS IN SQM", "17"], ["KGS/1PIECE", "6"]],
+  5: [["Thickness", "60mm"], ["Numbers", "600"], ["PCS IN SQM", "16"], ["KGS/1PIECE", "7"]],
+};
+
+const paverProducts = Object.entries(paverImageFiles)
+  .filter(([, files]) => files.length)
+  .map(([number, files]) => {
+    const paverNumber = Number(number);
+    const gallery = files.map((file, index) => ({
+      url: `img/paves/tp${paverNumber}/${file}`,
+      label: `Paver ${paverNumber} - Image ${index + 1}`,
+    }));
+
+    return {
+      id: paverNumber <= 5 ? 20 + paverNumber : 300 + paverNumber,
+      name: `Paver ${paverNumber}`,
+      category: "Pavers",
+      sku: `PAV${paverNumber}`,
+      price: "-",
+      priceNote: "",
+      badge: "",
+      gallery,
+      description: paverDescriptions[paverNumber] || `Concrete paver type ${paverNumber}, suitable for durable outdoor paving installations.`,
+      specs: paverSpecs[paverNumber] || [],
+      datasheet: gallery[0].url,
+    };
+  });
+
+const ventilationProducts = [
+  {
+    id: 111, name: "TV-B1", category: "Ventilation",
+    sku: "TV-B1", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/ventilation/TV-B1/1.jpg", label: "TV-B1 - Image 1" },
+      { url: "img/ventilation/TV-B1/1.png", label: "TV-B1 - Image 2" },
+      { url: "img/ventilation/TV-B1/2.jpg", label: "TV-B1 - Image 3" },
+      { url: "img/ventilation/TV-B1/3.jpg", label: "TV-B1 - Image 4" },
+      { url: "img/ventilation/TV-B1/4.jpg", label: "TV-B1 - Image 5" },
+    ],
+    description: "Concrete ventilation block for airflow, daylight, and decorative wall openings.",
+    specs: [],
+    datasheet: "img/ventilation/TV-B1/1.jpg",
+  },
+  {
+    id: 112, name: "TV-B2", category: "Ventilation",
+    sku: "TV-B2", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/ventilation/TV-B2/2.jpg", label: "TV-B2 - Image 1" },
+      { url: "img/ventilation/TV-B2/1.png", label: "TV-B2 - Image 2" },
+      { url: "img/ventilation/TV-B2/3.jpg", label: "TV-B2 - Image 3" },
+      { url: "img/ventilation/TV-B2/ChatGPT Image Jan 7, 2026, 08_56_17 AM.png", label: "TV-B2 - Image 4" },
+      { url: "img/ventilation/TV-B2/ChatGPT Image Jan 7, 2026, 09_01_53 AM.png", label: "TV-B2 - Image 5" },
+    ],
+    description: "Concrete ventilation block for airflow, daylight, and decorative wall openings.",
+    specs: [],
+    datasheet: "img/ventilation/TV-B2/2.jpg",
+  },
+];
+
+const products = [
+    // ── SOFTSCAPE PRODUCTS ──
+    {
+      id: 201, name: "Ornamental Trees", category: "Nursery & Plants",
+      sku: "SOFT-OTREES", price: "-", priceNote: "", badge: "",
+      gallery: [
+        { url: "img/ecoteto/1.jpg", label: "Ornamental Tree 1" },
+        { url: "img/ecoteto/2.jpeg", label: "Ornamental Tree 2" },
+        { url: "img/ecoteto/3.jpg", label: "Ornamental Tree 3" }
+      ],
+      description: "Specimen and feature trees for parks, streetscapes, and private gardens — selected for form, seasonal interest, and climate suitability.",
+      specs: [],
+      datasheet: "img/ecoteto/1.jpg",
+    },
+    {
+      id: 202, name: "Shrubs & Hedging", category: "Nursery & Plants",
+      sku: "SOFT-SHRUBS", price: "-", priceNote: "", badge: "",
+      gallery: [
+        { url: "img/ecoteto/4.jpg", label: "Shrub 1" },
+        { url: "img/ecoteto/5.jpg", label: "Shrub 2" }
+      ],
+      description: "Dense-growing shrubs and formal hedging plants for boundaries, screens, and structured garden beds in both residential and commercial settings.",
+      specs: [],
+      datasheet: "img/ecoteto/4.jpg",
+    },
+    {
+      id: 203, name: "Groundcovers & Grass", category: "Nursery & Plants",
+      sku: "SOFT-GCGRASS", price: "-", priceNote: "", badge: "",
+      gallery: [
+        { url: "img/grassblock/graass.png", label: "Groundcover 1" },
+        { url: "img/grassblock/grassss.jpg", label: "Groundcover 2" },
+        { url: "img/grassblock/4.jpg", label: "Groundcover 3" }
+      ],
+      description: "Low-maintenance groundcover plants and lawn grasses for slope stabilisation, open lawns, and green infill in hardscape settings.",
+      specs: [],
+      datasheet: "img/grassblock/graass.png",
+    },
+    {
+      id: 204, name: "Eco-Park Native Species", category: "Indigenous Species",
+      sku: "SOFT-ECOPARK", price: "-", priceNote: "", badge: "",
+      gallery: [
+        { url: "img/nyandungu/Nyandungu.jpg", label: "Eco-Park Plant 1" },
+        { url: "img/nyandungu/Nyandungu-11.jpg", label: "Eco-Park Plant 2" },
+        { url: "img/nyandungu/nya.jpg", label: "Eco-Park Plant 3" },
+        { url: "img/nyandungu/nyaa.jpg", label: "Eco-Park Plant 4" },
+        { url: "img/nyandungu/nnya.jpg", label: "Eco-Park Plant 5" }
+      ],
+      description: "Indigenous plant species supplied for Kigali's Nyandungu Eco-Park — Rwanda's flagship urban wetland restoration and conservation project.",
+      specs: [],
+      datasheet: "img/nyandungu/Nyandungu.jpg",
+    },
+  {
+    id: 1, name: "TT1", category: "Tiles",
+    sku: "TT1", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/1.jpg", label: "TT1 30×30mm" } ],
+    description: "Tile type TT1, size 30×30mm, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "222"], ["PCS IN SQM", "11"], ["KGS/1PIECE", "5"]],
+    datasheet: "img/tiles/1.jpg",
+  },
+  {
+    id: 2, name: "TT2", category: "Tiles",
+    sku: "TT2", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/2.jpg", label: "TT2 30×30mm" } ],
+    description: "Tile type TT2, size 30×30mm, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "112"], ["PCS IN SQM", "11"], ["KGS/1PIECE", "5"]],
+    datasheet: "img/tiles/2.jpg",
+  },
+  {
+    id: 3, name: "TT3", category: "Tiles",
+    sku: "TT3", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/3.jpg", label: "TT3 30×30mm" } ],
+    description: "Tile type TT3, size 30×30mm, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "552"], ["PCS IN SQM", "11"], ["KGS/1PIECE", "5"]],
+    datasheet: "img/tiles/3.jpg",
+  },
+  {
+    id: 4, name: "TT4", category: "Tiles",
+    sku: "TT4", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/4.jpg", label: "TT4 30×60mm" } ],
+    description: "Tile type TT4, size 30×60mm, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "175"], ["PCS IN SQM", "6"], ["KGS/1PIECE", "13"]],
+    datasheet: "img/tiles/4.jpg",
+  },
+  {
+    id: 5, name: "TT5", category: "Tiles",
+    sku: "TT5", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/5.jpg", label: "TT5 40×40mm" } ],
+    description: "Tile type TT5, size 40×40mm, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "138"], ["PCS IN SQM", "6"], ["KGS/1PIECE", "10"]],
+    datasheet: "img/tiles/5.jpg",
+  },
+  {
+    id: 6, name: "TT6", category: "Tiles",
+    sku: "TT6", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/6.jpg", label: "TT6 60×60mm" } ],
+    description: "Tile type TT6, size 60×60mm, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "68"], ["PCS IN SQM", "3"], ["KGS/1PIECE", "24"]],
+    datasheet: "img/tiles/6.jpg",
+  },
+  {
+    id: 7, name: "TT7", category: "Tiles",
+    sku: "TT7", price: "-", priceNote: "", badge: "",
+    gallery: [ { url: "img/tiles/7.jpg", label: "TT7 different sizes" } ],
+    description: "Tile type TT7, different sizes, thickness 30mm.",
+    specs: [["Thickness", "30mm"], ["Numbers", "375"], ["PCS IN SQM", "15"], ["KGS/1PIECE", "9"]],
+    datasheet: "img/tiles/7.jpg",
+  },
+  ...paverProducts,
+  {
+    id: 31, name: "Cement Blocks", category: "Blocks",
+    sku: "TMC-CEMENT-BLOCKS", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/blockcement/Bloco-de-Concreto-14x19x39-vaz-20210123020133.jpg", label: "Cement Block 1" },
+      { url: "img/blockcement/concrete-pictures-tivavl75ddhql2wm.jpg", label: "Cement Block 2" },
+      { url: "img/blockcement/concrete-pictures-ocr3ftb97tkf14nr.jpg", label: "Cement Block 3" },
+      { url: "img/blockcement/OIP.webp", label: "Cement Block 4" },
+      { url: "img/blockcement/OIP (1).webp", label: "Cement Block 5" },
+    ],
+    description: "Concrete masonry units (CMU) for building material in wall construction, manufactured in different types for building beauty and safety.",
+    specs: [],
+    datasheet: "img/blockcement/Bloco-de-Concreto-14x19x39-vaz-20210123020133.jpg",
+  },
+  {
+    id: 41, name: "Cast Stones", category: "Cast Stones",
+    sku: "TMC-CAST-STONES", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/caststones/6.webp", label: "Cast Stone 1" },
+      { url: "img/caststones/5.webp", label: "Cast Stone 2" },
+      { url: "img/caststones/4267410a49cfcaf51edd303396e00ac4.jpg", label: "Cast Stone 3" },
+      { url: "img/caststones/4.webp", label: "Cast Stone 4" },
+    ],
+    description: "Highly refined architectural precast concrete stones as alternatives to natural stones that are hard to find, manage, or expensive.",
+    specs: [],
+    datasheet: "img/caststones/6.webp",
+  },
+  {
+    id: 51, name: "Cladding", category: "Cladding",
+    sku: "TMC-CLADDING", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/cladding/1.jpg", label: "Cladding 1" },
+      { url: "img/cladding/2.jpg", label: "Cladding 2" },
+      { url: "img/cladding/3.jpg", label: "Cladding 3" },
+      { url: "img/cladding/4.jpg", label: "Cladding 4" },
+      { url: "img/cladding/5.jpg", label: "Cladding 5" },
+      { url: "img/cladding/6.jpg", label: "Cladding 6" },
+      { url: "img/cladding/7.jpg", label: "Cladding 7" },
+      { url: "img/cladding/8.jpg", label: "Cladding 8" },
+      { url: "img/cladding/9.jpg", label: "Cladding 9" },
+      { url: "img/cladding/10.jpg", label: "Cladding 10" },
+      { url: "img/cladding/IMG_20190909_135324.jpg", label: "Cladding 11" },
+    ],
+    description: "Premium cladding for superior weather protection and insulation, enhancing any building's appearance.",
+    specs: [],
+    datasheet: "img/cladding/1.jpg",
+  },
+  {
+    id: 61, name: "Hollow Bricks", category: "Bricks",
+    sku: "TMC-HOLLOW-BRICKS", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/hollowbricks/1.jpg", label: "Hollow Brick 1" },
+      { url: "img/hollowbricks/2.jpg", label: "Hollow Brick 2" },
+      { url: "img/hollowbricks/3.jpg", label: "Hollow Brick 3" },
+    ],
+    description: "Lightweight and durable hollow concrete blocks designed for efficient construction, providing excellent thermal insulation and structural stability.",
+    specs: [],
+    datasheet: "img/hollowbricks/1.jpg",
+  },
+  ...ventilationProducts,
+  {
+    id: 71, name: "Kerbs", category: "Kerbs",
+    sku: "TMC-KERBS", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/kerbs/1.jpg", label: "Kerbs 1" },
+      { url: "img/kerbs/2.jpeg", label: "Kerbs 2" },
+      { url: "img/kerbs/3.jpeg", label: "Kerbs 3" },
+      { url: "img/kerbs/4.png", label: "Kerbs 4" },
+      { url: "img/kerbs/5.png", label: "Kerbs 5" },
+    ],
+    description: "Garden and landscape edging solutions to redefine spaces, facilitate maintenance, and enhance the appearance of landscaped areas.",
+    specs: [],
+    datasheet: "img/kerbs/1.jpg",
+  },
+  {
+    id: 81, name: "CEB Blocks", category: "CEB Blocks",
+    sku: "TMC-CEB-BLOCKS", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/ceb/1.jpg", label: "CEB Block 1" },
+      { url: "img/ceb/2.jpg", label: "CEB Block 2" },
+      { url: "img/ceb/3.jpg", label: "CEB Block 3" },
+      { url: "img/ceb/4.jpeg", label: "CEB Block 4" },
+      { url: "img/ceb/5.jpg", label: "CEB Block 5" },
+    ],
+    description: "Compressed Earth Blocks made from compressed soil and cement, perfect for foundations, load-bearing walls, arches, and vaults.",
+    specs: [],
+    datasheet: "img/ceb/1.jpg",
+  },
+  {
+    id: 91, name: "Terrazzo", category: "Terrazzo",
+    sku: "TMC-TERRAZZO", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/terrazzo/1.jpg", label: "Terrazzo 1" },
+      { url: "img/terrazzo/2.jpg", label: "Terrazzo 2" },
+      { url: "img/terrazzo/3.jpg", label: "Terrazzo 3" },
+      { url: "img/terrazzo/4.jpg", label: "Terrazzo 4" },
+      { url: "img/terrazzo/5.jpg", label: "Terrazzo 5" },
+      { url: "img/terrazzo/6.jpg", label: "Terrazzo 6" },
+      { url: "img/terrazzo/7.jpg", label: "Terrazzo 7" },
+      { url: "img/terrazzo/8.jpg", label: "Terrazzo 8" },
+    ],
+    description: "Composite flooring material for bases, walls, stair treads, and countertops, including monolithic, sand cushion, and rustic terrazzo systems.",
+    specs: [],
+    datasheet: "img/terrazzo/1.jpg",
+  },
+  {
+    id: 101, name: "Grass Block Pavers", category: "Grass Block Pavers",
+    sku: "TMC-GRASS-BLOCK-PAVERS", price: "-", priceNote: "", badge: "",
+    gallery: [
+      { url: "img/grassblock/4.jpg", label: "Grass Block Paver 1" },
+      { url: "img/grassblock/5.jpg", label: "Grass Block Paver 2" },
+      { url: "img/grassblock/grassss.jpg", label: "Grass Block Paver 3" },
+      { url: "img/grassblock/graass.png", label: "Grass Block Paver 4" },
+      { url: "img/grassblock/grassblocker.jpeg", label: "Grass Block Paver 5" },
+    ],
+    description: "Permeable pavers that allow grass growth while providing flood protection, preserving lawn aesthetics with eco-friendly appeal.",
+    specs: [],
+    datasheet: "img/grassblock/4.jpg",
+  },
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentGallery = [];
+let currentIdx = 0;
+
+// ── RENDER GRID ───────────────────────────────────────────────────────────────
+function renderGrid(filter) {
+  // Show only products of the same type (category) as the clicked product
+  // Show all tile types (TT1–TT7) in the grid when any tile is selected
+  const params = getQueryParams();
+  let list = products;
+  let filteredCategory = null;
+  if (params.product) {
+    let prod = null;
+    if (/^\d+$/.test(params.product)) prod = products.find(p => p.id == params.product);
+    else prod = products.find(p => p.name.replace(/\s+/g,'').toLowerCase() === params.product.replace(/\s+/g,'').toLowerCase());
+    if (prod) {
+      filteredCategory = prod.category;
+      list = products.filter(p => p.category === prod.category);
+    }
+  }
+  // Set main heading to category if filtered, else default
+  if (filteredCategory) {
+    document.getElementById('main-catalogue-title').textContent = filteredCategory;
+  } else {
+    document.getElementById('main-catalogue-title').textContent = 'Our Products';
+  }
+  document.getElementById('product-grid').innerHTML = list.length ? list.map(p => `
+    <div class="card" onclick="handleProductClick(${p.id})">
+      <div class="card-img-wrap">
+        <img class="card-img" src="${p.gallery[0].url}" alt="${p.name}" loading="lazy">
+      </div>
+      <div class="card-body">
+        <p class="card-cat">${p.category}</p>
+        <h2 class="card-name">${p.name}</h2>
+        <p class="card-desc">${p.description}</p>
+        <div class="card-footer">
+          <span class="card-price">${p.price}</span>
+          <span class="card-cta">View Details <span class="card-arrow">→</span></span>
+        </div>
+      </div>
+    </div>
+  `).join('') : '<div style="padding:32px;text-align:center;color:#888;">No product selected.</div>';
+}
+
+// Update URL, set heading, and open detail overlay
+function handleProductClick(id) {
+  const params = getQueryParams();
+  let url = window.location.pathname + '?product=' + encodeURIComponent(id);
+  window.history.replaceState({}, '', url);
+  // Set main heading to product category and re-render grid with new param
+  const prod = products.find(p => p.id === id);
+  if (prod) {
+    document.getElementById('main-catalogue-title').textContent = prod.category;
+    // Re-render grid to update heading and grid state
+    renderGrid();
+  }
+  openDetail(id);
+}
+
+// ── FILTER ────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGrid(btn.dataset.cat);
+  });
+});
+
+// ── GALLERY ───────────────────────────────────────────────────────────────────
+function setMainImage(idx) {
+  currentIdx = (idx + currentGallery.length) % currentGallery.length;
+  const img = document.getElementById('gallery-main-img');
+  img.src = currentGallery[currentIdx].url;
+  img.alt = currentGallery[currentIdx].label;
+  document.getElementById('gallery-counter').textContent = `${currentIdx + 1} / ${currentGallery.length}`;
+  document.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === currentIdx));
+}
+
+function buildThumbs(gallery) {
+  document.getElementById('gallery-thumbs').innerHTML = gallery.map((g, i) => `
+    <div class="thumb ${i === 0 ? 'active' : ''}" onclick="setMainImage(${i})">
+      <img src="${g.url}" alt="${g.label}" loading="lazy">
+    </div>
+  `).join('');
+}
+
+document.getElementById('prev-btn').addEventListener('click', e => { e.stopPropagation(); setMainImage(currentIdx - 1); });
+document.getElementById('next-btn').addEventListener('click', e => { e.stopPropagation(); setMainImage(currentIdx + 1); });
+document.getElementById('gallery-main').addEventListener('click', () => openLightbox(currentGallery[currentIdx].url));
+
+// ── OPEN DETAIL ───────────────────────────────────────────────────────────────
+function openDetail(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  document.getElementById('detail-crumb').textContent = p.name;
+
+  // setup gallery
+  currentGallery = p.gallery;
+  currentIdx = 0;
+  const mainImg = document.getElementById('gallery-main-img');
+  mainImg.src = p.gallery[0].url;
+  mainImg.alt = p.gallery[0].label;
+  document.getElementById('gallery-counter').textContent = `1 / ${p.gallery.length}`;
+
+  const badge = document.getElementById('gallery-badge');
+  if (p.badge) { badge.textContent = p.badge; badge.style.display = ''; }
+  else { badge.style.display = 'none'; }
+
+  buildThumbs(p.gallery);
+
+  // info panel
+  document.getElementById('detail-inner').innerHTML = `
+    <p class="detail-cat">${p.category}</p>
+    <h2 class="detail-name">${p.name}</h2>
+    <p class="detail-sku">SKU: ${p.sku}</p>
+
+    <div class="detail-price-row">
+      <span class="detail-price">${p.price}</span>
+      <span class="detail-price-note">${p.priceNote}</span>
+    </div>
+
+    <p class="detail-section-title">Description</p>
+    <p class="detail-description">${p.description}</p>
+
+    <p class="detail-section-title">Technical Specifications</p>
+    <table class="specs-table">
+      ${p.specs.map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+    </table>
+
+    <p class="detail-section-title">Product Showcase</p>
+    <div class="showcase-grid">
+      ${p.gallery.map(g => `
+        <div class="showcase-item" onclick="openLightbox('${g.url}')">
+          <img src="${g.url}" alt="${g.label}" loading="lazy">
+          <span class="showcase-label">${g.label}</span>
+        </div>
+      `).join('')}
+    </div>
+
+    <p class="detail-section-title">Datasheet</p>
+    <div class="datasheet-wrap" onclick="openLightbox('${p.datasheet}')">
+      <img src="${p.datasheet}" alt="${p.name} datasheet" loading="lazy">
+      <span class="datasheet-zoom-hint">Click to enlarge</span>
+    </div>
+
+    <div class="dev-note">
+      <strong>💡 Developer note</strong>
+      Replace the <code>gallery[]</code> and <code>datasheet</code> fields in each product with your own image URLs.
+    </div>
+
+    <div class="detail-cta-row">
+      <button class="btn-primary">Request Quote</button>
+      <button class="btn-secondary">Download PDF</button>
+    </div>
+  `;
+
+  document.getElementById('detail-overlay').classList.add('open');
+  // scroll right panel to top
+  document.querySelector('.detail-info').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+// ── CLOSE DETAIL ─────────────────────────────────────────────────────────────
+function closeDetail() {
+  document.getElementById('detail-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('close-btn').addEventListener('click', closeDetail);
+
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+document.getElementById('lightbox').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
+document.getElementById('lightbox-close').addEventListener('click', e => { e.stopPropagation(); document.getElementById('lightbox').classList.remove('open'); });
+
+// ── KEYBOARD ─────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox').classList.contains('open');
+  const det = document.getElementById('detail-overlay').classList.contains('open');
+  if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); if (!lb) closeDetail(); }
+  if (det && !lb) {
+    if (e.key === 'ArrowRight') setMainImage(currentIdx + 1);
+    if (e.key === 'ArrowLeft')  setMainImage(currentIdx - 1);
+  }
+});
+
+// ── URL PARAM PARSING ────────────────────────────────────────────────────────
+function getQueryParams() {
+  const params = {};
+  window.location.search.replace(/\??([^=&]+)=([^&]*)/g, (_, k, v) => params[k] = decodeURIComponent(v));
+  return params;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const params = getQueryParams();
+  renderGrid('all');
+  // Only set main heading if product param exists, do not open overlay automatically
+  if (params.product) {
+    let prod = null;
+    if (/^\d+$/.test(params.product)) prod = products.find(p => p.id == params.product);
+    else prod = products.find(p => p.name.replace(/\s+/g,'').toLowerCase() === params.product.replace(/\s+/g,'').toLowerCase());
+    if (prod) {
+      document.getElementById('main-catalogue-title').textContent = prod.category;
+    } else {
+      document.getElementById('main-catalogue-title').textContent = 'Our Products';
+    }
+  } else {
+    document.getElementById('main-catalogue-title').textContent = 'Our Products';
+  }
+});
+</script>
+</body>
+</html>

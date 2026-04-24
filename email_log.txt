@@ -1,0 +1,22 @@
+
+==================================================
+EMAIL SENT: 2025-11-07 11:57:17
+FROM: info@temaco.rw
+TO: info@temacobuilders.com
+SUBJECT: New Contact Form Submission from IGIHOZO Gady
+------------------------------
+You received a new contact form submission.
+
+Name: IGIHOZO Gady
+Email: igihozogady@gmail.com
+Phone: +250 786 789 813
+Project Type: commercial
+
+Message:
+testing
+
+---
+Sent from: TEMACO Builders Website Contact Form
+Time: 2025-11-07 11:57:17
+
+==================================================
