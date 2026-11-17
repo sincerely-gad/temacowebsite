@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Temaco Product Catalogue</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#B4470F}a:hover{color:#8A350A}
+input::placeholder{color:#6B6B6B}
+input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: Poppins, system-ui, sans-serif; color: #141414; background: #FFFFFF; min-height: 100vh">
+
+  <div style="height: 6px; background: {{accent}}"></div>
+  <header style="background: #141414; border-bottom: 1px solid #2C2C2C">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 32px 48px; text-align: center">
+      <div style="width: 42px; height: 4px; margin: 0 auto 18px; background: {{accent}}"></div>
+      <h1 style="margin: 0; color: #FFFFFF; font-size: clamp(36px, 6vw, 64px); font-weight: 600; line-height: 1; letter-spacing: -0.025em">Product Catalogue</h1>
+    </div>
+  </header>
+
+  <section id="catalogue" style="max-width: 1320px; margin: 0 auto; padding: 36px 32px 72px; display: flex; flex-direction: column; gap: 20px">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+      <div role="group" aria-label="Filter by category" style="display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 640px">
+        <sc-for list="{{cats}}" as="c" hint-placeholder-count="9">
+          <button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}} <span style="{{c.countStyle}}">{{c.count}}</span></button>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; flex: 0 1 320px; min-width: 240px">
+        <label for="q" style="font-size: 12px; font-weight: 600; color: #4A4A4A">Search</label>
+        <input id="q" type="search" value="{{q}}" onChange="{{onSearch}}" placeholder="Code, name, size or colour" style="height: 44px; padding: 0 14px; border: 1px solid #BDBAB4; background: #FFFFFF; font: inherit; font-size: 14px; color: #141414">
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: #4A4A4A">
+      <span>Showing <strong style="color: #141414">{{shown}}</strong> of {{total}} products</span>
+      <span>Sizes in mm (L × W × thickness) · Strength = compressive resistance</span>
+    </div>
+
+    <div style="overflow-x: auto; border: 1px solid #E7E5E1">
+      <table style="width: 100%; min-width: 1120px; border-collapse: collapse; font-size: 14px">
+        <thead>
+          <tr style="background: #141414; color: #FFFFFF; text-align: left">
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; width: 96px">Product</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Name and code</span></th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Category</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Size (mm)</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right">Pcs / m²</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Colours</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Strength</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Best for</th>
+            <th scope="col" style="padding: 14px 16px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Action</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{rows}}" as="p" hint-placeholder-count="10">
+            <tr style="{{p.rowStyle}}">
+              <td style="padding: 12px 16px; position: relative">
+                <button type="button" onClick="{{p.open}}" onMouseEnter="{{p.enter}}" onMouseLeave="{{p.leave}}" onFocus="{{p.enter}}" onBlur="{{p.leave}}" aria-label="View larger photo of {{p.name}}" style="display: block; padding: 0; border: 0; background: none; cursor: zoom-in">
+                  <img src="{{p.img}}" alt="" style="display: block; width: 72px; height: 72px; object-fit: cover; background: #EEECE8">
+                </button>
+                <sc-if value="{{p.hovered}}" hint-placeholder-val="{{ false }}">
+                  <div style="{{p.popStyle}}">
+                    <img src="{{p.big}}" alt="{{p.name}}" style="display: block; width: 440px; height: 320px; object-fit: cover; background: #F1EFEB">
+                    <div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+                      <div style="display: flex; flex-direction: column; gap: 3px">
+                        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: #B4470F">{{p.code}}</span>
+                        <span style="font-weight: 600; font-size: 16px; color: #141414">{{p.name}}</span>
+                      </div>
+                      <span style="font-size: 13px; color: #4A4A4A">{{p.size}} mm · {{p.colors}}</span>
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; padding-top: 8px; border-top: 1px solid #E7E5E1">
+                        <span style="font-size: 12px; font-weight: 600; color: #B4470F">{{p.galleryCount}} images</span>
+                        <span style="font-size: 12px; color: #4A4A4A">{{p.galleryPrompt}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </sc-if>
+              </td>
+              <td style="padding: 12px 16px; min-width: 190px">
+                <div onMouseEnter="{{p.enter}}" onMouseLeave="{{p.leave}}" style="display: flex; flex-direction: column; gap: 3px; cursor: default">
+                  <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: #B4470F">{{p.code}}</span>
+                  <span style="font-weight: 600; font-size: 15px; color: #141414">{{p.name}}</span>
+                </div>
+              </td>
+              <td style="padding: 12px 16px">
+                <span style="display: inline-block; padding: 4px 10px; background: #F1EFEB; color: #3A3A3A; font-size: 12px; font-weight: 500; white-space: nowrap">{{p.cat}}</span>
+              </td>
+              <td style="padding: 12px 16px; color: #2A2A2A; white-space: nowrap; font-variant-numeric: tabular-nums">{{p.size}}</td>
+              <td style="padding: 12px 16px; color: #2A2A2A; text-align: right; font-variant-numeric: tabular-nums">{{p.pcs}}</td>
+              <td style="padding: 12px 16px; color: #2A2A2A; min-width: 150px">{{p.colors}}</td>
+              <td style="padding: 12px 16px; color: #2A2A2A; white-space: nowrap">{{p.mpa}}</td>
+              <td style="padding: 12px 16px; color: #2A2A2A; min-width: 130px">{{p.use}}</td>
+              <td style="padding: 12px 16px; text-align: right">
+                <button type="button" onClick="{{p.quote}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid #141414; background: #FFFFFF; color: #141414; font: inherit; font-weight: 600; font-size: 13px; white-space: nowrap; cursor: pointer">Get quote</button>
+              </td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+      <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 48px 16px; text-align: center; color: #4A4A4A">No products match your search. Try a code like TP12 or a size like 400.</div>
+      </sc-if>
+    </div>
+
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4A4A4A">All concrete products use Portland cement 42.5, 4–8 mm aggregate, iron-oxide pigments and Sika admixtures, with integral and surface waterproofing. Custom colours and sizes available on request.</p>
+  </section>
+
+  <sc-if value="{{hasOpen}}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="{{cur.name}}" style="position: fixed; inset: 0; z-index: 50; background: rgba(12, 12, 12, 0.86); display: flex; align-items: center; justify-content: center; padding: 24px">
+      <button type="button" onClick="{{close}}" aria-label="Close" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; background: transparent; cursor: zoom-out"></button>
+      <div style="position: relative; display: flex; flex-direction: column; width: 100%; max-width: 980px; max-height: 100%; background: #FFFFFF">
+        <img src="{{curImage}}" alt="{{cur.name}}" style="display: block; width: 100%; height: 62vh; object-fit: contain; background: #141414">
+        <sc-if value="{{hasMultipleImages}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; gap: 8px; overflow-x: auto; padding: 10px 24px; background: #F1EFEB">
+            <sc-for each="{{thumbs}}" as="thumb">
+              <button type="button" onClick="{{thumb.pick}}" aria-label="View image {{thumb.number}}" style="flex: 0 0 auto; width: 72px; height: 54px; padding: 2px; border: {{thumb.border}}; background: #FFFFFF; cursor: pointer">
+                <img src="{{thumb.src}}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover">
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 3px">
+              <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #B4470F">{{cur.code}}</span>
+              <span style="font-weight: 600; font-size: 20px; color: #141414">{{cur.name}}</span>
+              <span style="font-size: 12px; color: #4A4A4A">Image {{imagePos}} of {{imageTotal}}</span>
+            </div>
+            <span style="font-size: 14px; color: #4A4A4A">{{cur.cat}} · {{cur.size}} mm · {{cur.colors}} · {{cur.mpa}}</span>
+          </div>
+          <div style="display: flex; gap: 8px">
+            <sc-if value="{{hasMultipleImages}}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{imagePrev}}" aria-label="Previous image" style="width: 44px; height: 44px; border: 1px solid #141414; background: #FFFFFF; color: #141414; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+              <button type="button" onClick="{{imageNext}}" aria-label="Next image" style="width: 44px; height: 44px; border: 1px solid #141414; background: #FFFFFF; color: #141414; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+            </sc-if>
+            <button type="button" onClick="{{openQuote}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 0; background: #141414; color: #FFFFFF; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer">Get quote</button>
+            <button type="button" onClick="{{close}}" aria-label="Close" style="width: 44px; height: 44px; border: 0; background: {{accent}}; color: #141414; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{quoteOpen}}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Request a quote" style="position: fixed; inset: 0; z-index: 80; background: rgba(12, 12, 12, 0.82); display: flex; align-items: center; justify-content: center; padding: 20px">
+      <button type="button" onClick="{{closeQuote}}" aria-label="Close quote form" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; cursor: default"></button>
+      <form onSubmit="{{submitQuote}}" style="position: relative; width: 100%; max-width: 720px; max-height: calc(100vh - 40px); overflow-y: auto; padding: 32px; box-sizing: border-box; background: #FFFFFF; box-shadow: 0 24px 80px rgba(0,0,0,0.35)">
+        <button type="button" onClick="{{closeQuote}}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border: 0; background: #F1EFEB; cursor: pointer; font-size: 22px; line-height: 1">&times;</button>
+        <div style="width: 38px; height: 4px; margin-bottom: 16px; background: {{accent}}"></div>
+        <h2 style="margin: 0 48px 6px 0; font-size: 28px; line-height: 1.2">Request a quote</h2>
+        <p style="margin: 0 0 24px; color: #4A4A4A; font-size: 14px">{{quoteCode}} &mdash; {{quoteName}}</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+          <label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600">Full name *
+            <input name="name" type="text" required placeholder="Your full name" style="height: 46px; padding: 0 13px; border: 1px solid #BDBAB4; font: inherit; font-size: 14px; box-sizing: border-box">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600">Email address *
+            <input name="email" type="email" required placeholder="you@example.com" style="height: 46px; padding: 0 13px; border: 1px solid #BDBAB4; font: inherit; font-size: 14px; box-sizing: border-box">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600">Phone number
+            <input name="phone" type="tel" placeholder="+250 7XX XXX XXX" style="height: 46px; padding: 0 13px; border: 1px solid #BDBAB4; font: inherit; font-size: 14px; box-sizing: border-box">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600">Quantity needed *
+            <input name="quantity" type="text" required placeholder="e.g. 120 m² or 500 pieces" style="height: 46px; padding: 0 13px; border: 1px solid #BDBAB4; font: inherit; font-size: 14px; box-sizing: border-box">
+          </label>
+        </div>
+        <label style="display: flex; flex-direction: column; gap: 7px; margin-top: 16px; font-size: 12px; font-weight: 600">Delivery location *
+          <input name="location" type="text" required placeholder="District, city or project site" style="height: 46px; padding: 0 13px; border: 1px solid #BDBAB4; font: inherit; font-size: 14px; box-sizing: border-box">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 7px; margin-top: 16px; font-size: 12px; font-weight: 600">Project details or special requirements
+          <textarea name="notes" rows="4" placeholder="Colour, required date, project type, or any questions" style="padding: 12px 13px; border: 1px solid #BDBAB4; resize: vertical; font: inherit; font-size: 14px; box-sizing: border-box"></textarea>
+        </label>
+        <sc-if value="{{quoteHasStatus}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="margin-top: 16px; padding: 12px 14px; background: {{quoteStatusBg}}; color: {{quoteStatusColor}}; font-size: 13px">{{quoteStatus}}</div>
+        </sc-if>
+        <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 22px">
+          <button type="button" onClick="{{closeQuote}}" style="min-height: 46px; padding: 0 18px; border: 1px solid #BDBAB4; background: #FFFFFF; color: #141414; font: inherit; font-weight: 600; cursor: pointer">Cancel</button>
+          <button type="submit" disabled="{{quoteSending}}" style="min-height: 46px; padding: 0 22px; border: 0; background: {{accent}}; color: #141414; font: inherit; font-weight: 700; cursor: pointer">{{quoteButton}}</button>
+        </div>
+      </form>
+    </div>
+  </sc-if>
+
+  <footer id="contact" style="background: #141414; color: #FFFFFF">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 56px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <h2 style="margin: 0; font-size: 26px; font-weight: 600">Request a quote</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #CFCFCF">Send us the product codes, quantities (m² or pieces) and delivery location. We reply with pricing and lead time.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Call / WhatsApp</span>
+        <span>[PHONE NUMBER]</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}; margin-top: 12px">Email</span>
+        <span>[SALES EMAIL]</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">Factory</span>
+        <span>Masoro Special Economic Zone, Ndera, Kigali, Rwanda</span>
+        <a href="https://temaco.rw" style="color: #FFFFFF; margin-top: 12px">temaco.rw</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#EE6A24","options":["#EE6A24","#141414","#B4470F"]},"$preview":{"width":1440,"height":5900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cat: 'all', q: '', imageIndex: 0, quoteOpen: false, quoteCode: '', quoteStatus: '', quoteSending: false };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#EE6A24';
+    const imageSlug = (code) => code.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const V = 'Grey, black, paintable';
+    const VU = 'Facade screens, ventilation walls, partitions';
+    const P = [
+      ['TP001', 'Flower paver', 'Pavers', '60 thk', '20', 'Grey, black, paintable', '25–30 MPa', 'Walkways, driveways', '96d459d9a56271599383e751cf11b12a', 'ed7867342ddb9b81059c8112e8c1f5f4'],
+      ['TP002', 'T-Star & Round paver', 'Pavers', '60 thk', '18', 'Grey, black, light grey', '25–30 MPa', 'Walkways, plazas', '982e40c132b756b8531c0dff5be4f753', '07100548cfa771fb672e0c9201794e60'],
+      ['TP003', 'T-Prism paver', 'Pavers', '60 thk', '20.6', 'Grey, black, light grey, paintable', '25–30 MPa', 'Walkways, driveways', '7715df360d6cc4bb3c69093655492772', 'edb063b696a1849e1bac456fcd4c911b'],
+      ['TP006', 'T-Kindle paver', 'Pavers', '60 thk', '20', 'Grey, black, paintable', '25–30 MPa', 'Walkways, driveways', '512dc211de5749103247c010c2206696', '6e2e926dee32be46ca8da04ae8a33c85'],
+      ['TP7 R', 'Rectangle paver', 'Pavers', '250 × 125 × 60', '32', 'Grey, black, white', '25–30 MPa', 'Walkways, driveways', '8206a7f1188c79d2165b3ce0afc0c5a0', '16b651b8c960ceea5425cf5a3ce13815'],
+      ['TP7 BS', 'Big square paver', 'Pavers', '250 × 250 × 60', '16', 'Grey, black, white', '25–30 MPa', 'Walkways, patios', '7c2cbc763b26b2976a365e8bdf6c68a6', 'a90e28a7d7ddec5cbe867079458c8ec7'],
+      ['TP7 SS', 'Small square paver', 'Pavers', '125 × 125 × 60', '64', 'Grey, black, white', '25–30 MPa', 'Walkways, patios', '71fff9783a5256dc3593d522e15e5c82', 'e55a469f2bdd947ee1e2dee2d8247bc2'],
+      ['TP8 A', 'Slab paver A', 'Pavers', '400 × 200 × 60', '13', 'Grey, black, white', '25–30 MPa', 'Walkways, patios', 'e86951cbb7096f16013d8f39f422f0be', 'cc5aec074ff7a4f2faaf08df5caa220a'],
+      ['TP8 B', 'Slab paver B', 'Pavers', '400 × 200 × 60', '12.5', 'Light grey, dark grey', '25–30 MPa', 'Walkways, patios', 'b84c2954f42032e26e74fa90c91bd209', 'b99e9196ea97b2252afa54c8e77bcbc5'],
+      ['TP8 C', 'Large slab paver', 'Pavers', '800 × 400 × 40', '3.125', 'Light grey, dark grey', '28–30 MPa', 'Walkways', '3eaa43341ad5471f6404702a25b2c2f4', '793b9bcca48eac1cce133500635724b1'],
+      ['TP9', 'Grass paver', 'Pavers', '390 · 60 thk', '4', 'Light grey, paintable', '25–30 MPa', 'Green parking, lawns', '582990ec9c7ad43822089fe87f6e57e9', '19b3fdd5ad2e8347527950d044713497'],
+      ['TP10', 'Large slab paver', 'Pavers', '800 × 400 × 60', '3.1', 'Light grey, dark grey', '25–30 MPa', 'Walkways, garden paths', '99c28d09a195191baa01a341dd7dfa45', 'dc661d6f1ce37013674d6624c0442eac'],
+      ['TP12', 'Inzovu paver', 'Pavers', '385 × 75 × 80', '34.6', 'Light grey, terracotta, brown', '30–35 MPa', 'Parking', '2309881abfcd77043bfde49107eb8da2', '68580278907b7a4ea233382579777981'],
+      ['TP12-S', 'Inzovu spacer paver', 'Pavers', '385 × 75 × 70', '—', 'Light grey, terracotta, brown', '28–35 MPa', 'Green parking', 'f954b681d8735419c8936332903d4024', '347c415cfe06362d48ccb4f61e3d2d45'],
+      ['TP13', 'Brick paver', 'Pavers', '230 × 75 × 70', '54', 'Light grey, terracotta, brown', '28–30 MPa', 'Parking', '95b04f40893d96738c196585ab6a88b0', '24135ff2bd3f0132312d3f645302b8f7'],
+      ['TP14', 'Square slab paver', 'Pavers', '280 × 230 × 60', '12.5', 'Light grey', '25–30 MPa', 'Walkways, patios', 'a81c88e8205dc5bc4d52a6d55c6cf658', '5200b59f179e85805aa06f5f098b4468'],
+      ['TP15', 'Tactile paver, dots', 'Pavers', '60 thk', '12', 'Grey', '25–30 MPa', 'Accessible walkways', '60d6b293c35935aff791f49c4c2dfd97', '62a5fad0f096d046770e70a82799a262'],
+      ['TP16', 'Tactile paver, slotted', 'Pavers', '60 thk', '12', 'Grey', '25–30 MPa', 'Accessible walkways', '27aaa7408bfd5eda5387268cb6a42693', 'e246a1fbac39fdac5c776789eb36cbce'],
+      ['TP17', 'Hexagon paver', 'Pavers', '60 thk', '12.5', 'Light grey', '25–30 MPa', 'Walkways, plazas', '7b5352b62a2356d6249f4028bc2a4291', 'a7bccb5c2c96f640d5831a179d3e788c'],
+      ['TP18', 'Grass hexagon paver', 'Pavers', '60 thk', '12.5', 'Light grey', '25–30 MPa', 'Green parking, landscaping', 'cee586f797e4f022dd256c4053ee014c', '749ef981b9e15bb93bc29d58c734c671'],
+      ['TT1', 'Patterned tile 1', 'Tiles', '300 × 300 × 30', '11', 'Grey, red, black, paintable', '15–20 MPa', 'Terraces, courtyards', 'ace43b33f33cbae8542d77d3913942d4', '7d4cc08223f0303dfd493ad0c738cf29'],
+      ['TT2', 'Patterned tile 2', 'Tiles', '300 × 300 × 30', '11', 'Grey, red, paintable', '15–20 MPa', 'Terraces, courtyards', '6da08053a63e56acca8903719266a779', '550b50bb2ac3ab923e9f0034ba163111'],
+      ['TT3', 'Patterned tile 3', 'Tiles', '300 × 300 × 30', '11', 'Grey, black, paintable', '15–20 MPa', 'Terraces, courtyards', 'c382395331aaa9baecd5a19f83d63903', 'f050e4c3a49083ab8d478ef509d35f30'],
+      ['TT4', 'Plain tile', 'Tiles', '600 × 300 × 30', '5.55', 'Light grey, dark grey', '25–30 MPa', 'Terraces, walkways', 'bd2d3ebe94d3143ac92a4cfb003ea970', '5bad0fd644d47f1a423740bd18d9a431'],
+      ['TT5', 'Square tile', 'Tiles', '380 × 380 × 30', '6.9', 'Light grey', '25–30 MPa', 'Terraces, walkways', '28bb5d7f1e9246f9080145fa6a62d0d8', '801c1861ca0773e25f096bf26a396894'],
+      ['TT6', 'Large square tile', 'Tiles', '600 × 600 × 30', '2.8', 'Light grey', '25–30 MPa', 'Terraces, pool decks', '289c618aa7a56c3e282bf44719d94f25', '4d50914a594cbfe27a9b5daf4f8eb94d'],
+      ['TT7', 'Crazy-paving tile', 'Tiles', '340 × 200 × 30', '14.7', 'Light grey, dark grey', '25–30 MPa', 'Garden paths, terraces', '2e8b8ef8a2bacb398ebc0fc7235437e8', '1e0038883eb838c14a32a5c9dbe0dc08'],
+      ['RK-120C', 'Road kerb, chamfered', 'Road kerbs', '800 × 250 × 120', '—', 'Light grey', '28–30 MPa', 'Roads, pedestrian walkways', 'c2bdc2735e6fae043f438b123731d41c', '509b33576f2c858a972a3f1f97605781'],
+      ['RK-80', 'Road kerb, slim', 'Road kerbs', '800 × 250 × 80', '—', 'Light grey', '28–30 MPa', 'Pedestrian walkways, gardens', 'c42a3e2995fb27bb87bea89c9f4b59f6', '1c1f6e23819ab31916d17a370d293a74'],
+      ['RK-120', 'Road kerb, straight', 'Road kerbs', '800 × 250 × 120', '—', 'Light grey', '28–30 MPa', 'Roads, pedestrian walkways', '1ffec0d60f353735b7ef7dedd1b1ecd0', 'e86171b5a50034615a2f9ed60bb4c89e'],
+      ['TVB1', 'Ventilation block 1', 'Ventilation blocks', '200 × 200 × 65', '25', V, '—', VU, '8ce0b9c11ee78a6e31adcc89db1b7cbe', '40fd26d344bdfc1f14a00e8525b9a202'],
+      ['TVB2', 'Ventilation block 2', 'Ventilation blocks', '300 × 300 × 60', '11', V, '—', VU, 'f0bd50915cd0650f87a9fdbdc80de9fa', 'e36c11c68373cfaefca4eaca1538050a'],
+      ['TVB3', 'Ventilation block 3', 'Ventilation blocks', '300 × 300 × 65', '—', V, '—', VU, 'aae7b206d0d0d845f172adf140c12a27', '48233dcd8e059b970536e6897ae30621'],
+      ['TVB4', 'Ventilation block 4', 'Ventilation blocks', '250 × 250 × 65', '16', V, '—', VU, 'a9dd7639d8e3ab6b7873ce7ec7766093', '12dc90cd2b60e587741fdd4f221812cc'],
+      ['TVB5', 'Ventilation block 5', 'Ventilation blocks', '200 × 200 × 60', '25', V, '—', VU, 'af23035554b61ae893e8ce3e94176982', 'f5cf9905c9b001e10afa0a7ba04b1c81'],
+      ['TDS1', 'Slotted drain cover', 'Drains', '600 × 300 × 40', '—', 'Light grey', '20–25 MPa', 'Surface drainage', 'e69760dc70cbb25aef685bc91fd81b9b', '9ef1233282e3f44c779ddaf16e84f313'],
+      ['TDS3', 'Watergo drain channel', 'Drains', '600 long · 60 thk', '—', 'Light grey', '20–25 MPa', 'Surface drainage, gardens', '219d9276fd649011972531c9232ef765', '49c6a35c8832b2ef110349a668eb5b92'],
+      ['TB20-H', 'Hollow block 20', 'Blocks', '400 × 200 × 200', '10', 'Grey, paintable', '—', 'Walls', '7e9b80e8e941374fcc33f3a4c95f78fe', '42ad290b49cbb2afbe1643ee6f95afa0'],
+      ['TB15-H', 'Hollow block 15', 'Blocks', '400 × 150 × 200', '10', 'Grey, paintable', '—', 'Walls, partitions', 'eb69a95212fd490e6ae3a2ee22237336', '8d605ff0bcb4f7b6b41cc7feed871470'],
+      ['TB10-H', 'Hollow block 10', 'Blocks', '400 × 100 × 200', '10', 'Grey, paintable', '—', 'Partitions', '6e3fc3d423693e6eeabc8e038a98f0bc', '8e002dd1172b92e60c2141937657fabc'],
+      ['TB20-S', 'Solid block 20', 'Blocks', '400 × 200 × 200', '10', 'Grey, paintable', '—', 'Load-bearing walls', 'f134228f1fd3a836f14a77b58ee04e08', '071b2674f5daa7c5592cc38c6c8606fb'],
+      ['TB15-S', 'Solid block 15, split face', 'Blocks', '400 × 150 × 200', '10', 'Grey, paintable', '—', 'Feature walls', '299ed4d2b5918102e20abe0fdd90d836', 'dd42bc13bbe5f6878ec121a0f625a002'],
+      ['TC1', 'Stone cladding', 'Cladding', '20 thk', '—', 'Paintable', '15–20 MPa', 'Feature walls, facades', '9e8060acf1156ddbe3920ed5826de6f9', 'f6af2f441f80be8e1358ba879f3fbe5a'],
+      ['TC2', 'Fossil design cladding', 'Cladding', '20 thk', '—', 'Paintable', '15–20 MPa', 'Feature walls, facades', '1a272d932902b7464519ea4010db8583', '6db2dabb0e11625dc2bce4b2713181d8'],
+      ['TC3', 'Rectangular stone cladding', 'Cladding', '20 thk', '—', 'Paintable', '15–20 MPa', 'Feature walls, facades', 'b66d251fcf8296ce16a8f4fd1f3dac97', 'c4bd5d726d22a2d329d09aace2fa8fd7'],
+      ['TC4', 'Geometric 3D cladding', 'Cladding', '20 thk', '—', 'Paintable', '15–20 MPa', 'Interior and exterior walls', '0a4217aed531781f440efa3c4263bb65', '9d0983ae83e7198314b1df59b1e50159'],
+      ['PL-R', 'Rectangular fibreglass planter', 'Planters', '1000 × 600 × 650', '—', 'Grey, black', '—', 'With or without metal stand', 'f863d19e12fdf849fd8038e5ee75e52b', '7a92b27a054cc995078be3e9fbb8eb10'],
+      ['PL-BG', 'Black & gold round planter', 'Planters', 'Round', '—', 'Black with gold rim', '—', 'With or without metal stand', '3684fe8f8091357f45233e74febc50f3', 'c7cafefb6aacf256053f8a7ded692efc'],
+      ['PL-WG', 'White & grey round planter', 'Planters', 'Round', '—', 'White and grey', '—', 'Freestanding', 'e72e5750224db4d12ecc1f950e6330b3', '23f17fc31b81a62ab2ab54e8dd1de198']
+    ];
+    const productGallery = {
+      TP001: ['../img/paves/Pavers/tp1/img1.png', '../img/paves/Pavers/tp1/dazzle viri 2.JPG', '../img/paves/Pavers/tp1/IMG-20180319-WA0055.jpg'],
+      TP002: ['../img/paves/Pavers/tp2/05f56352-a570-4dce-bd75-b351a6cde5e7.jpg', '../img/paves/Pavers/tp2/img1.jpg', '../img/paves/Pavers/tp2/IMG_20210309_074906_434.jpg'],
+      TP003: ['../img/paves/Pavers/tp3/cover 2.jpg', '../img/paves/Pavers/tp3/1.jpg', '../img/paves/Pavers/tp3/3.jpg'],
+      'TP7 R': ['../img/paves/Pavers/tp7/download (2).jpg', '../img/paves/Pavers/tp7/Natural stone.jpg'],
+      'TP7 BS': ['../img/paves/Pavers/tp7/download (2).jpg', '../img/paves/Pavers/tp7/Natural stone.jpg'],
+      'TP7 SS': ['../img/paves/Pavers/tp7/download (2).jpg', '../img/paves/Pavers/tp7/Natural stone.jpg'],
+      TP9: ['../img/paves/Pavers/tp9/cover 2.jpeg', '../img/paves/Pavers/tp9/5.jpg'],
+      TP10: ['../img/paves/Pavers/tp10/1.webp', '../img/paves/Pavers/tp10/2.jpg', '../img/paves/Pavers/tp10/3.webp'],
+      TP12: ['../img/paves/Pavers/tp12/cover 2.jpg', '../img/paves/Pavers/tp12/1.jpg', '../img/paves/Pavers/tp12/2.jpg'],
+      TP15: ['../img/paves/Pavers/tp15/cover 2.jpg', '../img/paves/Pavers/tp15/ChatGPT Image Jun 22, 2026, 12_15_12 PM.png'],
+      TP16: ['../img/paves/Pavers/tp16/cover 2.png', '../img/paves/Pavers/tp16/ChatGPT Image Jun 22, 2026, 01_16_44 PM.png'],
+      TP17: ['../img/paves/Pavers/hexagonal paver/cover 2.jpg'],
+      TP18: ['../img/paves/Pavers/tp18/cover 2 .png', '../img/paves/Pavers/tp18/ChatGPT Image May 18, 2026, 10_17_52 AM.png', '../img/paves/Pavers/tp18/ChatGPT Image May 18, 2026, 11_02_39 AM.png'],
+      TT2: ['../img/paves/Tiles/tt2/2.jpg', '../img/paves/Tiles/tt2/3.jpg'],
+      TT3: ['../img/paves/Tiles/tt3/1.jpg', '../img/paves/Tiles/tt3/4.jpg', '../img/paves/Tiles/tt3/5.jpg'],
+      TT4: ['../img/paves/Tiles/tt4/1.jpg', '../img/paves/Tiles/tt4/2.jpg', '../img/paves/Tiles/tt4/3.jpg'],
+      TT7: ['../img/paves/Tiles/tt7/img1.jpg', '../img/paves/Tiles/tt7/catalogue.pdf.png'],
+      TVB1: ['../img/paves/breeze bricks/tv b1/1.jpg', '../img/paves/breeze bricks/tv b1/3.jpg', '../img/paves/breeze bricks/tv b1/4.jpg'],
+      TVB2: ['../img/paves/breeze bricks/tv b2/ChatGPT Image Jan 7, 2026, 09_01_53 AM.png', '../img/paves/breeze bricks/tv b2/cover for breeze bricks.png'],
+      TVB3: ['../img/paves/breeze bricks/tv b3/download (29).jpg', '../img/paves/breeze bricks/tv b3/download (30).jpg'],
+      TVB4: ['../img/paves/breeze bricks/tv b4/ChatGPT Image May 5, 2026, 09_04_47 AM.png', '../img/paves/breeze bricks/tv b4/ChatGPT Image May 5, 2026, 09_29_59 AM.png'],
+      TC1: ['../img/cladding/1.jpg', '../img/cladding/5.jpg'],
+      TC2: ['../img/cladding/2.jpg', '../img/cladding/6.jpg'],
+      TC3: ['../img/cladding/3.jpg', '../img/cladding/7.jpg'],
+      TC4: ['../img/cladding/4.jpg', '../img/cladding/8.jpg']
+    };
+    const products = P.map((r) => {
+      const mainImage = `assets/products/${imageSlug(r[0])}-hover.png`;
+      const extras = productGallery[r[0]] || [];
+      return {
+        code: r[0], name: r[1], cat: r[2], size: r[3], pcs: r[4], colors: r[5], mpa: r[6], use: r[7],
+        img: mainImage, big: mainImage, gallery: [...new Set([mainImage, ...extras])]
+      };
+    });
+    const catIds = ['all', 'Pavers', 'Tiles', 'Road kerbs', 'Ventilation blocks', 'Drains', 'Blocks', 'Cladding', 'Planters'];
+    const pillBase = 'display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid ';
+    const cats = catIds.map((id) => {
+      const on = this.state.cat === id;
+      return {
+        label: id === 'all' ? 'All products' : id,
+        count: id === 'all' ? products.length : products.filter((p) => p.cat === id).length,
+        pressed: on ? 'true' : 'false',
+        style: pillBase + (on ? '#141414; background: #141414; color: #FFFFFF; box-shadow: inset 0 -3px 0 ' + accent : '#D6D3CD; background: #FFFFFF; color: #141414'),
+        countStyle: 'font-size: 12px; font-weight: 600; padding: 1px 7px; ' + (on ? 'background: ' + accent + '; color: #141414' : 'background: #F1EFEB; color: #4A4A4A'),
+        pick: () => this.setState({ cat: id })
+      };
+    });
+    const q = this.state.q.trim().toLowerCase();
+    const filtered = products.filter((p) =>
+      (this.state.cat === 'all' || p.cat === this.state.cat) &&
+      (!q || (p.code + ' ' + p.name + ' ' + p.cat + ' ' + p.size + ' ' + p.colors + ' ' + p.use).toLowerCase().includes(q))
+    );
+    const n = filtered.length;
+    const popBase = 'position: absolute; left: 100px; z-index: 20; width: 440px; background: #FFFFFF; border: 1px solid #E7E5E1; box-shadow: 0 18px 48px rgba(20, 20, 20, 0.22); pointer-events: none; ';
+    const rows = filtered.map((p, i) => ({
+      ...p,
+      galleryCount: p.gallery.length,
+      galleryPrompt: p.gallery.length > 1 ? 'Click to open gallery  ← →' : 'Click to enlarge',
+      hovered: this.state.hover === p.code && !this.state.open,
+      popStyle: popBase + (i >= n - 4 && i > 2 ? 'bottom: 8px' : 'top: 8px'),
+      enter: () => this.setState({ hover: p.code }),
+      leave: () => this.setState({ hover: null }),
+      open: () => this.setState({ open: p.code, hover: null, imageIndex: 0 }),
+      quote: () => this.setState({ quoteOpen: true, quoteCode: p.code, quoteStatus: '', quoteSending: false }),
+      rowStyle: 'border-top: 1px solid #ECEAE6; background: ' + (this.state.hover === p.code ? '#FDF1EA' : (i % 2 ? '#FAF9F7' : '#FFFFFF'))
+    }));
+    const oi = filtered.findIndex((p) => p.code === this.state.open);
+    const cur = oi >= 0 ? filtered[oi] : (filtered[0] || products[0]);
+    const gallery = cur.gallery || [cur.big];
+    const imageIndex = ((this.state.imageIndex || 0) + gallery.length) % gallery.length;
+    const changeImage = (d) => () => this.setState({ imageIndex: (imageIndex + d + gallery.length) % gallery.length });
+    const thumbs = gallery.map((src, index) => ({
+      src,
+      number: index + 1,
+      border: index === imageIndex ? '2px solid ' + accent : '1px solid #D6D3CD',
+      pick: () => this.setState({ imageIndex: index })
+    }));
+    const quoteProduct = products.find((p) => p.code === this.state.quoteCode) || cur;
+    const submitQuote = async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const fields = new FormData(form);
+      const quantity = String(fields.get('quantity') || '').trim();
+      const location = String(fields.get('location') || '').trim();
+      const notes = String(fields.get('notes') || '').trim();
+      fields.set('project', `Product quote - ${quoteProduct.code}`);
+      fields.set('message', [
+        `Quote request for: ${quoteProduct.code} - ${quoteProduct.name}`,
+        `Category: ${quoteProduct.cat}`,
+        `Quantity: ${quantity}`,
+        `Delivery location: ${location}`,
+        notes ? `Project details: ${notes}` : ''
+      ].filter(Boolean).join('\n'));
+      this.setState({ quoteSending: true, quoteStatus: '' });
+      try {
+        const response = await fetch('../send_email_simple.php', { method: 'POST', body: fields });
+        const result = await response.json();
+        if (!response.ok || result.status !== 'success') throw new Error(result.message || 'Unable to send your quote request.');
+        form.reset();
+        this.setState({ quoteSending: false, quoteStatus: 'success' });
+      } catch (error) {
+        this.setState({ quoteSending: false, quoteStatus: 'Unable to send the quote request right now. Please try again or email info@temacobuilders.com.' });
+      }
+    };
+    return {
+      hasOpen: oi >= 0,
+      cur,
+      curImage: gallery[imageIndex],
+      imagePos: imageIndex + 1,
+      imageTotal: gallery.length,
+      hasMultipleImages: gallery.length > 1,
+      imagePrev: changeImage(-1),
+      imageNext: changeImage(1),
+      thumbs,
+      close: () => this.setState({ open: null }),
+      openQuote: () => this.setState({ quoteOpen: true, quoteCode: cur.code, quoteStatus: '', quoteSending: false }),
+      closeQuote: () => this.setState({ quoteOpen: false, quoteStatus: '', quoteSending: false }),
+      quoteOpen: this.state.quoteOpen,
+      quoteCode: quoteProduct.code,
+      quoteName: quoteProduct.name,
+      quoteSending: this.state.quoteSending,
+      quoteButton: this.state.quoteSending ? 'Sending...' : 'Send quote request',
+      quoteHasStatus: Boolean(this.state.quoteStatus),
+      quoteStatus: this.state.quoteStatus === 'success' ? 'Thank you. Your quote request has been sent to info@temacobuilders.com.' : this.state.quoteStatus,
+      quoteStatusBg: this.state.quoteStatus === 'success' ? '#E8F5EC' : '#FDECEA',
+      quoteStatusColor: this.state.quoteStatus === 'success' ? '#176B36' : '#9E2A20',
+      submitQuote,
+      accent,
+      cats,
+      rows,
+      q: this.state.q,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+      shown: rows.length,
+      total: products.length,
+      empty: rows.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>

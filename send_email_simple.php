@@ -33,7 +33,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 // Build the message
 $safeName = str_replace(["\r", "\n"], ' ', $name);
 $safeEmail = str_replace(["\r", "\n"], '', $email);
-$subject = "New Contact Form Submission from {$safeName}";
+$isQuoteRequest = stripos($project, 'Product quote - ') === 0;
+$subject = $isQuoteRequest
+    ? "New Product Quote Request from {$safeName}"
+    : "New Contact Form Submission from {$safeName}";
 $emailContent = "You received a new contact form submission.\n\n";
 $emailContent .= "Name: {$safeName}\n";
 $emailContent .= "Email: {$safeEmail}\n";
