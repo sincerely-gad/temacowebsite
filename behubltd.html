@@ -27,9 +27,9 @@
         
         /* Header */
         header {
-            background: linear-gradient(135deg, #F96302 0%, #FF7A26 100%);
+            background: #f56421;
             color: white;
-            padding: 1rem 0;
+            padding: 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -40,15 +40,21 @@
         
         nav {
             display: flex;
+            min-height: 80px;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            letter-spacing: -0.5px;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            display: block;
+            max-width: 140px;
+            height: auto;
         }
         
         .nav-links {
@@ -536,7 +542,7 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">BE HUB</div>
+            <a class="logo" href="index.html" aria-label="TEMACO home"><img src="img/Logo.jpg" alt="TEMACO logo"></a>
             <ul class="nav-links">
                 <li><a href="#vision">Vision</a></li>
                 <li><a href="#values">Values</a></li>

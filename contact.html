@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | TEMACO</title>
+  <link rel="icon" href="img/logoo.png">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --orange:#f56421; --ink:#1a1714; --copy:#5d5650; --line:#e7ded7; --paper:#fff7f1; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding-top:80px; color:var(--ink); background:var(--paper); font-family:'DM Sans',sans-serif; }
+    .site-header { position:fixed; inset:0 0 auto; z-index:1000; height:80px; background:var(--orange); box-shadow:0 2px 10px rgba(0,0,0,.1); }
+    .nav-shell { width:min(1320px,calc(100% - 40px)); height:100%; margin:auto; display:flex; align-items:center; gap:36px; }
+    .brand { display:flex; align-items:center; margin-right:auto; }
+    .brand img { display:block; width:140px; max-height:64px; object-fit:contain; }
+    .nav-links { display:flex; align-items:center; gap:26px; margin:0; padding:0; list-style:none; }
+    .nav-links a { padding:27px 0 23px; color:#fff; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-decoration:none; }
+    .nav-links a:hover,.nav-links a:focus-visible,.nav-links a.active { border-bottom:4px solid #fff; }
+    .menu-toggle { display:none; border:0; background:transparent; color:#fff; font-size:1.5rem; cursor:pointer; }
+    .page-intro { padding:58px 20px 42px; background:#fff; text-align:center; }
+    .page-intro img { width:40px; height:auto; }
+    .page-intro h1 { margin:8px 0 0; font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,7vw,5.4rem); font-weight:400; line-height:1; letter-spacing:.03em; }
+    .contact-layout { width:min(1180px,calc(100% - 40px)); margin:0 auto; padding:70px 0 90px; display:grid; grid-template-columns:.85fr 1.15fr; gap:30px; align-items:start; }
+    .contact-details { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .contact-card { min-height:180px; padding:26px; background:#fff; border-top:3px solid var(--orange); box-shadow:0 12px 30px rgba(26,23,20,.07); }
+    .contact-card i { color:var(--orange); font-size:1.65rem; }
+    .contact-card h2 { margin:18px 0 10px; font-family:'Bebas Neue',sans-serif; font-size:1.55rem; font-weight:400; letter-spacing:.04em; }
+    .contact-card p { margin:0; color:var(--copy); font-size:.88rem; line-height:1.65; }
+    .contact-card a { color:var(--copy); text-decoration:none; }
+    .contact-card a:hover { color:var(--orange); }
+    .contact-form { padding:36px; background:#fff; box-shadow:0 16px 38px rgba(26,23,20,.09); }
+    .contact-form h2 { margin:0 0 28px; font-family:'Bebas Neue',sans-serif; font-size:2.4rem; font-weight:400; letter-spacing:.03em; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .form-group { margin-bottom:20px; }
+    .form-group.full { grid-column:1/-1; }
+    label { display:block; margin-bottom:8px; font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+    input,select,textarea { width:100%; padding:14px 15px; border:1px solid var(--line); border-radius:0; background:#fff; color:var(--ink); font:inherit; }
+    input:focus,select:focus,textarea:focus { outline:3px solid rgba(245,100,33,.15); border-color:var(--orange); }
+    textarea { min-height:150px; resize:vertical; }
+    .submit-button { width:100%; padding:15px 24px; border:2px solid var(--orange); background:var(--orange); color:#fff; cursor:pointer; font-size:.76rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; transition:.2s; }
+    .submit-button:hover { background:#fff; color:var(--orange); }
+    #formMessage { margin-top:18px; }
+    .alert { padding:14px 16px; border-left:4px solid; line-height:1.55; }
+    .alert-info { border-color:#2980b9; background:#eaf5fb; color:#174a66; }
+    .alert-success { border-color:#2e9c5b; background:#eaf8ef; color:#185a34; }
+    .alert-danger { border-color:#c0392b; background:#fcecea; color:#74261e; }
+    .btn-loading { cursor:wait; opacity:.7; }
+    footer { padding:30px 20px; background:var(--ink); color:#aaa29c; text-align:center; font-size:.82rem; }
+    footer a { color:#fff; text-decoration:none; }
+    @media (max-width:900px) { .contact-layout { grid-template-columns:1fr; } }
+    @media (max-width:820px) {
+      body { padding-top:64px; }
+      .site-header { height:64px; }
+      .brand img { width:112px; max-height:52px; }
+      .menu-toggle { display:block; }
+      .nav-links { position:absolute; top:64px; left:0; right:0; display:none; padding:10px 22px 20px; background:var(--orange); flex-direction:column; align-items:flex-start; gap:0; box-shadow:0 10px 20px rgba(0,0,0,.15); }
+      .nav-links.open { display:flex; }
+      .nav-links li,.nav-links a { width:100%; }
+      .nav-links a { display:block; padding:12px 0; }
+      .nav-links a:hover,.nav-links a:focus-visible,.nav-links a.active { border-bottom:1px solid rgba(255,255,255,.6); }
+    }
+    @media (max-width:600px) {
+      .page-intro { padding:42px 20px 32px; }
+      .contact-layout { width:calc(100% - 28px); padding:48px 0 64px; }
+      .contact-details,.form-grid { grid-template-columns:1fr; }
+      .form-group.full { grid-column:auto; }
+      .contact-form { padding:24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="index.html"><img src="img/Logo.jpg" alt="TEMACO"></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="contact-nav"><i class="fa-solid fa-bars"></i><span hidden>Menu</span></button>
+      <ul class="nav-links" id="contact-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#Products">Products</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="https://behub.space/" target="_blank" rel="noopener noreferrer">Subsidiaries</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a class="active" href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <img src="img/logo2.jpg" alt="">
+      <h1>Get In Touch</h1>
+    </section>
+    <section class="contact-layout" id="contact" aria-label="Contact TEMACO">
+      <div class="contact-details">
+        <article class="contact-card"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><h2>Location</h2><p>Kimironko, Kigali, Rwanda</p></article>
+        <article class="contact-card"><i class="fa-solid fa-phone" aria-hidden="true"></i><h2>Phone</h2><p><a href="tel:+250788316484">+250 788 316 484</a></p></article>
+        <article class="contact-card"><i class="fa-solid fa-envelope" aria-hidden="true"></i><h2>Email</h2><p><a href="mailto:info@temacobuilders.com">info@temacobuilders.com</a></p></article>
+        <article class="contact-card"><i class="fa-solid fa-globe" aria-hidden="true"></i><h2>Websites</h2><p><a href="https://www.temacobuilders.rw">temacobuilders.rw</a><br><a href="https://www.temaco.rw">temaco.rw</a></p></article>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <h2>Send A Message</h2>
+        <div class="form-grid">
+          <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" required></div>
+          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required></div>
+          <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+250 7XX XXX XXX"></div>
+          <div class="form-group"><label for="project">Project Type</label><select id="project" name="project"><option value="">Select Project Type</option><option value="residential">Residential Construction</option><option value="commercial">Commercial Building</option><option value="landscaping">Landscaping &amp; Paving</option><option value="infrastructure">Infrastructure Project</option><option value="other">Other</option></select></div>
+          <div class="form-group full"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell us about your project requirements, timeline, and budget..."></textarea></div>
+        </div>
+        <button class="submit-button" type="submit">Send Message →</button>
+        <div id="formMessage" style="display:none"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>© 2025 TEMACO Builders Ltd. All rights reserved. · <a href="about.html">About TEMACO</a></footer>
+  <script src="assets/js/phone-formatter.js"></script>
+  <script src="assets/js/contact-form.js?v=6"></script>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', function () {
+      const open = menu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+  </script>
+</body>
+</html>

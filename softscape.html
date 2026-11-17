@@ -112,7 +112,7 @@
 
     /* ── HERO ───────────────────────────────────────── */
     .hs-hero {
-      background: linear-gradient(135deg, #1a1714 0%, #2e2925 60%, #3a2a1a 100%);
+      background: linear-gradient(135deg, #1a0e07 0%, #2e1a0a 60%, #3a2010 100%);
       min-height: 360px;
       display: flex;
       align-items: flex-end;
@@ -124,10 +124,10 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(90deg, rgba(245,100,33,0.38) 0%, rgba(245,100,33,0.32) 100%), url('img/ecoteto/1.jpg');
+      background-image: url('img/ecoteto/1.jpg');
       background-size: cover;
       background-position: center;
-      opacity: 1;
+      opacity: 0.18;
     }
     .hs-hero-inner {
       position: relative;
@@ -149,15 +149,15 @@
       margin-bottom: 20px;
     }
     .hs-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-    .hs-breadcrumb a:hover { color: #333333; }
-    .hs-breadcrumb span { color: #333333; }
+    .hs-breadcrumb a:hover { color: #f56421; }
+    .hs-breadcrumb span { color: #f56421; }
     .hs-hero-eyebrow {
       font-family: 'DM Sans', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #333333;
+      color: #f56421;
       margin-bottom: 12px;
       display: block;
     }
@@ -169,7 +169,7 @@
       letter-spacing: 0.02em;
       margin: 0 0 18px;
     }
-    .hs-hero-title span { color: #333333; }
+    .hs-hero-title span { color: #f56421; }
     .hs-hero-desc {
       font-family: 'DM Sans', sans-serif;
       font-size: 15px;
@@ -212,8 +212,8 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .hs-tab:hover, .hs-tab.active {
-      color: #333333;
-      border-bottom-color: #333333;
+      color: #f56421;
+      border-bottom-color: #f56421;
     }
 
     /* ── CATEGORY SECTION ───────────────────────────── */
@@ -368,7 +368,7 @@
       left: 0 !important;
       width: 100vw !important;
       z-index: 99999 !important;
-      background: #333333 !important;
+      background: #f56421 !important;
       min-height: 80px !important;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
     }
@@ -376,13 +376,13 @@
     .navbar-links > li > a { color: #fff !important; }
     .navbar-links li:hover > a { border-bottom: 5px solid #fff !important; }
     .dropdown-menu {
-      background: #333333 !important;
+      background: #f56421 !important;
       z-index: 3000 !important;
     }
     .dropdown-menu li a { color: #fff !important; }
     .dropdown-menu li a:hover,
     .dropdown-menu li a:focus {
-      color: #333333 !important;
+      color: #f56421 !important;
       background: #fff !important;
     }
     @media (max-width: 900px) {
@@ -465,19 +465,16 @@
             <ul class="navbar-links">
               <li class="navbar-dropdown"><a href="index.html">Home</a></li>
               <li class="navbar-dropdown"><a href="index.html#Products">Products</a></li>
-              <li class="navbar-dropdown"><a href="index.html#services">Services</a></li>
               <li class="navbar-dropdown"><a href="index.html#projects">Projects</a></li>
-              <li class="navbar-dropdown"><a href="index.html#about">About</a></li>
+              <li class="navbar-dropdown"><a href="about.html">About Us</a></li>
               <li class="navbar-dropdown">
                 <a href="index.html#subsidiaries">Subsidiaries</a>
                 <ul class="dropdown-menu">
-                  <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
-                  <li><a href="behubltd.html">Be Hub Ltd</a></li>
-                  <li><a href="temacopro.html">Temaco Pro</a></li>
+                  <li><a href="https://behub.space/" target="_blank" rel="noopener noreferrer">beHub.space</a></li>
                 </ul>
               </li>
               <li class="navbar-dropdown"><a href="blog.html">Blog</a></li>
-              <li class="navbar-dropdown"><a href="index.html#contact">Contact</a></li>
+              <li class="navbar-dropdown"><a href="contact.html">Contact</a></li>
             </ul>
           </nav>
           <div class="header-search">
@@ -498,19 +495,16 @@
       <ul>
         <li class="menu-item-has-children"><a href="index.html">Home</a></li>
         <li class="navbar-dropdown"><a href="index.html#Products">Products</a></li>
-        <li class="navbar-dropdown"><a href="index.html#services">Services</a></li>
         <li class="navbar-dropdown"><a href="index.html#projects">Projects</a></li>
-        <li class="navbar-dropdown"><a href="index.html#about">About</a></li>
+        <li class="navbar-dropdown"><a href="about.html">About Us</a></li>
         <li class="menu-item-has-children">
           <a href="index.html#subsidiaries">Subsidiaries</a>
           <ul class="dropdown-menu">
-            <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
-            <li><a href="behubltd.html">Be Hub Ltd</a></li>
-            <li><a href="temacopro.html">Temaco Pro</a></li>
+            <li><a href="https://behub.space/" target="_blank" rel="noopener noreferrer">beHub.space</a></li>
           </ul>
         </li>
         <li class="navbar-dropdown"><a href="blog.html">Blog</a></li>
-        <li class="navbar-dropdown"><a href="index.html#contact">Contact</a></li>
+        <li class="navbar-dropdown"><a href="contact.html">Contact</a></li>
       </ul>
       <a href="JavaScript:void(0)" id="res-cross"></a>
     </div>
@@ -955,7 +949,7 @@
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/jquery.nice-select.min.js"></script>
   <script src="assets/js/jquery.fancybox.min.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/custom.js?v=2"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.7/swiper-bundle.min.js"></script>
 
   <!-- Tab active state on scroll -->

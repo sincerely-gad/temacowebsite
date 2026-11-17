@@ -341,3 +341,187 @@ section {
 .heading h2 {
     margin-top: 0.5rem;
 }
+
+/* =============== Services and Projects: Phone Layout =============== */
+
+@media screen and (max-width: 767px) {
+    #services.services {
+        padding: 3.5rem 0 !important;
+    }
+
+    #services .services-container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    #services .heading {
+        margin-bottom: 1.75rem !important;
+    }
+
+    #services .heading h2,
+    #projects .section-title {
+        font-size: clamp(2rem, 10vw, 2.5rem) !important;
+        line-height: 1.1;
+    }
+
+    #services .heading p,
+    #projects .section-subtitle {
+        max-width: 34rem;
+        margin-right: auto;
+        margin-left: auto;
+        font-size: 0.98rem !important;
+        line-height: 1.6;
+    }
+
+    #services .services-grid,
+    #services .services-secondary-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 1rem !important;
+        width: 100%;
+        max-width: 30rem !important;
+        margin: 0 auto !important;
+    }
+
+    #services .services-secondary-grid {
+        margin-top: 1rem !important;
+    }
+
+    #services .service-card {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 1.5rem 1.25rem;
+        border-radius: 1rem;
+    }
+
+    #services .service-icon {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    #services .service-card h3 {
+        margin-bottom: 0.65rem;
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    #services .service-card p {
+        margin-bottom: 0;
+        font-size: 0.94rem;
+        line-height: 1.65;
+    }
+
+    #projects {
+        padding: 3.5rem 0 !important;
+    }
+
+    #projects .container {
+        width: 100%;
+        padding: 0 1rem !important;
+    }
+
+    #projects .section-header {
+        margin-bottom: 2rem;
+    }
+
+    #projects .projects-slider {
+        width: 100%;
+        padding: 0.25rem 0 2.5rem;
+        overflow: hidden;
+    }
+
+    #projects .projects-slider .swiper-wrapper {
+        top: 0 !important;
+        align-items: stretch;
+    }
+
+    #projects .projects-slider .swiper-slide,
+    #projects .project-card {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0;
+        height: auto;
+        margin: 0;
+        border-radius: 1rem;
+    }
+
+    #projects .project-image {
+        height: clamp(12rem, 58vw, 14rem);
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    #projects .project-category {
+        top: 0.75rem;
+        left: 0.75rem;
+        max-width: calc(100% - 1.5rem);
+        padding: 0.35rem 0.7rem;
+        font-size: 0.7rem;
+        white-space: normal;
+    }
+
+    #projects .project-content {
+        padding: 1.25rem 1.1rem;
+    }
+
+    #projects .project-title {
+        margin-bottom: 0.65rem;
+        font-size: 1.3rem;
+    }
+
+    #projects .project-description {
+        margin-bottom: 1rem;
+        font-size: 0.94rem;
+        line-height: 1.6;
+    }
+
+    #projects .project-meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem 0.75rem;
+        margin-bottom: 0;
+    }
+
+    #projects .project-meta-item {
+        min-width: 0;
+        font-size: 0.82rem;
+        line-height: 1.35;
+    }
+
+    #projects .project-footer {
+        gap: 1rem;
+        padding-top: 1rem;
+    }
+
+    #projects .view-details-btn {
+        width: 100%;
+        min-height: 2.75rem;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+    }
+
+    #projects .projects-slider .swiper-pagination {
+        bottom: 0.2rem !important;
+    }
+
+    #projects .projects-slider .swiper-pagination-bullet {
+        width: 0.6rem;
+        height: 0.6rem;
+        margin: 0 0.3rem;
+        background: #f56421;
+    }
+}
+
+/* Two-column service cards on tablets, without changing desktop. */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    #services .services-grid,
+    #services .services-secondary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    #services .services-grid {
+        max-width: 46rem !important;
+    }
+}

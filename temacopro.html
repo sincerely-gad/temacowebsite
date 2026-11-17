@@ -20,7 +20,38 @@
             justify-content: center;
             overflow: hidden;
             position: relative;
+            padding: 100px 20px 20px;
         }
+
+        .temaco-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            min-height: 80px;
+            padding: 0 5vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: #f56421;
+            box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        }
+
+        .temaco-navbar-logo { display: inline-flex; align-items: center; }
+        .temaco-navbar-logo img { display: block; max-width: 140px; height: auto; }
+        .temaco-navbar-links { display: flex; align-items: center; gap: 24px; }
+        .temaco-navbar-links a {
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .temaco-navbar-links a:hover,
+        .temaco-navbar-links a:focus-visible { border-bottom: 3px solid #fff; }
 
         .background-animation {
             position: absolute;
@@ -153,6 +184,9 @@
         }
 
         @media (max-width: 600px) {
+            .temaco-navbar { min-height: 70px; padding: 0 20px; }
+            .temaco-navbar-logo img { width: 112px; }
+            .temaco-navbar-links a:not(:first-child) { display: none; }
             .container {
                 padding: 40px 20px;
             }
@@ -166,6 +200,14 @@
     </style>
 </head>
 <body>
+    <header class="temaco-navbar">
+        <a class="temaco-navbar-logo" href="index.html" aria-label="TEMACO home"><img src="img/Logo.jpg" alt="TEMACO logo"></a>
+        <nav class="temaco-navbar-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="Catalogue1.html">Products</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+    </header>
     <div class="background-animation">
         <div class="floating-shapes shape1"></div>
         <div class="floating-shapes shape2"></div>

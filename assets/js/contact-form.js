@@ -2,6 +2,78 @@
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
+    const jumpToContact = function() {
+      const contactSection = document.getElementById('contact');
+      if (!contactSection) return;
+
+      const root = document.documentElement;
+      const body = document.body;
+      const previousRootBehavior = root.style.getPropertyValue('scroll-behavior');
+      const previousRootPriority = root.style.getPropertyPriority('scroll-behavior');
+      const previousBodyBehavior = body.style.getPropertyValue('scroll-behavior');
+      const previousBodyPriority = body.style.getPropertyPriority('scroll-behavior');
+
+      root.style.setProperty('scroll-behavior', 'auto', 'important');
+      body.style.setProperty('scroll-behavior', 'auto', 'important');
+      const contactTop = window.scrollY + contactSection.getBoundingClientRect().top - 100;
+      window.scrollTo(0, Math.max(contactTop, 0));
+
+      window.setTimeout(() => {
+        if (previousRootBehavior) {
+          root.style.setProperty('scroll-behavior', previousRootBehavior, previousRootPriority);
+        } else {
+          root.style.removeProperty('scroll-behavior');
+        }
+        if (previousBodyBehavior) {
+          body.style.setProperty('scroll-behavior', previousBodyBehavior, previousBodyPriority);
+        } else {
+          body.style.removeProperty('scroll-behavior');
+        }
+      }, 50);
+    };
+
+    if (window.location.hash === '#contact' && !new URLSearchParams(window.location.search).has('quoteProduct')) {
+      window.setTimeout(jumpToContact, 350);
+    }
+
+    const quoteParams = new URLSearchParams(window.location.search);
+    const quotedProduct = quoteParams.get('quoteProduct');
+    const quotedSku = quoteParams.get('sku');
+    const quotedCategory = quoteParams.get('category');
+    const quotedProject = quoteParams.get('project');
+    const messageField = contactForm.querySelector('#message');
+    const projectField = contactForm.querySelector('#project');
+
+    if (quotedProduct && messageField) {
+      const skuText = quotedSku ? ` (SKU: ${quotedSku})` : '';
+      const categoryText = quotedCategory ? ` from the ${quotedCategory} collection` : '';
+      messageField.value = `I would like to request a quote for ${quotedProduct}${skuText}${categoryText}.\n\nQuantity and project details: `;
+      if (projectField) projectField.value = 'other';
+
+      const contactHeading = document.querySelector('#contact .heading h2');
+      if (contactHeading) contactHeading.textContent = `Request a Quote for ${quotedProduct}`;
+
+      const quoteNotice = document.createElement('div');
+      quoteNotice.className = 'quote-request-notice';
+      quoteNotice.setAttribute('role', 'status');
+      quoteNotice.textContent = `${quotedProduct} has been added to your quote request. Complete the details below and send it to our team.`;
+      contactForm.insertBefore(quoteNotice, contactForm.firstChild);
+      const quoteSubmitButton = contactForm.querySelector('button[type="submit"]');
+      if (quoteSubmitButton) quoteSubmitButton.innerHTML = 'Send Quote Request <span>→</span>';
+
+      if (window.location.hash === '#contact') {
+        window.setTimeout(jumpToContact, 350);
+        window.setTimeout(jumpToContact, 1200);
+      }
+    } else if (quotedProject && messageField) {
+      messageField.value = `I would like to discuss a similar project to ${quotedProject}.\n\nProject details: `;
+      if (projectField) projectField.value = 'infrastructure';
+      if (window.location.hash === '#contact') {
+        window.setTimeout(jumpToContact, 350);
+        window.setTimeout(jumpToContact, 1200);
+      }
+    }
+
     // Add onsubmit handler as a backup
     contactForm.onsubmit = function(e) {
       e.preventDefault();

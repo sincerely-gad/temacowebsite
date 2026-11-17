@@ -17,7 +17,42 @@
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0 20px 30px;
+        }
+
+        .temaco-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            min-height: 80px;
+            margin: 0 -20px 30px;
+            padding: 0 max(20px, calc((100vw - 1200px) / 2));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: #f56421;
+            box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        }
+
+        .temaco-navbar-logo { display: inline-flex; align-items: center; }
+        .temaco-navbar-logo img { display: block; max-width: 140px; height: auto; }
+        .temaco-navbar-links { display: flex; align-items: center; gap: 24px; }
+        .temaco-navbar-links a {
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .temaco-navbar-links a:hover,
+        .temaco-navbar-links a:focus-visible { border-bottom: 3px solid #fff; }
+
+        @media (max-width: 600px) {
+            .temaco-navbar { min-height: 70px; }
+            .temaco-navbar-logo img { width: 112px; }
+            .temaco-navbar-links a:not(:first-child) { display: none; }
         }
         
         .container {
@@ -164,6 +199,14 @@
     </style>
 </head>
 <body>
+    <header class="temaco-navbar">
+        <a class="temaco-navbar-logo" href="../index.html" aria-label="TEMACO home"><img src="../img/Logo.jpg" alt="TEMACO logo"></a>
+        <nav class="temaco-navbar-links" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../Catalogue1.html">Products</a>
+            <a href="../blog.html">Blog</a>
+        </nav>
+    </header>
     <div class="container">
         <div class="header">
             <h1>Contact TEMACO Builders</h1>

@@ -19,12 +19,12 @@
   <!-- style -->
   <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=1.2">
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=1.3">
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <script src="assets/js/preloader.js"></script>
   <script src="assets/js/phone-formatter.js"></script>
   <script src="assets/js/modal-fix.js"></script>
-  <script src="assets/js/contact-form.js"></script>
+    <script src="assets/js/contact-form.js?v=6"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
     <style>
@@ -664,7 +664,40 @@
     section + section,
     section.gap + section,
     section + .gap {
-      margin-top: 5px !important;
+      margin-top: 0 !important;
+    }
+    /* Compact homepage statistics strip and reduce the space between its items. */
+    .stats {
+      padding: 32px 0 !important;
+    }
+    .stats-container {
+      gap: 20px !important;
+      padding: 0 24px !important;
+    }
+    .stat-number {
+      margin-bottom: 4px !important;
+      font-size: 2.25rem !important;
+      line-height: 1 !important;
+    }
+    .stat-label {
+      font-size: 0.95rem !important;
+      line-height: 1.3 !important;
+    }
+    @media (max-width: 600px) {
+      .stats {
+        padding: 24px 0 !important;
+      }
+      .stats-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 18px 12px !important;
+        padding: 0 16px !important;
+      }
+      .stat-number {
+        font-size: 1.9rem !important;
+      }
+      .stat-label {
+        font-size: 0.82rem !important;
+      }
     }
     #our-team > .container > .heading,
     #our-team > .container > .heading * {
@@ -696,8 +729,21 @@
     }
     body > section.hero-two-section {
       margin-top: 0 !important;
-      padding-top: 100px !important; /* Increased from 100px */
-      padding-bottom: 60px !important; /* Add more space below for balance */
+      padding-top: 80px !important;
+      padding-bottom: 40px !important;
+    }
+    .hero-two-section .hero-two-text {
+      padding-bottom: 85px !important;
+    }
+    @media (max-width: 1200px) {
+      .hero-two-section .hero-two-text {
+        padding-bottom: 60px !important;
+      }
+    }
+    @media (max-width: 992px) {
+      .hero-two-section .hero-two-text {
+        padding-bottom: 35px !important;
+      }
     }
     .navbar-social-btn {
       gap: 20px !important;
@@ -747,6 +793,75 @@
     .dropdown-menu li a:focus {
       color: #f56421 !important;
       background: #fff !important;
+    }
+    .product-menu-link::after {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-left: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+    .navbar-dropdown:hover > .product-menu-link::after,
+    .navbar-dropdown:focus-within > .product-menu-link::after {
+      transform: translateY(2px) rotate(225deg);
+    }
+    .product-category-menu {
+      left: -18px;
+      width: 420px;
+      padding: 8px !important;
+      border-top: 3px solid #fff;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 18px 36px rgba(26, 23, 20, 0.22);
+    }
+    .navbar-dropdown:hover > .product-category-menu,
+    .navbar-dropdown:focus-within > .product-category-menu {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px 5px;
+    }
+    .product-category-menu li a {
+      padding: 7px 12px;
+      font-size: 0.84rem;
+      line-height: 1.25;
+    }
+    .product-category-menu li:hover > a,
+    .product-category-menu li:focus-within > a {
+      border-bottom: 0 !important;
+    }
+    .product-category-menu li:first-child {
+      grid-column: 1 / -1;
+    }
+    .product-category-menu li:first-child a {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 900px) {
+      .product-category-menu {
+        left: auto;
+        width: 100%;
+        padding: 6px 0 8px 18px !important;
+        border-top: 0;
+        box-shadow: none;
+      }
+      .product-category-menu li a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      .navbar-dropdown:hover > .product-category-menu,
+      .navbar-dropdown:focus-within > .product-category-menu {
+        display: flex;
+        flex-direction: column;
+      }
+      .product-category-menu li:first-child {
+        grid-column: auto;
+      }
     }
     .logo img {
       max-width: 140px !important;
@@ -818,7 +933,7 @@
     }
     .hero-two-section .swiper-slide img {
       max-width: 100%;
-      max-height: 480px;   /* Increased from 340px to 480px */
+      max-height: 470px;
       width: auto;
       height: auto;
       display: block;
@@ -830,7 +945,7 @@
     }
     @media (max-width: 900px) {
       .hero-two-section .swiper-slide img {
-        max-height: 300px; /* Increased from 180px to 260px */
+        max-height: 300px;
       }
     }
     
@@ -928,6 +1043,65 @@
       font-weight: 700;
       margin-bottom: 15px;
       font-size: 1.2rem;
+    }
+
+    .view-all-products-wrap {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 26px;
+    }
+
+    .view-all-products-btn {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 14px 28px;
+      border: 2px solid #f56421;
+      border-radius: 3px;
+      background: #f56421;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .view-all-products-btn:hover,
+    .view-all-products-btn:focus-visible {
+      background: #fff;
+      color: #f56421;
+      transform: translateY(-2px);
+    }
+
+    .view-all-products-btn span {
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .view-all-products-btn:hover span,
+    .view-all-products-btn:focus-visible span {
+      transform: translateX(4px);
+    }
+
+    .managed-product-new-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      padding: 7px 12px;
+      border-radius: 20px;
+      background: #1a1714;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 7px 18px rgba(0,0,0,0.2);
     }
     
     /* Enhanced Responsive Design */
@@ -1032,31 +1206,39 @@
               </li>
 
               <li class="navbar-dropdown">
-                <a href="#Products">Products</a>
+                <a href="#Products" class="product-menu-link" aria-haspopup="true">Products</a>
+                <ul class="dropdown-menu product-category-menu" aria-label="Product categories">
+                  <li><a href="Catalogue1.html">View All Products</a></li>
+                  <li><a href="Catalogue1.html?category=Pavers">Pavers</a></li>
+                  <li><a href="Catalogue1.html?category=Tiles">Floor Tiles</a></li>
+                  <li><a href="Catalogue1.html?category=Blocks">Cement Blocks</a></li>
+                  <li><a href="Catalogue1.html?category=Kerbs">Kerbs</a></li>
+                  <li><a href="Catalogue1.html?category=Drainage">Drainage</a></li>
+                  <li><a href="Catalogue1.html?category=Breeze%20Bricks">Ventilation Blocks</a></li>
+                  <li><a href="Catalogue1.html?category=Cast%20Stones">Cast Stones</a></li>
+                  <li><a href="Catalogue1.html?category=Terrazzo">Terrazzo</a></li>
+                  <li><a href="Catalogue1.html?category=Grass%20Block%20Pavers">Grass Block Pavers</a></li>
+                  <li><a href="Catalogue1.html?category=Cladding">Cladding</a></li>
+                  <li><a href="Catalogue1.html?category=Planters">Planters</a></li>
+                </ul>
               </li>
-              <li class="navbar-dropdown">
-                <a href="#services">Services</a>
-              </li>
-
               <li class="navbar-dropdown">
                 <a href="#projects">Projects</a>
               </li>
               <li class="navbar-dropdown">
-                <a href="#about">About</a>
-              </li>
-              <li class="navbar-dropdown">
                 <a href="#subsidiaries">Subsidiaries</a>
                 <ul class="dropdown-menu">
-                  <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
-                  <li><a href="behubltd.html">Be Hub Ltd</a></li>
-                  <li><a href="temacopro.html">Temaco Pro</a></li>
+                  <li><a href="https://behub.space/" target="_blank" rel="noopener noreferrer">beHub.space</a></li>
                 </ul>
+              </li>
+              <li class="navbar-dropdown">
+                <a href="about.html">About Us</a>
               </li>
               <li class="navbar-dropdown">
                 <a href="blog.html">Blog</a>
               </li>
               <li class="navbar-dropdown">
-                <a href="#contact">Contact</a>
+                <a href="contact.html">Contact</a>
               </li>
             </ul>
           </nav>
@@ -1086,31 +1268,39 @@
         </li>
 
         <li class="navbar-dropdown">
-          <a href="#Products">Products</a>
+          <a href="#Products" class="product-menu-link" aria-haspopup="true">Products</a>
+          <ul class="dropdown-menu product-category-menu" aria-label="Product categories">
+            <li><a href="Catalogue1.html">View All Products</a></li>
+            <li><a href="Catalogue1.html?category=Pavers">Pavers</a></li>
+            <li><a href="Catalogue1.html?category=Tiles">Floor Tiles</a></li>
+            <li><a href="Catalogue1.html?category=Blocks">Cement Blocks</a></li>
+            <li><a href="Catalogue1.html?category=Kerbs">Kerbs</a></li>
+            <li><a href="Catalogue1.html?category=Drainage">Drainage</a></li>
+            <li><a href="Catalogue1.html?category=Breeze%20Bricks">Ventilation Blocks</a></li>
+            <li><a href="Catalogue1.html?category=Cast%20Stones">Cast Stones</a></li>
+            <li><a href="Catalogue1.html?category=Terrazzo">Terrazzo</a></li>
+            <li><a href="Catalogue1.html?category=Grass%20Block%20Pavers">Grass Block Pavers</a></li>
+            <li><a href="Catalogue1.html?category=Cladding">Cladding</a></li>
+            <li><a href="Catalogue1.html?category=Planters">Planters</a></li>
+          </ul>
         </li>
-        <li class="navbar-dropdown">
-          <a href="#services">Services</a>
-        </li>
-
         <li class="navbar-dropdown">
           <a href="#projects">Projects</a>
-        </li>
-        <li class="navbar-dropdown">
-          <a href="#about">About</a>
         </li>
         <li class="menu-item-has-children">
           <a href="#subsidiaries">Subsidiaries</a>
           <ul class="dropdown-menu">
-            <li><a href="https://www.temacobuilders.rw/">Temaco Builders</a></li>
-            <li><a href="behubltd.html">Be Hub Ltd</a></li>
-            <li><a href="temacopro.html">Temaco Pro</a></li>
+            <li><a href="https://behub.space/" target="_blank" rel="noopener noreferrer">beHub.space</a></li>
           </ul>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="about.html">About Us</a>
         </li>
         <li class="navbar-dropdown">
           <a href="blog.html">Blog</a>
         </li>
         <li class="navbar-dropdown">
-          <a href="#contact">Contact</a>
+          <a href="contact.html">Contact</a>
         </li>
       </ul>
       <a href="JavaScript:void(0)" id="res-cross"></a>
@@ -1219,6 +1409,18 @@
       </div>
     </div>
   </section>
+  <style>
+    .quote-request-notice {
+      margin-bottom: 22px;
+      padding: 14px 16px;
+      border-left: 4px solid #f56421;
+      background: #fff4ed;
+      color: #653118;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    #contact { scroll-margin-top: 100px; }
+  </style>
   <section class="stats">
   <div class="stats-container">
     <div class="stat-item">
@@ -1244,15 +1446,6 @@
      WHAT WE DO — 3 PILLARS SECTION
 ════════════════════════════════════════════════════ -->
 <section id="what-we-do" class="pillars-section">
-
-  <div class="container">
-    <div class="heading" style="text-align:center; margin-bottom: 60px;">
-      <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
-      <h2>What We Do</h2>
-      <p>TEMACO is Rwanda's fully integrated landscape solutions company — from manufactured materials to living systems to complete project delivery.</p>
-    </div>
-  </div>
-
   <div class="pillars-grid">
 
     <!-- CARD 1: Hardscape -->
@@ -1271,7 +1464,7 @@
           <li><span class="list-diamond"></span>Adhesives &amp; Installation Systems</li>
         </ul>
         <div class="card-spacer"></div>
-        <a href="hardscape.html" class="card-btn">
+        <a href="Catalogue1.html?scope=hardscape" class="card-btn">
           Explore Products
           <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -1296,7 +1489,7 @@
           <li><span class="list-diamond"></span>Irrigation System Design &amp; Install</li>
         </ul>
         <div class="card-spacer"></div>
-        <a href="softscape.html" class="card-btn">
+        <a href="Catalogue1.html?scope=softscape" class="card-btn">
           Explore Softscape
           <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -1343,14 +1536,19 @@
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      min-height: 600px;
+      gap: 10px;
+      width: min(1740px, calc(100% - 32px));
+      min-height: 0;
+      margin: 0 auto;
     }
 
     /* ── Card ────────────────────────────────────────── */
     .pillar-card {
       position: relative;
+      min-height: 380px;
+      aspect-ratio: 1.65 / 1;
       overflow: hidden;
+      border-radius: 22px;
       cursor: pointer;
     }
     .card-bg {
@@ -1385,7 +1583,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 44px 40px 40px;
+      padding: 28px 30px 26px;
     }
     .card-eyebrow {
       font-family: 'DM Sans', sans-serif;
@@ -1394,19 +1592,19 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: #d4401a;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
     .card--services .card-eyebrow {
       color: rgba(255,255,255,0.75);
     }
     .card-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(44px, 5vw, 68px);
+      font-size: clamp(38px, 3.2vw, 50px);
       font-weight: 400;
       line-height: 1;
       letter-spacing: 0.03em;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     h3.card-title {
       font-size: clamp(17px, 1.8vw, 22px);
@@ -1415,21 +1613,21 @@
     }
     .card-desc {
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      line-height: 1.72;
+      font-size: 13px;
+      line-height: 1.55;
       font-weight: 300;
       color: rgba(255,255,255,0.8);
       max-width: 340px;
-      margin-bottom: 28px;
+      margin-bottom: 16px;
     }
 
     /* ── Hover-reveal list ───────────────────────────── */
     .card-list {
       list-style: none;
-      margin-bottom: 36px;
+      margin-bottom: 18px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       max-height: none;
       overflow: visible;
       opacity: 1;
@@ -1440,7 +1638,7 @@
       align-items: flex-start;
       gap: 10px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 13.5px;
+      font-size: 12.5px;
       font-weight: 400;
       color: rgba(255,255,255,0.88);
       line-height: 1.4;
@@ -1463,7 +1661,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 28px;
+      padding: 11px 22px;
       font-family: 'DM Sans', sans-serif;
       font-size: 11px;
       font-weight: 700;
@@ -1497,8 +1695,16 @@
 
     /* ── Mobile ──────────────────────────────────────── */
     @media (max-width: 860px) {
-      .pillars-grid { grid-template-columns: 1fr; }
-      .pillar-card { min-height: 520px; }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        width: min(100% - 32px, 620px);
+        gap: 10px;
+      }
+      .pillar-card {
+        min-height: 440px;
+        aspect-ratio: auto;
+        border-radius: 18px;
+      }
       .card-list { max-height: none; opacity: 1; transform: none; }
     }
   </style>
@@ -1509,15 +1715,65 @@
   <div class="container">
     <div class="heading" style="text-align:center; margin-bottom: 40px;">
       <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
-      <h2>Our Products</h2>
-      <p>High-quality concrete construction materials manufactured with precision and care to meet all your building needs.</p>
+      <h2>Our Product Categories</h2>
     </div>
-    <div class="products-card-grid">
+    <div class="view-all-products-wrap">
+      <a class="view-all-products-btn" href="Catalogue1.html" aria-label="View the complete TEMACO product catalogue">
+        View All Products <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+    <div class="products-card-grid product-category-grid" data-content-type="categories">
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Pavers" aria-label="Browse Pavers">
+        <div class="card-image"><img src="img/paves/Pavers/cover.png" alt="TEMACO concrete pavers"></div>
+        <div class="card-content"><h3 class="card-title">Pavers</h3><p class="card-subtitle">Browse the full paver range</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Breeze%20Bricks" aria-label="Browse Ventilation Blocks">
+        <div class="card-image"><img src="img/paves/breeze bricks/cover.png" alt="TEMACO ventilation blocks"></div>
+        <div class="card-content"><h3 class="card-title">Ventilation Blocks</h3><p class="card-subtitle">Browse decorative ventilation blocks</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Tiles" aria-label="Browse Floor Tiles">
+        <div class="card-image"><img src="img/paves/Tiles/tt4/floor tiles cover.png" alt="TEMACO floor tiles"></div>
+        <div class="card-content"><h3 class="card-title">Floor Tiles</h3><p class="card-subtitle">Browse all floor tiles</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Blocks" aria-label="Browse Cement Blocks">
+        <div class="card-image"><img src="img/concrete-block.jpg" alt="TEMACO cement blocks"></div>
+        <div class="card-content"><h3 class="card-title">Cement Blocks</h3><p class="card-subtitle">Browse all cement blocks</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Kerbs" aria-label="Browse Kerbs">
+        <div class="card-image"><img src="img/paves/kerbs/cover for kerbs.png" alt="TEMACO concrete kerbs"></div>
+        <div class="card-content"><h3 class="card-title">Kerbs</h3><p class="card-subtitle">Browse the full kerb range</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Drainage" aria-label="Browse Drainage products">
+        <div class="card-image"><img src="img/paves/Drainage/ChatGPT Image Mar 9, 2026, 10_27_08 AM.png" alt="TEMACO drainage products"></div>
+        <div class="card-content"><h3 class="card-title">Drainage</h3><p class="card-subtitle">Browse drainage solutions</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Cast%20Stones" aria-label="Browse Cast Stones">
+        <div class="card-image"><img src="img/cast.jpg" alt="TEMACO cast stones"></div>
+        <div class="card-content"><h3 class="card-title">Cast Stones</h3><p class="card-subtitle">Browse architectural cast stones</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Terrazzo" aria-label="Browse Terrazzo products">
+        <div class="card-image"><img src="img/paves/terrazzo/1.jpg" alt="TEMACO terrazzo products"></div>
+        <div class="card-content"><h3 class="card-title">Terrazzo</h3><p class="card-subtitle">Browse terrazzo finishes</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Grass%20Block%20Pavers" aria-label="Browse Grass Block Pavers">
+        <div class="card-image"><img src="img/paves/Pavers/tp18/grass block paver cover.png" alt="TEMACO grass block pavers"></div>
+        <div class="card-content"><h3 class="card-title">Grass Block Pavers</h3><p class="card-subtitle">Browse permeable pavers</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Cladding" aria-label="Browse Cladding">
+        <div class="card-image"><img src="img/cladding.jpg" alt="TEMACO wall cladding"></div>
+        <div class="card-content"><h3 class="card-title">Cladding</h3><p class="card-subtitle">Browse cladding finishes</p></div>
+      </a>
+      <a class="construction-card product-category-card" href="Catalogue1.html?category=Planters" aria-label="Browse Planters">
+        <div class="card-image"><img src="img/paves/Planters/ChatGPT Image Mar 2, 2026, 10_29_38 AM.png" alt="TEMACO planters"></div>
+        <div class="card-content"><h3 class="card-title">Planters</h3><p class="card-subtitle">Browse indoor and outdoor planters</p></div>
+      </a>
+    </div>
+    <div class="products-card-grid legacy-product-grid" hidden>
       <!-- Card 1 -->
-      <a class="construction-card" href="Catalogue1.html?product=1" data-images="img/tiles/1.jpg,img/tiles/2.jpg,img/tiles/3.jpg,img/tiles/4.jpg,img/tiles/5.jpg">
+      <a class="construction-card" href="Catalogue1.html?product=4" data-sku="TT4" data-images="img/paves/Tiles/tt4/floor tiles cover.png,img/paves/Tiles/tt4/1.jpg,img/paves/Tiles/tt4/2.jpg,img/paves/Tiles/tt4/3.jpg,img/paves/Tiles/tt4/4.jpg">
         <div class="card-badge">Floor Tiles</div>
         <div class="card-image">
-          <img src="img/floor.webp" alt="Floor Tiles" />
+          <img src="img/paves/Tiles/tt4/floor tiles cover.png" alt="Floor Tiles" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
@@ -1530,10 +1786,10 @@
         </div>
       </a>
       <!-- Card 2 -->
-      <a class="construction-card" href="Catalogue1.html?product=21" data-images="img/paves/1.jpg,img/paves/2.jpg,img/paves/3.jpg,img/paves/4.jpg,img/paves/5.jpg">
+      <a class="construction-card" href="Catalogue1.html?product=1001" data-sku="TP1" data-images="img/paves/Pavers/tp12 spacer/1.jpg,img/paves/1.jpg,img/paves/2.jpg,img/paves/3.jpg,img/paves/4.JPG,img/paves/5.jpg">
         <div class="card-badge">Pavers</div>
         <div class="card-image">
-          <img src="img/pavers.jpeg" alt="Pavers" />
+          <img src="img/paves/Pavers/tp12 spacer/1.jpg" alt="Pavers" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
@@ -1546,7 +1802,7 @@
         </div>
       </a>
             <!-- Card 3 -->
-      <a class="construction-card" href="Catalogue1.html?product=31" data-images="img/blockcement/Bloco-de-Concreto-14x19x39-vaz-20210123020133.jpg,img/blockcement/concrete-pictures-tivavl75ddhql2wm.jpg,img/blockcement/concrete-pictures-ocr3ftb97tkf14nr.jpg,img/blockcement/OIP.webp,img/blockcement/OIP (1).webp">
+      <a class="construction-card" href="Catalogue1.html?product=1401" data-sku="TB20-40-20-H" data-images="img/blockcement/Bloco-de-Concreto-14x19x39-vaz-20210123020133.jpg,img/blockcement/concrete-pictures-tivavl75ddhql2wm.jpg,img/blockcement/concrete-pictures-ocr3ftb97tkf14nr.jpg,img/blockcement/OIP.webp,img/blockcement/OIP (1).webp">
         <div class="card-badge">Cement Blocks</div>
         <div class="card-image">
           <img src="img/concrete-block.jpg" alt="Cement Blocks" />
@@ -1562,7 +1818,7 @@
         </div>
       </a>
             <!-- Card 4 -->
-      <a class="construction-card" href="Catalogue1.html?product=41" data-images="img/caststones/6.webp,img/caststones/5.webp,img/caststones/4267410a49cfcaf51edd303396e00ac4.jpg,img/caststones/4.webp">
+      <a class="construction-card" href="Catalogue1.html?product=41" data-sku="TMC-CAST-STONES" data-images="img/caststones/6.webp,img/caststones/5.webp,img/caststones/4267410a49cfcaf51edd303396e00ac4.jpg,img/caststones/4.webp">
         <div class="card-badge">Cast Stones</div>
         <div class="card-image">
           <img src="img/cast.jpg" alt="Cast Stones" />
@@ -1578,42 +1834,42 @@ Highly refined architectural precast concrete stones as alternatives to natural 
         </div>
       </a>
             <!-- Card 5 -->
-      <a class="construction-card" href="Catalogue1.html?product=51" data-images="img/cladding/1.jpg,img/cladding/2.jpg,img/cladding/3.jpg,img/cladding/4.jpg,img/cladding/5.jpg,img/cladding/6.jpg,img/cladding/7.jpg,img/cladding/8.jpg,img/cladding/9.jpg,img/cladding/10.jpg,img/cladding/IMG_20190909_135324.jpg">
-        <div class="card-badge">Cladding</div>
+      <a class="construction-card" href="Catalogue1.html?product=1501" data-sku="TDS1" data-images="img/paves/Drainage/ChatGPT Image Mar 9%2C 2026%2C 10_27_08 AM.png,img/paves/Drainage/ChatGPT Image Mar 9%2C 2026%2C 10_37_21 AM.png,img/paves/Drainage/ChatGPT Image Mar 9%2C 2026%2C 10_39_34 AM.png,img/paves/Drainage/ChatGPT Image Mar 9%2C 2026%2C 11_33_36 AM.png">
+        <div class="card-badge">Drainage</div>
         <div class="card-image">
-          <img src="img/cladding.jpg" alt="Cladding" />
+          <img src="img/paves/Drainage/ChatGPT Image Mar 9, 2026, 10_27_08 AM.png" alt="TDS1 Slotted Holes" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Cladding</h3>
+          <h3 class="card-title">TDS1 (Slotted Holes)</h3>
           <p class="card-description">
-Premium cladding for superior weather protection and insulation, enhancing any building's appearance.
+Precast concrete drainage channels with slotted openings, designed to manage surface water safely and efficiently.
           </p>
         </div>
       </a>
             <!-- Card 6 -->
-      <a class="construction-card" href="Catalogue1.html?product=61" data-images="img/hollowbricks/1.jpg,img/hollowbricks/2.jpg,img/hollowbricks/3.jpg">
-        <div class="card-badge">Hollow Bricks</div>
+      <a class="construction-card" href="Catalogue1.html?product=1101" data-sku="TVB1" data-images="img/paves/breeze bricks/tv b1/front.png,img/paves/breeze bricks/tv b1/back.jpg">
+        <div class="card-badge">Ventilation Blocks</div>
         <div class="card-image">
-          <img src="img/hollowbricks/1.jpg" alt="Hollow Bricks" />
+          <img src="img/paves/breeze bricks/tv b1/front.png" alt="Ventilation Blocks" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Hollow Bricks</h3>
+          <h3 class="card-title">Ventilation Blocks</h3>
           <p class="card-description">
-            Lightweight and durable hollow concrete blocks designed for efficient construction, providing excellent thermal insulation and structural stability.
+            Decorative hollow concrete ventilation blocks that improve airflow and natural light while creating distinctive patterned walls.
           </p>
         </div>
       </a>
             <!-- Card 7 -->
-      <a class="construction-card" href="Catalogue1.html?product=71" data-images="img/kerbs/1.jpg,img/kerbs/2.jpeg,img/kerbs/3.jpeg,img/kerbs/4.png,img/kerbs/5.png">
+      <a class="construction-card" href="Catalogue1.html?product=1201" data-sku="TK80-30-8" data-images="img/paves/kerbs/cover for kerbs.png">
         <div class="card-badge">Kerbs</div>
         <div class="card-image">
-          <img src="img/kerbs.jpeg" alt="Kerbs" />
+          <img src="img/paves/kerbs/cover for kerbs.png" alt="Kerbs" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
@@ -1626,27 +1882,11 @@ Garden and landscape edging solutions to redefine spaces, facilitate maintenance
           </p>
         </div>
       </a>
-            <!-- Card 7 -->
-      <a class="construction-card" href="Catalogue1.html?product=81" data-images="img/ceb/1.jpg,img/ceb/2.jpg,img/ceb/3.jpg,img/ceb/4.jpeg,img/ceb/5.jpg">
-        <div class="card-badge">CEB Blocks</div>
-        <div class="card-image">
-          <img src="img/ceb.jpeg" alt="CEB Blocks" />
-          <div class="image-overlay">
-            <i class="fas fa-eye overlay-icon"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <h3 class="card-title">CEB Blocks</h3>
-          <p class="card-description">
-Compressed Earth Blocks made from compressed soil and cement, perfect for foundations, load-bearing walls, arches, and vaults.
-          </p>
-        </div>
-      </a>
             <!-- Card 8 -->
-      <a class="construction-card" href="Catalogue1.html?product=91" data-images="img/terrazzo/1.jpg,img/terrazzo/2.jpg,img/terrazzo/3.jpg,img/terrazzo/4.jpg,img/terrazzo/5.jpg,img/terrazzo/6.jpg,img/terrazzo/7.jpg,img/terrazzo/8.jpg">
+      <a class="construction-card" href="Catalogue1.html?product=91" data-sku="TMC-TERRAZZO" data-images="img/paves/terrazzo/1.jpg,img/paves/terrazzo/2.jpg,img/paves/terrazzo/3.jpg,img/paves/terrazzo/4.jpg,img/paves/terrazzo/5.jpg,img/paves/terrazzo/6.jpg,img/paves/terrazzo/7.jpg,img/paves/terrazzo/8.jpg">
         <div class="card-badge">Terrazzo</div>
         <div class="card-image">
-          <img src="img/ter.jpeg" alt="Terrazzo" />
+          <img src="img/paves/terrazzo/1.jpg" alt="Terrazzo" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
@@ -1659,10 +1899,10 @@ Composite flooring material for bases, walls, stair treads, and countertops, inc
         </div>
       </a>
       <!-- Card 9 -->
-      <a class="construction-card" href="Catalogue1.html?product=101" data-images="img/grassblock/4.jpg,img/grassblock/5.jpg,img/grassblock/grassss.jpg,img/grassblock/graass.png,img/grassblock/grassblocker.jpeg">
+      <a class="construction-card" href="Catalogue1.html?product=1022" data-sku="TP18" data-images="img/paves/Pavers/tp18/grass block paver cover.png,img/paves/Pavers/tp18/ChatGPT Image May 18%2C 2026%2C 10_17_52 AM.png,img/paves/Pavers/tp18/ChatGPT Image May 18%2C 2026%2C 11_02_39 AM.png">
         <div class="card-badge">Grass Block Pavers</div>
         <div class="card-image">
-          <img src="img/graass.png" alt="Grass Block Pavers" />
+          <img src="img/paves/Pavers/tp18/grass block paver cover.png" alt="Grass Block Pavers" />
           <div class="image-overlay">
             <i class="fas fa-eye overlay-icon"></i>
           </div>
@@ -1678,68 +1918,11 @@ Permeable pavers that allow grass growth while providing flood protection, prese
     </div>
   </div>
 </section>
-<section class="services" id="services">
-    <div class="services-container">
-        <div class="heading" style="text-align:center; margin-bottom: 50px;">
-            <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
-            <h2>Our Services</h2>
-            <p>From concept to completion — TEMACO delivers fully integrated landscape project solutions across design, build, and maintenance.</p>
-        </div>
-        <div class="services-grid" style="display:grid; grid-template-columns: repeat(4,1fr); gap:20px; max-width:1200px; margin:0 auto;">
-
-            <!-- Design -->
-            <div class="service-card" style="border-top: 3px solid #f56421;">
-                <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
-                <h3>Design</h3>
-                <p class="body-text">Landscape master planning, public space design, exterior architectural landscape design, planting and irrigation design, and 3D visualization and rendering.</p>
-            </div>
-
-            <!-- Build -->
-            <div class="service-card" style="border-top: 3px solid #f56421;">
-                <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
-                <h3>Build &amp; Execution</h3>
-                <p class="body-text">Complete landscape construction — hardscape and softscape installation, ground preparation, drainage construction, and full landscape infrastructure works.</p>
-            </div>
-
-            <!-- Maintenance -->
-            <div class="service-card" style="border-top: 3px solid #f56421;">
-                <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                <h3>Maintenance</h3>
-                <p class="body-text">Ongoing plant maintenance, irrigation system maintenance, landscape rehabilitation, and seasonal planting and care programs for lasting results.</p>
-            </div>
-
-            <!-- Fabrication -->
-            <div class="service-card" style="border-top: 3px solid #f56421;">
-                <div class="service-icon"><i class="fas fa-tools"></i></div>
-                <h3>In-House Fabrication</h3>
-                <p class="body-text">Metal workshop for mold fabrication, machine frames, and custom landscape structures. Carpentry workshop for casting molds, timber structures, and decking.</p>
-            </div>
-
-        </div>
-
-        <!-- Secondary row: logistics & sourcing -->
-        <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:20px; max-width:800px; margin:20px auto 0;">
-            <div class="service-card" style="border-top: 3px solid #ccc;">
-                <div class="service-icon"><i class="fas fa-truck"></i></div>
-                <h3>Transportation &amp; Delivery</h3>
-                <p class="body-text">Own logistics fleet for professional on-time delivery of TEMACO products across Rwanda and beyond, with vehicle leasing available to external clients.</p>
-            </div>
-            <div class="service-card" style="border-top: 3px solid #ccc;">
-                <div class="service-icon"><i class="fas fa-boxes"></i></div>
-                <h3>Materials Sourcing</h3>
-                <p class="body-text">Supply of complementary construction materials including laterite, aggregates, and sand — a one-stop solution for complete project requirements.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
- 
 <section id="projects">
     <div class="container">
         <div class="section-header">
           <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
             <h2 class="section-title">Our Projects</h2>
-            <p class="section-subtitle">Showcase of our major construction projects demonstrating our capability and quality standards.</p>
         </div>
 
         <!-- Swiper Slider for Projects -->
@@ -1775,7 +1958,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
                                     <span>Eco-friendly</span>
                                 </div>
                             </div>
-                            <a href="#" class="view-details-btn">
+                            <a href="project-details.html?project=nyandungu" class="view-details-btn">
                                 View Details
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -1812,7 +1995,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
                                     <span>2021</span>
                                 </div>
                             </div>
-                            <a href="#" class="view-details-btn">
+                            <a href="project-details.html?project=alu" class="view-details-btn">
                                 View Details
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -1850,7 +2033,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
                                   <span>350 Workers</span>
                               </div>
                             </div>
-                            <a href="#" class="view-details-btn">
+                            <a href="project-details.html?project=amahoro" class="view-details-btn">
                                 View Details
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -1889,7 +2072,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
                                   <span>Large Workforce</span>
                               </div>
                             </div>
-                            <a href="#" class="view-details-btn">
+                            <a href="project-details.html?project=hoima" class="view-details-btn">
                                 View Details
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -1901,6 +2084,19 @@ Permeable pavers that allow grass growth while providing flood protection, prese
        
         </div>
     </div>
+</section>
+
+<section class="home-blog-highlight" id="latest-insights" aria-labelledby="latest-insights-title">
+  <div class="home-blog-container">
+    <div class="home-blog-heading">
+      <div>
+        <p class="home-blog-eyebrow">From the field</p>
+        <h2 id="latest-insights-title">Latest Insights</h2>
+      </div>
+      <a class="home-blog-all" href="blog.html">View All Stories <span>→</span></a>
+    </div>
+    <div class="home-blog-grid" id="homepage-blog-grid" aria-live="polite"></div>
+  </div>
 </section>
 
   <div class="marquee gap">
@@ -1989,38 +2185,6 @@ Permeable pavers that allow grass growth while providing flood protection, prese
       </div>
     </div>
   </div>
-   <div class="about-container" id="about">
-        <div class="heading">
-          <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
-            <h2>About TEMACO</h2>
-           
-        </div>
-        <div class="about-content">
-           <p class="body-text">Founded in 2013 by Emmanuel Tuyisenge, a passionate Chemistry graduate, TEMACO Builders Ltd has become Rwanda's leading manufacturer of high-quality concrete construction materials.</p>
-            <p class="body-text">Our mission from inception has been to focus on the paving and cladding subsector, offering durable and aesthetic products manufactured in the most innovative way. We entered this market with almost no competition but maintained our commitment to excellence.</p>
-            <p class="body-text">At the dawn of our ten-year anniversary, we celebrate not just our success but our positive impact on the community through job creation, youth training, and environmental consciousness.</p>
-        </div>
-        <div class="about-highlights">
-            <div class="highlight-item">
-                <h4>Why We Exist</h4>
-                <p class="body-text">To raise the beauty of places to higher levels and protect our environment through quality concrete construction materials.</p>
-            </div>
-            <div class="highlight-item">
-                <h4>What We Believe</h4>
-                <p class="body-text">Our business is a medium for making positive impact, improving lives, and creating wealth for communities.</p>
-            </div>
-            <div class="highlight-item">
-                <h4>Our Vision</h4>
-                <p class="body-text">Expanding operations, capacitating more people, and being the regional leader in concrete products innovation.</p>
-            </div>
-            <div class="highlight-item">
-                <h4>Our Awards</h4>
-                <p class="body-text">Best Exhibitor "Made In Rwanda" Expo 2017, Best Young Entrepreneur for Job Creation 2018, and many more.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Meet the Team Section -->
 <style>
   .tm-section {
@@ -2324,13 +2488,12 @@ Permeable pavers that allow grass growth while providing flood protection, prese
   }
 </style>
 
-<section class="tm-section" id="our-team">
+<section class="tm-section" id="our-team" hidden>
 
   <!-- Header -->
   <div class="heading" style="text-align:center; margin-bottom: 50px;">
     <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
     <h2>Meet Our Team</h2>
-    <p>The passionate people behind TEMACO Builders Ltd — dedicated to delivering excellence in every product and project.</p>
   </div>
 
   <!-- Team Grid -->
@@ -2340,7 +2503,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
     <div class="tm-card tm-featured tm-reveal" style="transition-delay:0.05s">
       <div class="tm-photo">
         <div class="tm-photo-inner">
-          <img src="img/team/tutu.jpg" alt="Emmanuel Tuyisenge" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="img/Team/tutu-team.webp" alt="Emmanuel Tuyisenge" width="900" height="1395" loading="lazy" decoding="async" fetchpriority="low" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="tm-overlay"><p class="tm-overlay-quote">"We don't just build materials — we build the foundations communities rest on."</p></div>
       </div>
@@ -2348,7 +2511,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
         <span class="tm-num">01 / Founder</span>
         <h3 class="tm-name">Emmanuel Tuyisenge</h3>
         <p class="tm-role">Founder &amp; CEO</p>
-        <p class="tm-bio">A Chemistry graduate with a vision, Emmanuel founded TEMACO in 2013 and has led the company to become Rwanda's foremost manufacturer of concrete construction materials, winning multiple national awards along the way.</p>
+        <p class="tm-bio">A Chemistry graduate who founded TEMACO in 2013, Emmanuel sets the company's strategic direction, leads innovation and business growth, and guides the team in delivering dependable products and projects.</p>
         <div class="tm-socials">
           <a href="#" class="tm-social" title="LinkedIn">in</a>
           <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
@@ -2360,15 +2523,15 @@ Permeable pavers that allow grass growth while providing flood protection, prese
     <div class="tm-card tm-reveal" style="transition-delay:0.1s">
       <div class="tm-photo">
         <div class="tm-photo-inner">
-          <img src="img/team/faustin.jpg" alt="Production Manager" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="img/Team/faustin-team.webp" alt="Niyonsenga Faustin, Head of Production" width="900" height="1395" loading="lazy" decoding="async" fetchpriority="low" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="tm-overlay"><p class="tm-overlay-quote">"Precision in production is what separates good from great."</p></div>
       </div>
       <div class="tm-content">
         <span class="tm-num">02 / Operations</span>
-        <h3 class="tm-name">Production Manager</h3>
+        <h3 class="tm-name">Niyonsenga Faustin</h3>
         <p class="tm-role">Head of Production</p>
-        <p class="tm-bio">Overseeing our factory locations, ensuring every block, tile, and paver meets TEMACO's exacting quality standards before it leaves our facilities.</p>
+        <p class="tm-bio">Faustin leads production operations across TEMACO's facilities, coordinating factory teams, production planning, and quality control so every block, tile, and paver meets company standards.</p>
         <div class="tm-socials">
           <a href="#" class="tm-social" title="LinkedIn">in</a>
           <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
@@ -2380,15 +2543,15 @@ Permeable pavers that allow grass growth while providing flood protection, prese
     <div class="tm-card tm-reveal" style="transition-delay:0.15s">
       <div class="tm-photo">
         <div class="tm-photo-inner">
-          <img src="img/team/Tina.jpg" alt="Site Engineer" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="img/Team/tina-team.webp" alt="Basaninyange Martine, Sales and Business Growth" width="900" height="1395" loading="lazy" decoding="async" fetchpriority="low" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
-        <div class="tm-overlay"><p class="tm-overlay-quote">"Every project is a chance to redefine what Rwandan craftsmanship can achieve."</p></div>
+        <div class="tm-overlay"><p class="tm-overlay-quote">"The best solution starts with listening closely to what each client needs."</p></div>
       </div>
       <div class="tm-content">
-        <span class="tm-num">03 / Engineering</span>
-        <h3 class="tm-name">Site Engineer</h3>
-        <p class="tm-role">Lead Site Engineer</p>
-        <p class="tm-bio">Coordinating large-scale installations from Amahoro Stadium to Nyandungu Eco-Park, bringing technical depth and on-the-ground leadership to every major project.</p>
+        <span class="tm-num">03 / Sales</span>
+        <h3 class="tm-name">Basaninyange Martine</h3>
+        <p class="tm-role">Sales &amp; Business Growth</p>
+        <p class="tm-bio">Martine leads customer engagement and business growth, developing new opportunities, strengthening client relationships, and helping customers select the right TEMACO products and project solutions.</p>
         <div class="tm-socials">
           <a href="#" class="tm-social" title="LinkedIn">in</a>
           <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
@@ -2400,15 +2563,15 @@ Permeable pavers that allow grass growth while providing flood protection, prese
     <div class="tm-card tm-reveal" style="transition-delay:0.2s">
       <div class="tm-photo">
         <div class="tm-photo-inner">
-          <img src="img/team/eve.jpg" alt="Business Development" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="img/Team/eve-team.webp" alt="Evelyn Maina, Human Resources and Finance" width="900" height="1395" loading="lazy" decoding="async" fetchpriority="low" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
-        <div class="tm-overlay"><p class="tm-overlay-quote">"Building lasting relationships is as important as building lasting structures."</p></div>
+        <div class="tm-overlay"><p class="tm-overlay-quote">"Strong teams and sound financial systems create the foundation for sustainable growth."</p></div>
       </div>
       <div class="tm-content">
-        <span class="tm-num">04 / Commercial</span>
-        <h3 class="tm-name">Business Dev</h3>
-        <p class="tm-role">Business Development</p>
-        <p class="tm-bio">Growing TEMACO's partnerships across Rwanda and the region, connecting the right clients with the right solutions for residential, commercial, and infrastructure projects.</p>
+        <span class="tm-num">04 / People &amp; Finance</span>
+        <h3 class="tm-name">Evelyn Maina</h3>
+        <p class="tm-role">Human Resources &amp; Finance</p>
+        <p class="tm-bio">Evelyn manages TEMACO's people and financial administration, supporting recruitment, staff welfare, budgeting, records, and day-to-day financial controls that keep operations organized and accountable.</p>
         <div class="tm-socials">
           <a href="#" class="tm-social" title="LinkedIn">in</a>
           <a href="mailto:info@temacobuilders.com" class="tm-social" title="Email">✉</a>
@@ -2455,143 +2618,114 @@ Permeable pavers that allow grass growth while providing flood protection, prese
 })();
 </script>
 
-<section class="contact" id="contact">
-   <div class="heading">
-    <img src="img/logo2.jpg" alt="img" style="max-width:40px; height:auto;">
-            <h2>Get In Touch</h2>
-        </div>
-    <div class="contact-container">
-       
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-icon">📍</div>
-                <div>
-                    <h4>Location</h4>
-                    <p class="body-text">Kimironko, Kigali, Rwanda</p>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">📞</div>
-                <div>
-                    <h4>Phone</h4>
-                    <div class="phone-numbers">
-                        <p class="body-text phone-item">
-                            <a href="tel:+250788316484" class="phone-link">+250 788 316 484</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">✉️</div>
-                <div>
-                    <h4>Email</h4>
-                    <p class="body-text">info@temacobuilders.com</p>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">🌐</div>
-                <div>
-                    <h4>Websites</h4>
-                    <p class="body-text">
-                        <a href="https://www.temacobuilders.rw" target="_blank" rel="noopener noreferrer" style="color: #f56421; text-decoration: none;">www.temacobuilders.rw</a><br>
-                        <a href="https://www.temaco.rw" target="_blank" rel="noopener noreferrer" style="color: #f56421; text-decoration: none;">www.temaco.rw</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <form class="contact-form" id="contactForm">
-    <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+250 7XX XXX XXX" pattern="[+][0-9]{3}[\s][0-9]{3}[\s][0-9]{3}[\s][0-9]{3}">
-    </div>
-    <div class="form-group">
-        <label for="project">Project Type</label>
-        <select id="project" name="project" class="form-control">
-            <option value="">Select Project Type</option>
-            <option value="residential">Residential Construction</option>
-            <option value="commercial">Commercial Building</option>
-            <option value="landscaping">Landscaping & Paving</option>
-            <option value="infrastructure">Infrastructure Project</option>
-            <option value="other">Other</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="message">Project Details</label>
-        <textarea id="message" name="message" class="form-control" placeholder="Tell us about your project requirements, timeline, and budget..."></textarea>
-    </div>
-    <button type="submit" class="btn-primary" style="width: 100%;">
-        Send Message
-        <span>→</span>
-    </button>
-    <div id="formMessage" class="mt-3" style="display: none; position: relative; z-index: 1000; min-height: 50px;"></div>
-</form>
-    </div>
-</section>
-  <footer class="gap two no-bottom" style="background-image: url(img/background.png);">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="widget-title">
-            <h3 class="mt-0">Temaco </h3>
-            <p>Building on Excellence since 2013. Leading manufacturer of high-quality concrete construction materials in Rwanda with international aspirations. </p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="widget-title">
-            <h3>Contact Information</h3>
-            <div class="get-in-touch">
-              <div><i class="flaticon-map-location"></i></div>
-              <div>
-                <h6>Kimironko, Kigali, Rwanda</h6>
-              </div>
-            </div>
-            <div class="get-in-touch">
-              <div><i class="flaticon-iphone"></i></div>
-              <div>
-                <a href="tel:+250788306074" class="footer-phone">+250 788 306 074</a>
-              </div>
-            </div>
-            <div class="get-in-touch mb-0">
-              <div><i class="flaticon-mail-inbox-app"></i></div>
-              <div>
-                <a href="mailto:info@temacobuilders.com">info@temacobuilders.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="widget-title">
-            <h3>Subscribe Newsletter</h3>
-            <p class="w-100">Signup for our weekly newsletter to get news.</p>
-            <form class="footer-form">
-              <a href="mailto:info@temacobuilders.com"><input type="text" name="email" placeholder="enter your email"></a>
-              <button class="theme-btn w-color">Subscribe</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fb-bottom">
-      <div class="container">
-        <div class="f-bottom">
-          <p>© 2025 TEMACO Builders Ltd. All rights reserved. | Building on Excellence | #WeAreTEMACO</p>
-          <div class="footer-social">
-            <a href="https://www.instagram.com/temacobuilders/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/TemacoBuilders" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/temacobuilders" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A71531661&keywords=temaco%20builders&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=d4263051-35a9-4cd7-a180-7c6450625ee3&sid=ipa&spellCorrectionEnabled=true" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.tiktok.com/@temacobuilders" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          </div>
-        </div>
-      </div>
+<style>
+  .home-blog-highlight { background:#fff7f1; padding:86px 0 92px; }
+  .home-blog-container { width:min(1180px,calc(100% - 40px)); margin:0 auto; }
+  .home-blog-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:30px; margin-bottom:38px; }
+  .home-blog-eyebrow { margin:0 0 10px; color:#f56421; font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+  .home-blog-heading h2 { margin:0 0 8px; color:#1a1714; font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,5vw,4.5rem); line-height:.95; }
+  .home-blog-all,.home-blog-link { color:#f56421; font-weight:700; letter-spacing:.08em; text-decoration:none; text-transform:uppercase; }
+  .home-blog-all { white-space:nowrap; }
+  .home-blog-all span { display:inline-block; margin-left:8px; transition:transform .2s; }
+  .home-blog-all:hover span { transform:translateX(5px); }
+  .home-blog-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+  .home-blog-card { display:flex; min-width:0; flex-direction:column; border:1px solid #e8e1da; background:#fff; transition:transform .2s,box-shadow .2s,border-color .2s; }
+  .home-blog-card:hover { transform:translateY(-6px); border-color:rgba(245,100,33,.35); box-shadow:0 16px 38px rgba(26,23,20,.11); }
+  .home-blog-image { display:block; height:230px; overflow:hidden; }
+  .home-blog-image img { width:100%; height:100%; object-fit:cover; transition:transform .35s ease; }
+  .home-blog-card:hover .home-blog-image img { transform:scale(1.04); }
+  .home-blog-body { display:flex; flex:1; flex-direction:column; padding:24px; }
+  .home-blog-meta { margin:0 0 13px; color:#8a7e74; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+  .home-blog-body h3 { margin:0 0 13px; font-family:'Bebas Neue',sans-serif; font-size:1.8rem; font-weight:400; line-height:1.05; letter-spacing:.02em; }
+  .home-blog-body h3 a { color:#1a1714; text-decoration:none; }
+  .home-blog-excerpt { margin:0 0 24px; color:#5c554f; font-size:.9rem; line-height:1.65; }
+  .home-blog-link { margin-top:auto; font-size:.7rem; }
+  @media(max-width:900px){.home-blog-grid{grid-template-columns:1fr 1fr}.home-blog-card:last-child{display:none}}
+  @media(max-width:620px){.home-blog-highlight{padding:60px 0}.home-blog-heading{align-items:flex-start;flex-direction:column}.home-blog-grid{grid-template-columns:1fr}.home-blog-card:last-child{display:flex}.home-blog-image{height:210px}}
+</style>
+<script src="assets/js/content-manager.js?v=2"></script>
+<script src="assets/js/project-manager.js?v=1"></script>
+
+  <style>
+    .minimal-footer {
+      padding: 0 !important;
+      border-top: 1px solid rgba(245, 100, 33, 0.18);
+      background: #fff1e6 !important;
+    }
+    .minimal-footer::before {
+      display: none !important;
+      content: none !important;
+    }
+    .minimal-footer-inner {
+      position: relative;
+      display: flex;
+      width: min(1180px, calc(100% - 40px));
+      min-height: 220px;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin: 0 auto;
+    }
+    .minimal-footer-year {
+      margin: 0;
+      color: #1a1714;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .minimal-footer .footer-social {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0;
+    }
+    .minimal-footer .footer-social a {
+      display: inline-flex;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(245, 100, 33, 0.5);
+      border-radius: 50%;
+      background: transparent;
+      box-shadow: none;
+      color: #f56421;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+    }
+    .minimal-footer .footer-social a:hover,
+    .minimal-footer .footer-social a:focus-visible {
+      border-color: #f56421;
+      background: #f56421;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      .minimal-footer-inner {
+        min-height: 180px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+      }
+      .minimal-footer .footer-social {
+        position: static;
+      }
+    }
+  </style>
+  <footer class="minimal-footer" aria-label="Site footer">
+    <div class="minimal-footer-inner">
+      <p class="minimal-footer-year">&copy; <span id="footer-year">2026</span> TEMACO</p>
+      <nav class="footer-social" aria-label="TEMACO social media">
+        <a href="https://www.instagram.com/temacobuilders/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://x.com/TemacoBuilders" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/temacobuilders" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/temacobuilders" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@temacobuilders" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+      </nav>
     </div>
   </footer>
   <div class="search-popup">
@@ -2671,6 +2805,345 @@ Permeable pavers that allow grass growth while providing flood protection, prese
     </div>
   </div>
   <!-- search-popup end -->
+  <style id="temaco-polish">
+    :root {
+      --temaco-orange: #f56421;
+      --temaco-ink: #1a1714;
+      --temaco-copy: #4f4a46;
+      --temaco-line: #e8e1da;
+      --temaco-shadow: 0 14px 36px rgba(26, 23, 20, 0.11);
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    /* Consistent, smaller homepage section headings (hero titles stay unchanged). */
+    .heading h2,
+    #projects .section-title,
+    .home-blog-heading h2 {
+      font-size: 38px !important;
+      line-height: 1.1 !important;
+    }
+
+    /* A tighter, repeatable section rhythm. */
+    #what-we-do {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    #Products {
+      padding: 44px 0 !important;
+    }
+    #Products > .container > .heading {
+      margin-bottom: 24px !important;
+    }
+    #Products .products-card-grid {
+      margin-top: 0;
+      gap: 26px;
+    }
+    #projects {
+      padding: 48px 0;
+    }
+    #projects .section-header {
+      margin-bottom: 28px;
+    }
+    .home-blog-highlight {
+      padding: 52px 0 56px !important;
+    }
+    .home-blog-heading {
+      margin-bottom: 28px;
+    }
+    .marquee.gap {
+      padding-top: 28px !important;
+      padding-bottom: 28px !important;
+    }
+
+    /* One brand orange across the main conversion and content components. */
+    .pillars-section .card-eyebrow,
+    .project-category,
+    .project-meta i,
+    .project-card:hover .project-title,
+    #Products .card-title {
+      color: var(--temaco-orange) !important;
+    }
+    .pillars-section .card-title {
+      color: #fff !important;
+    }
+    .pillars-section .list-diamond,
+    #Products .card-badge {
+      background: var(--temaco-orange) !important;
+    }
+    .pillars-section .card-btn,
+    .view-details-btn {
+      border-color: var(--temaco-orange);
+      background: var(--temaco-orange);
+    }
+    .pillars-section .card-btn.card--services {
+      border-color: #fff;
+      background: transparent;
+    }
+    .pillars-section .card-overlay.card--services {
+      background: linear-gradient(160deg, rgba(245, 100, 33, 0.93), rgba(164, 48, 10, 0.9));
+    }
+
+    /* Subtle, consistent movement rather than dramatic zooming. */
+    .project-card,
+    .service-card {
+      border-radius: 4px;
+      border-color: var(--temaco-line);
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+    .project-card:hover,
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245, 100, 33, 0.35);
+      box-shadow: var(--temaco-shadow);
+    }
+    .project-card:hover .project-image img,
+    .pillar-card:hover .card-bg {
+      transform: scale(1.04);
+    }
+    .project-card,
+    .project-image {
+      border-radius: 4px;
+    }
+    .image-overlay {
+      background: rgba(26, 23, 20, 0.42);
+    }
+
+    /* Ferrocon-inspired catalogue cards, scoped to the homepage products only. */
+    #Products {
+      background: #f4f7f9 !important;
+    }
+    #Products .products-card-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 32px 22px;
+    }
+    #Products .legacy-product-grid {
+      display: none !important;
+    }
+    #Products .construction-card {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 15px 15px -10px rgba(26, 23, 20, 0.09);
+      color: var(--temaco-ink);
+      text-decoration: none;
+      transform: none !important;
+      transition: box-shadow 0.3s ease;
+    }
+    #Products .construction-card:hover,
+    #Products .construction-card:focus-within {
+      box-shadow: 0 20px 30px -16px rgba(26, 23, 20, 0.2);
+      transform: none !important;
+    }
+    #Products .card-image {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto !important;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #111;
+    }
+    #Products .card-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      transform: none !important;
+      transition: opacity 0.3s ease !important;
+    }
+    #Products .card-image .product-card-secondary {
+      opacity: 0;
+    }
+    #Products .has-secondary-image:hover .product-card-primary,
+    #Products .has-secondary-image:focus-within .product-card-primary {
+      opacity: 0;
+    }
+    #Products .has-secondary-image:hover .product-card-secondary,
+    #Products .has-secondary-image:focus-within .product-card-secondary {
+      opacity: 1;
+    }
+    #Products .card-badge,
+    #Products .managed-product-new-badge,
+    #Products .image-overlay,
+    #Products .card-description {
+      display: none !important;
+    }
+    #Products .card-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      min-height: 120px;
+      flex-direction: column;
+      margin: 0 10px;
+      padding: 20px 16px;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      transition: transform 0.3s cubic-bezier(0.17, 0.67, 0.35, 0.95);
+    }
+    #Products .card-title {
+      order: 1;
+      margin: 0 0 8px;
+      color: var(--temaco-ink) !important;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    #Products .card-subtitle {
+      order: 2;
+      margin: 0;
+      color: #645f5b;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+    #Products .card-content::after {
+      content: 'View product  \2192';
+      position: absolute;
+      left: 16px;
+      bottom: -18px;
+      color: var(--temaco-orange);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      opacity: 0;
+      text-transform: uppercase;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    #Products .product-category-card .card-content::after {
+      content: 'Explore category  \2192';
+    }
+    #Products .construction-card:hover .card-content,
+    #Products .construction-card:focus-within .card-content {
+      transform: translateY(-26px);
+    }
+    #Products .construction-card:hover .card-content::after,
+    #Products .construction-card:focus-within .card-content::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(245, 100, 33, 0.45);
+      outline-offset: 3px;
+    }
+
+    /* The unused demo cart was pushing the page wider than the viewport. */
+    #lightbox {
+      display: none !important;
+    }
+
+    /* Smaller, branded back-to-top progress control. */
+    #scroll-percentage {
+      width: 40px !important;
+      height: 40px !important;
+      right: 18px;
+      bottom: 18px;
+      box-shadow: 0 7px 22px rgba(26, 23, 20, 0.18);
+    }
+    #scroll-percentage.active {
+      bottom: 18px;
+    }
+    #scroll-percentage-value {
+      height: calc(100% - 4px);
+      width: calc(100% - 4px);
+      color: var(--temaco-ink);
+      font-size: 10px;
+    }
+    #scroll-percentage-value i {
+      font-size: 15px;
+    }
+
+    @media (max-width: 767px) {
+      .heading h2,
+      #projects .section-title,
+      .home-blog-heading h2 {
+        font-size: 30px !important;
+      }
+      #Products,
+      #projects {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+      }
+      #what-we-do {
+        padding: 8px 0 !important;
+      }
+      .home-blog-highlight {
+        padding: 42px 0 !important;
+      }
+      .marquee.gap {
+        padding-top: 22px !important;
+        padding-bottom: 22px !important;
+      }
+      #Products .products-card-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      #scroll-percentage {
+        display: none !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .project-card,
+      .service-card,
+      .card-bg,
+      .card-image img,
+      .project-image img,
+      .btn-arrow {
+        transition: none !important;
+        transform: none !important;
+      }
+      #Products .construction-card,
+      #Products .card-content,
+      #Products .card-content::after,
+      #Products .card-image img {
+        transition: none !important;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      #Products .products-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (hover: none) {
+      #Products .construction-card .card-content,
+      #Products .construction-card:hover .card-content {
+        min-height: auto;
+        transform: none;
+      }
+      #Products .card-content::after {
+        position: static;
+        order: 3;
+        margin-top: 14px;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
   <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
   <!-- Bootstrap Js -->
   <script src="assets/js/bootstrap.min.js"></script>
@@ -2678,22 +3151,25 @@ Permeable pavers that allow grass growth while providing flood protection, prese
   <script src="assets/js/jquery.nice-select.min.js"></script>
   <!-- fancybox -->
   <script src="assets/js/jquery.fancybox.min.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/custom.js?v=2"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.7/swiper-bundle.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', async function() {
+        if (window.temacoProjectsReady) await window.temacoProjectsReady;
         // Initialize Swiper
         const projectsSwiper = new Swiper('.projects-slider', {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
+            preventClicks: false,
+            preventClicksPropagation: false,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
             },
             pagination: {
-                el: '.swiper-pagination',
+                el: '.projects-slider .swiper-pagination',
                 clickable: true,
             },
             navigation: {
@@ -2719,19 +3195,7 @@ Permeable pavers that allow grass growth while providing flood protection, prese
             grabCursor: true,
         });
 
-        // Add smooth scroll behavior for view details buttons
-        document.querySelectorAll('.view-details-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Add your navigation logic here
-                console.log('View details clicked for:', this.closest('.project-card').querySelector('.project-title').textContent);
-            });
-        });
     });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-// ...existing code...
 </script>
 
 <script>
@@ -2746,10 +3210,5 @@ window.addEventListener('load', function() {
 });
 </script>
 
-
-<!-- Product modal removed -->
-
-<!-- External JavaScript files -->
-<script src="assets/js/modals.js"></script>
 
 </body></html>

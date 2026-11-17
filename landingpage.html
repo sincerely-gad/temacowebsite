@@ -26,6 +26,39 @@
             padding: 0 20px;
         }
 
+        .temaco-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            background: #f56421;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .temaco-navbar-inner {
+            width: min(1200px, calc(100% - 40px));
+            min-height: 80px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+
+        .temaco-navbar-logo { display: inline-flex; align-items: center; }
+        .temaco-navbar-logo img { display: block; max-width: 140px; height: auto; }
+        .temaco-navbar-links { display: flex; align-items: center; gap: 24px; }
+        .temaco-navbar-links a {
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .temaco-navbar-links a:hover,
+        .temaco-navbar-links a:focus-visible { border-bottom: 3px solid #fff; }
+
         .header {
             padding: 40px 0;
             text-align: center;
@@ -290,6 +323,11 @@
         }
 
         @media (max-width: 768px) {
+            .temaco-navbar-inner { min-height: 70px; }
+            .temaco-navbar-logo img { width: 112px; }
+            .temaco-navbar-links { gap: 14px; }
+            .temaco-navbar-links a:nth-child(3),
+            .temaco-navbar-links a:nth-child(4) { display: none; }
             .logo-text {
                 font-size: 2.8rem;
                 letter-spacing: -1px;
@@ -339,9 +377,10 @@
         }
         /* Add this inside your existing <style> tag */
 .logo img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+    width: 180px;
+    height: auto;
+    max-height: 96px;
+    object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     margin-bottom: 20px;
@@ -351,8 +390,8 @@
 
 @media (max-width: 768px) {
     .logo img {
-        width: 40px;
-        height: 40px;
+        width: 140px;
+        height: auto;
     }
 }
 .social-card a {
@@ -370,11 +409,22 @@
 </head>
 <body>
     <div class="geometric-bg"></div>
+    <header class="temaco-navbar">
+        <div class="temaco-navbar-inner">
+            <a class="temaco-navbar-logo" href="index.html" aria-label="TEMACO home"><img src="img/Logo.jpg" alt="TEMACO logo"></a>
+            <nav class="temaco-navbar-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="Catalogue1.html">Products</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
     
     <div class="container">
         <header class="header">
         <div class="logo">
-    <img src="img2/1.jpg" alt="TEMACO Logo" style="display: block; margin: 0 auto;">
+    <img src="img/Logo.jpg" alt="TEMACO logo" style="display: block; margin: 0 auto;">
     <h1 class="logo-text">TEMACO</h1>
     <p class="tagline">Building on Excellence</p>
 </div>
@@ -393,7 +443,7 @@
                 <!-- Replace the existing social-grid div content with this -->
 <div class="social-grid">
     <div class="social-card">
-        <a href="https://www.temacobuilders.rw" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.temaco.rw" target="_blank" rel="noopener noreferrer">
             <img src="img2/websitelogo.webp" alt="Website" class="social-icon website">
             <h4 class="social-label">Website</h4>
             <p class="social-description">Complete information and services</p>
