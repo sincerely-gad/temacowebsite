@@ -45,11 +45,11 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
 
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: #4A4A4A">
       <span>Showing <strong style="color: #141414">{{shown}}</strong> of {{total}} products</span>
-      <span>Sizes in mm (L × W × thickness) · Strength = compressive resistance</span>
+      <span>Prices are RWF/m², include VAT, and use the 35% margin scenario</span>
     </div>
 
     <div style="overflow-x: auto; border: 1px solid #E7E5E1">
-      <table style="width: 100%; min-width: 1120px; border-collapse: collapse; font-size: 14px">
+      <table style="width: 100%; min-width: 1260px; border-collapse: collapse; font-size: 14px">
         <thead>
           <tr style="background: #141414; color: #FFFFFF; text-align: left">
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; width: 96px">Product</th>
@@ -57,6 +57,7 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Category</th>
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Size (mm)</th>
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right">Pcs / m²</th>
+            <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; white-space: nowrap">Price (RWF/m²)</th>
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Colours</th>
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Strength</th>
             <th scope="col" style="padding: 14px 16px; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Best for</th>
@@ -79,6 +80,7 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
                         <span style="font-weight: 600; font-size: 16px; color: #141414">{{p.name}}</span>
                       </div>
                       <span style="font-size: 13px; color: #4A4A4A">{{p.size}} mm · {{p.colors}}</span>
+                      <span style="font-size: 14px; font-weight: 700; color: #141414">{{p.price}}</span>
                       <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; padding-top: 8px; border-top: 1px solid #E7E5E1">
                         <span style="font-size: 12px; font-weight: 600; color: #B4470F">{{p.galleryCount}} images</span>
                         <span style="font-size: 12px; color: #4A4A4A">{{p.galleryPrompt}}</span>
@@ -98,6 +100,7 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
               </td>
               <td style="padding: 12px 16px; color: #2A2A2A; white-space: nowrap; font-variant-numeric: tabular-nums">{{p.size}}</td>
               <td style="padding: 12px 16px; color: #2A2A2A; text-align: right; font-variant-numeric: tabular-nums">{{p.pcs}}</td>
+              <td style="padding: 12px 16px; color: #141414; text-align: right; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums">{{p.price}}</td>
               <td style="padding: 12px 16px; color: #2A2A2A; min-width: 150px">{{p.colors}}</td>
               <td style="padding: 12px 16px; color: #2A2A2A; white-space: nowrap">{{p.mpa}}</td>
               <td style="padding: 12px 16px; color: #2A2A2A; min-width: 130px">{{p.use}}</td>
@@ -113,7 +116,7 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
       </sc-if>
     </div>
 
-    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4A4A4A">All concrete products use Portland cement 42.5, 4–8 mm aggregate, iron-oxide pigments and Sika admixtures, with integral and surface waterproofing. Custom colours and sizes available on request.</p>
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4A4A4A">Listed tile and paver prices are final selling prices in RWF per m², include VAT, and use the 35% profit-margin scenario. Other products and custom colours or sizes are priced on request.</p>
   </section>
 
   <sc-if value="{{hasOpen}}" hint-placeholder-val="{{ false }}">
@@ -138,6 +141,7 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
               <span style="font-size: 12px; color: #4A4A4A">Image {{imagePos}} of {{imageTotal}}</span>
             </div>
             <span style="font-size: 14px; color: #4A4A4A">{{cur.cat}} · {{cur.size}} mm · {{cur.colors}} · {{cur.mpa}}</span>
+            <span style="font-size: 16px; font-weight: 700; color: #141414">{{cur.price}}</span>
           </div>
           <div style="display: flex; gap: 8px">
             <sc-if value="{{hasMultipleImages}}" hint-placeholder-val="{{ false }}">
@@ -236,7 +240,7 @@ class Component extends DCLogic {
       ['TP8 B', 'Slab paver B', 'Pavers', '400 × 200 × 60', '12.5', 'Light grey, dark grey', '25–30 MPa', 'Walkways, patios', 'b84c2954f42032e26e74fa90c91bd209', 'b99e9196ea97b2252afa54c8e77bcbc5'],
       ['TP8 C', 'Large slab paver', 'Pavers', '800 × 400 × 40', '3.125', 'Light grey, dark grey', '28–30 MPa', 'Walkways', '3eaa43341ad5471f6404702a25b2c2f4', '793b9bcca48eac1cce133500635724b1'],
       ['TP9', 'Grass paver', 'Pavers', '390 · 60 thk', '4', 'Light grey, paintable', '25–30 MPa', 'Green parking, lawns', '582990ec9c7ad43822089fe87f6e57e9', '19b3fdd5ad2e8347527950d044713497'],
-      ['TP10', 'Large slab paver', 'Pavers', '800 × 400 × 60', '3.1', 'Light grey, dark grey', '25–30 MPa', 'Walkways, garden paths', '99c28d09a195191baa01a341dd7dfa45', 'dc661d6f1ce37013674d6624c0442eac'],
+      ['TP10', 'Large slab paver', 'Pavers', '800 × 400 × 50', '3.1', 'Light grey, dark grey', '25–30 MPa', 'Walkways, garden paths', '99c28d09a195191baa01a341dd7dfa45', 'dc661d6f1ce37013674d6624c0442eac'],
       ['TP12', 'Inzovu paver', 'Pavers', '385 × 75 × 80', '34.6', 'Light grey, terracotta, brown', '30–35 MPa', 'Parking', '2309881abfcd77043bfde49107eb8da2', '68580278907b7a4ea233382579777981'],
       ['TP12-S', 'Inzovu spacer paver', 'Pavers', '385 × 75 × 70', '—', 'Light grey, terracotta, brown', '28–35 MPa', 'Green parking', 'f954b681d8735419c8936332903d4024', '347c415cfe06362d48ccb4f61e3d2d45'],
       ['TP13', 'Brick paver', 'Pavers', '230 × 75 × 70', '54', 'Light grey, terracotta, brown', '28–30 MPa', 'Parking', '95b04f40893d96738c196585ab6a88b0', '24135ff2bd3f0132312d3f645302b8f7'],
@@ -302,11 +306,25 @@ class Component extends DCLogic {
       TC3: ['../img/cladding/3.jpg', '../img/cladding/7.jpg'],
       TC4: ['../img/cladding/4.jpg', '../img/cladding/8.jpg']
     };
+    const priceByCode = {
+      TT1: 15728, TT2: 15728, TT3: 15728, TT4: 15728, TT5: 15728, TT6: 15728, TT7: 15728,
+      'TP8 C': 17541,
+      TP10: 19355,
+      TP001: 21165, TP002: 21165, TP003: 21165, TP006: 21165,
+      'TP7 R': 21165, 'TP7 BS': 21165, 'TP7 SS': 21165,
+      'TP8 A': 21165, 'TP8 B': 21165, TP9: 21165,
+      TP14: 21165, TP15: 21165, TP16: 21165, TP17: 21165, TP18: 21165,
+      TP13: 22881, 'TP12-S': 22881,
+      TP12: 24794
+    };
     const products = P.map((r) => {
       const mainImage = `assets/products/${imageSlug(r[0])}-hover.png`;
       const extras = productGallery[r[0]] || [];
+      const listedPrice = priceByCode[r[0]];
       return {
         code: r[0], name: r[1], cat: r[2], size: r[3], pcs: r[4], colors: r[5], mpa: r[6], use: r[7],
+        priceValue: listedPrice || null,
+        price: listedPrice ? 'RWF ' + listedPrice.toLocaleString('en-US') : 'Get quote',
         img: mainImage, big: mainImage, gallery: [...new Set([mainImage, ...extras])]
       };
     });
@@ -365,6 +383,7 @@ class Component extends DCLogic {
       fields.set('message', [
         `Quote request for: ${quoteProduct.code} - ${quoteProduct.name}`,
         `Category: ${quoteProduct.cat}`,
+        quoteProduct.priceValue ? `Listed price (RWF/m² incl. VAT): ${quoteProduct.priceValue.toLocaleString('en-US')}` : '',
         `Quantity: ${quantity}`,
         `Delivery location: ${location}`,
         notes ? `Project details: ${notes}` : ''
