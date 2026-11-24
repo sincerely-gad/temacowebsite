@@ -116,7 +116,7 @@ input:focus,button:focus-visible,a:focus-visible{outline:2px solid #EE6A24;outli
       </sc-if>
     </div>
 
-    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4A4A4A">Listed tile and paver prices are final selling prices in RWF per m², include VAT, and use the 35% profit-margin scenario. Other products and custom colours or sizes are priced on request.</p>
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4A4A4A">All listed tile and paver prices are final selling prices in RWF per m², include VAT, and use the 35% profit-margin scenario. Custom colours and sizes are priced on request.</p>
   </section>
 
   <sc-if value="{{hasOpen}}" hint-placeholder-val="{{ false }}">
@@ -317,18 +317,18 @@ class Component extends DCLogic {
       TP13: 22881, 'TP12-S': 22881,
       TP12: 24794
     };
-    const products = P.map((r) => {
+    const products = P.filter((r) => Boolean(priceByCode[r[0]])).map((r) => {
       const mainImage = `assets/products/${imageSlug(r[0])}-hover.png`;
       const extras = productGallery[r[0]] || [];
       const listedPrice = priceByCode[r[0]];
       return {
         code: r[0], name: r[1], cat: r[2], size: r[3], pcs: r[4], colors: r[5], mpa: r[6], use: r[7],
-        priceValue: listedPrice || null,
-        price: listedPrice ? 'RWF ' + listedPrice.toLocaleString('en-US') : 'Get quote',
+        priceValue: listedPrice,
+        price: 'RWF ' + listedPrice.toLocaleString('en-US'),
         img: mainImage, big: mainImage, gallery: [...new Set([mainImage, ...extras])]
       };
     });
-    const catIds = ['all', 'Pavers', 'Tiles', 'Road kerbs', 'Ventilation blocks', 'Drains', 'Blocks', 'Cladding', 'Planters'];
+    const catIds = ['all', 'Pavers', 'Tiles'];
     const pillBase = 'display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid ';
     const cats = catIds.map((id) => {
       const on = this.state.cat === id;
